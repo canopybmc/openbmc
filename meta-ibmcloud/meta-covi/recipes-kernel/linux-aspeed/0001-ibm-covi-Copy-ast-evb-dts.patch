@@ -1,0 +1,68 @@
+From 6067a57931ec14593764da7f9497dcabc86ac2ce Mon Sep 17 00:00:00 2001
+From: Arthur Heymans <arthur@aheymans.xyz>
+Date: Fri, 23 Jul 2021 19:13:04 +0200
+Subject: [PATCH] ibm-covi: Copy ast evb dts
+
+Signed-off-by: Arthur Heymans <arthur@aheymans.xyz>
+
+diff --git a/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts b/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts
+index dcab6e78dfa4..e2e47a3d5b23 100644
+--- a/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts
++++ b/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts
+@@ -200,3 +200,53 @@ &kcs3 {
+ 	status = "okay";
+ 	aspeed,lpc-io-reg = <0xca2>;
+ };
++
++&pwm_tacho {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_pwm0_default
++		&pinctrl_pwm1_default
++		&pinctrl_pwm2_default
++		&pinctrl_pwm3_default>;
++
++	fan@0 {
++		reg = <0x00>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x00>;
++	};
++
++	fan@1 {
++		reg = <0x01>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x01>;
++	};
++
++	fan@2 {
++		reg = <0x02>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x02>;
++	};
++
++	fan@3 {
++		reg = <0x03>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x03>;
++	};
++
++	fan@4 {
++		reg = <0x00>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x04>;
++	};
++
++	fan@5 {
++		reg = <0x01>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x05>;
++	};
++
++	fan@6 {
++		reg = <0x02>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x06>;
++	};
++
++	fan@7 {
++		reg = <0x03>;
++		aspeed,fan-tach-ch = /bits/ 8 <0x07>;
++	};
++};
+-- 
+2.31.1
+
