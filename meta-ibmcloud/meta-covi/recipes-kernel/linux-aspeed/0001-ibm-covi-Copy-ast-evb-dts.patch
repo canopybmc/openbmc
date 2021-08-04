@@ -1,67 +1,146 @@
-From 6067a57931ec14593764da7f9497dcabc86ac2ce Mon Sep 17 00:00:00 2001
+From c98cee5ccb3824ddc6ff1bd25ce85e3e3624b6c3 Mon Sep 17 00:00:00 2001
 From: Arthur Heymans <arthur@aheymans.xyz>
 Date: Fri, 23 Jul 2021 19:13:04 +0200
 Subject: [PATCH] ibm-covi: Copy ast evb dts
 
 Signed-off-by: Arthur Heymans <arthur@aheymans.xyz>
 
-diff --git a/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts b/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts
-index dcab6e78dfa4..e2e47a3d5b23 100644
---- a/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts
-+++ b/arch/arm/boot/dts/aspeed-bmc-asrock-e3c246d4i.dts
-@@ -200,3 +200,53 @@ &kcs3 {
- 	status = "okay";
- 	aspeed,lpc-io-reg = <0xca2>;
- };
+diff --git a/arch/arm/boot/dts/aspeed-bmc-ibm-covi.dts b/arch/arm/boot/dts/aspeed-bmc-ibm-covi.dts
+new file mode 100644
+index 000000000000..b1561a07b4da
+--- /dev/null
++++ b/arch/arm/boot/dts/aspeed-bmc-ibm-covi.dts
+@@ -0,0 +1,131 @@
++// SPDX-License-Identifier: GPL-2.0+
++/dts-v1/;
 +
-+&pwm_tacho {
++#include "aspeed-g5.dtsi"
++
++/ {
++	model = "IBM Covi";
++	compatible = "aspeed,ast2500";
++
++	aliases {
++		serial4 = &uart5;
++	};
++
++	chosen {
++		stdout-path = &uart5;
++		bootargs = "console=tty0 console=ttyS4,115200 earlyprintk";
++	};
++
++	memory@80000000 {
++		reg = <0x80000000 0x20000000>;
++	};
++
++	reserved-memory {
++		#address-cells = <1>;
++		#size-cells = <1>;
++		ranges;
++
++		gfx_memory: framebuffer {
++			size = <0x01000000>;
++			alignment = <0x01000000>;
++			compatible = "shared-dma-pool";
++			reusable;
++		};
++	};
++};
++
++&fmc {
++	status = "okay";
++	flash@0 {
++		status = "okay";
++		m25p,fast-read;
++		label = "bmc";
++		spi-max-frequency = <50000000>;
++#include "openbmc-flash-layout.dtsi"
++	};
++};
++
++&spi1 {
++	status = "okay";
++	flash@0 {
++		status = "okay";
++		m25p,fast-read;
++		label = "pnor";
++		spi-max-frequency = <100000000>;
++	};
++};
++
++&spi2 {
++	status = "okay";
++};
++
++&uart5 {
++	status = "okay";
++};
++
++&mac0 {
 +	status = "okay";
 +
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&pinctrl_pwm0_default
-+		&pinctrl_pwm1_default
-+		&pinctrl_pwm2_default
-+		&pinctrl_pwm3_default>;
++	pinctrl-0 = <&pinctrl_rgmii1_default &pinctrl_mdio1_default>;
++};
 +
-+	fan@0 {
-+		reg = <0x00>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x00>;
-+	};
++&mac1 {
++	status = "okay";
 +
-+	fan@1 {
-+		reg = <0x01>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x01>;
-+	};
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_rgmii2_default &pinctrl_mdio2_default>;
++};
 +
-+	fan@2 {
-+		reg = <0x02>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x02>;
-+	};
++&i2c3 {
++	status = "okay";
 +
-+	fan@3 {
-+		reg = <0x03>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x03>;
++	eeprom@50 {
++		compatible = "atmel,24c08";
++		reg = <0x50>;
++		pagesize = <16>;
 +	};
++};
 +
-+	fan@4 {
-+		reg = <0x00>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x04>;
-+	};
++&i2c7 {
++	status = "okay";
 +
-+	fan@5 {
-+		reg = <0x01>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x05>;
++	lm75@4d {
++		compatible = "national,lm75";
++		reg = <0x4d>;
 +	};
++};
 +
-+	fan@6 {
-+		reg = <0x02>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x06>;
-+	};
++&sdmmc {
++	status = "okay";
++};
 +
-+	fan@7 {
-+		reg = <0x03>;
-+		aspeed,fan-tach-ch = /bits/ 8 <0x07>;
-+	};
++&sdhci0 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_sd1_default>;
++};
++
++/*
++ * Enable port A as device (via the virtual hub) and port B as
++ * host by default on the eval board. This can be easily changed
++ * by replacing the override below with &ehci0 { ... } to enable
++ * host on both ports.
++ */
++&vhub {
++	status = "okay";
++};
++
++&ehci1 {
++	status = "okay";
++};
++
++&uhci {
++	status = "okay";
++};
++
++&gfx {
++     status = "okay";
++     memory-region = <&gfx_memory>;
 +};
 -- 
 2.31.1
