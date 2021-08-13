@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+  openbmc-builder:
+    image: "ubuntu:latest"
+    build: .
+    volumes:
+      - ./.:/openbmc
+    command: bash -c "apt-get update &&
+                      DEBIAN_FRONTEND=\"noninteractive\" apt-get -y install tzdata &&
+                      apt-get install -y git build-essential libsdl1.2-dev texinfo gawk chrpath && 
+                      apt-get install -y diffstat cpio wget python3 language-pack-en &&
+                      cd /openbmc &&
+                      ls -la . &&
+                      . setup covi &&
+                      bitbake obmc-phosphor-image"
