@@ -1,4 +1,4 @@
-MACHINE ??= "covi"
+MACHINE ??= "gen3"
 DISTRO ?= "openbmc-phosphor"
 PACKAGE_CLASSES ?= "package_rpm"
 SANITY_TESTED_DISTROS_append ?= " *"
