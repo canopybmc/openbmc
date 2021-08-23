@@ -11,5 +11,5 @@ services:
                       apt-get install -y diffstat cpio wget python3 language-pack-en &&
                       cd /openbmc &&
                       ls -la . &&
-                      . setup covi &&
+                      . setup gen3 &&
                       bitbake obmc-phosphor-image"

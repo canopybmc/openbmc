@@ -14,7 +14,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-phosphor \
   ##OEROOT##/meta-aspeed \
   ##OEROOT##/meta-ibmcloud \
-  ##OEROOT##/meta-ibmcloud/meta-covi \
+  ##OEROOT##/meta-ibmcloud/meta-gen3 \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta \
@@ -25,5 +25,5 @@ BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta-phosphor \
   ##OEROOT##/meta-aspeed \
   ##OEROOT##/meta-ibmcloud \
-  ##OEROOT##/meta-ibmcloud/meta-covi \
+  ##OEROOT##/meta-ibmcloud/meta-gen3 \
   "
