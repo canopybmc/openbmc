@@ -6,3 +6,4 @@ LINUX_VERSION = "5.10.53"
 SRCREV = "${AUTOREV}"
 
 KSRC = "git://github.com/9elements/linux;protocol=git;branch=${KBRANCH}"
+SRC_URI += "file://gen3.cfg"
