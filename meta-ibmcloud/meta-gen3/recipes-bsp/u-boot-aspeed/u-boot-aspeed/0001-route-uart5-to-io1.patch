@@ -1,0 +1,22 @@
+From 78472629b4aef900a0198dabdc3f9a57597f5f95 Mon Sep 17 00:00:00 2001
+From: Arthur Heymans <arthur@aheymans.xyz>
+Date: Sat, 28 Aug 2021 12:31:16 +0200
+Subject: [PATCH] route uart5 to io1
+
+Signed-off-by: Arthur Heymans <arthur@aheymans.xyz>
+
+diff --git a/arch/arm/include/asm/arch-aspeed/platform.h b/arch/arm/include/asm/arch-aspeed/platform.h
+index 1c02914fcb..1268858744 100644
+--- a/arch/arm/include/asm/arch-aspeed/platform.h
++++ b/arch/arm/include/asm/arch-aspeed/platform.h
+@@ -27,6 +27,7 @@
+ #include <asm/arch/ast2400_platform.h>
+ #elif defined(AST_SOC_G5)
+ #include <asm/arch/ast_g5_platform.h>
++#define CONFIG_DRAM_UART_TO_UART1
+ #else
+ #err "No define for platform.h"
+ #endif
+-- 
+2.31.1
+
