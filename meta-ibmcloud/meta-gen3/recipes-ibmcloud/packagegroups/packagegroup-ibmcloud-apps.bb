@@ -30,4 +30,12 @@ RDEPENDS_${PN}-system = " \
 	phosphor-host-postd \
 	phosphor-ipmi-kcs \
 	phosphor-post-code-manager \
+	strace \
+	ldd \
+	ethtool \
+	net-tools \
+	phosphor-logging-test \
+	lmsensors-sensors \
+	tcpdump \
+	screen \
 	"
