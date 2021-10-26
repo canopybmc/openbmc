@@ -3,192 +3,192 @@
 	{
 		"name": "Fan1_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-0/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-0/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-0/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-0/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan3_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-1/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-1/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-1/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-1/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan5_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-2/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-2/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-2/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-2/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan7_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-3/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-3/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-3/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-3/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan9_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-4/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-4/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-4/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-4/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan11_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-5/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-5/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-5/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-5/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan13_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-6/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-6/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-6/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-6/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan15_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-7/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/*-0070/channel-7/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-7/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-7/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan17_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-0/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-0/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-0/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-0/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan19_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-1/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-1/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-1/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-1/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan21_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-2/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-2/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-2/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-2/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan23_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-3/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-3/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-3/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-3/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan02_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-4/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-4/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-4/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-4/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan04_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-5/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-5/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-5/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-5/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan06_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-6/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-6/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-6/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-6/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan08_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-7/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/*-0070/channel-7/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-7/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-1/**-0070/channel-7/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan10_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-0/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-0/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-0/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-0/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan12_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-1/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-1/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-1/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-1/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan14_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-2/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-2/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-2/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-2/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan16_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-3/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-3/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-3/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-3/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan18_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-4/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-4/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-4/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-4/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan20_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-5/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-5/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-5/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-5/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan22_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-6/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-6/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-6/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-6/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
 	{
 		"name": "Fan24_RPM",
 		"type": "fan",
-		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-7/*-002e/hwmon/**/fan1_input",
-		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/*-0070/channel-7/*-002e/hwmon/**/pwm1",
+		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-7/**-002e/hwmon/**/fan1_input",
+		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-2/**-0070/channel-7/**-002e/hwmon/**/pwm1",
 		"min": 0,
 		"max": 255
 	},
