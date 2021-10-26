@@ -193,9 +193,9 @@
 		"max": 255
 	},
 	{
-		"name": "bcm0",
+		"name": "psu0_temp",
 		"type": "temp",
-		"readPath": "/xyz/openbmc_project/sensors/temperature/bcm0",
+		"readPath": "/xyz/openbmc_project/sensors/temperature/psu0_temp",
 		"writePath": "",
 		"min": 0,
 		"max": 0,
@@ -203,9 +203,9 @@
 		"timeout": 0
 	},
 	{
-		"name": "bcm1",
+		"name": "psu1_temp",
 		"type": "temp",
-		"readPath": "/xyz/openbmc_project/sensors/temperature/bcm1",
+		"readPath": "/xyz/openbmc_project/sensors/temperature/psu1_temp",
 		"writePath": "",
 		"min": 0,
 		"max": 0,
@@ -213,9 +213,9 @@
 		"timeout": 0
 	},
 	{
-		"name": "bcm2",
+		"name": "psu2_temp",
 		"type": "temp",
-		"readPath": "/xyz/openbmc_project/sensors/temperature/bcm2",
+		"readPath": "/xyz/openbmc_project/sensors/temperature/psu2_temp",
 		"writePath": "",
 		"min": 0,
 		"max": 0,
@@ -223,9 +223,9 @@
 		"timeout": 0
 	},
 	{
-		"name": "bcm3",
+		"name": "psu3_temp",
 		"type": "temp",
-		"readPath": "/xyz/openbmc_project/sensors/temperature/bcm3",
+		"readPath": "/xyz/openbmc_project/sensors/temperature/psu3_temp",
 		"writePath": "",
 		"min": 0,
 		"max": 0,
@@ -243,10 +243,10 @@
 			"name": "zone0_vr",
 			"type": "temp",
 			"inputs": [
-			    "bcm0",
-			    "bcm1",
-			    "bcm2",
-			    "bcm3"
+			    "psu0_temp",
+			    "psu1_temp",
+			    "psu2_temp",
+			    "psu3_temp"
 			],
 			"setpoint": 70.0,
 			"pid": {
