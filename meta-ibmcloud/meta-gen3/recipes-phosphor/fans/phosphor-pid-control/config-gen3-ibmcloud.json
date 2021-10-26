@@ -248,7 +248,7 @@
 			    "psu2_temp",
 			    "psu3_temp"
 			],
-			"setpoint": 50.0,
+			"setpoint": 70.0,
 			"pid": {
 			    "samplePeriod": 1.0,
 			    "proportionalCoeff": -536.0,
