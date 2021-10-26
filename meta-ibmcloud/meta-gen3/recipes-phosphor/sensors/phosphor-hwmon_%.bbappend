@@ -11,14 +11,13 @@ CHIPS = " \
 ITEMSFMT = "ahb/apb/{0}.conf"
 
 ITEMS = "${@compose_list(d, 'ITEMSFMT', 'CHIPS')}"
-ITEMS += "iio-hwmon-12v.conf \
-          iio-hwmon-p1v8_bmc_aux.conf \
-	  iio-hwmon-p2V5_aux.conf \
-	  iio-hwmon-p3v3_aux.conf \
-	  iio-hwmon-p3v3_bmc_aux.conf \
-	  iio-hwmon-p5v_aux.conf \
-	  iio-hwmon-p5v_bmc_aux.conf \
-	  "
+ITEMS_append_gen3 += " iio-hwmon-12v.conf"
+ITEMS_append_gen3 += " iio-hwmon-p1v8_bmc_aux.conf"
+ITEMS_append_gen3 += " iio-hwmon-p2V5_aux.conf"
+ITEMS_append_gen3 += " iio-hwmon-p3v3_aux.conf"
+ITEMS_append_gen3 += " iio-hwmon-p3v3_bmc_aux.conf"
+ITEMS_append_gen3 += " iio-hwmon-p5v_aux.conf"
+ITEMS_append_gen3 += " iio-hwmon-p5v_bmc_aux.conf"
 
 ENVS = "obmc/hwmon/{0}"
 SYSTEMD_ENVIRONMENT_FILE_${PN}_append_gen3 = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
