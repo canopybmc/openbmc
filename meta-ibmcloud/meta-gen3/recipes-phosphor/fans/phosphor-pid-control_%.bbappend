@@ -18,7 +18,7 @@ do_install_append_gen3() {
     install -m 0755 ${WORKDIR}/fan-full-speed.sh ${D}/${bindir}
 
     install -d ${D}${datadir}/swampd
-    install -m 0644 -D ${WORKDIR}/config-gen3.json \
+    install -m 0644 -D ${WORKDIR}/config-gen3-ibmcloud.json \
         ${D}${datadir}/swampd/config.json
 
     install -d ${D}${systemd_unitdir}/system/
