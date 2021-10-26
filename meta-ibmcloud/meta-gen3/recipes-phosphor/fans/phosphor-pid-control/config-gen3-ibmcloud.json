@@ -1,7 +1,7 @@
 {
     "sensors" : [
 	{
-		"name": "Fan1_RPM",
+		"name": "Fan01_RPM",
 		"type": "fan",
 		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-0/**-002e/hwmon/**/fan1_input",
 		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-0/**-002e/hwmon/**/pwm1",
@@ -9,7 +9,7 @@
 		"max": 255
 	},
 	{
-		"name": "Fan3_RPM",
+		"name": "Fan03_RPM",
 		"type": "fan",
 		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-1/**-002e/hwmon/**/fan1_input",
 		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-1/**-002e/hwmon/**/pwm1",
@@ -17,7 +17,7 @@
 		"max": 255
 	},
 	{
-		"name": "Fan5_RPM",
+		"name": "Fan05_RPM",
 		"type": "fan",
 		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-2/**-002e/hwmon/**/fan1_input",
 		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-2/**-002e/hwmon/**/pwm1",
@@ -25,7 +25,7 @@
 		"max": 255
 	},
 	{
-		"name": "Fan7_RPM",
+		"name": "Fan07_RPM",
 		"type": "fan",
 		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-3/**-002e/hwmon/**/fan1_input",
 		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-3/**-002e/hwmon/**/pwm1",
@@ -33,7 +33,7 @@
 		"max": 255
 	},
 	{
-		"name": "Fan9_RPM",
+		"name": "Fan09_RPM",
 		"type": "fan",
 		"readPath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-4/**-002e/hwmon/**/fan1_input",
 		"writePath": "/sys/devices/platform/ahb/ahb:apb/ahb:apb:bus@1e78a000/1e78a400.i2c-bus/i2c-11/11-0077/channel-0/**-0070/channel-4/**-002e/hwmon/**/pwm1",
@@ -236,7 +236,7 @@
     "zones" : [
         {
             "id": 0,
-            "minThermalOutput": 0.0,
+            "minThermalOutput": 4000.0,
             "failsafePercent": 100.0,
             "pids": [
                 {
@@ -263,6 +263,462 @@
 			    "slewPos": 0.0,
 			    "positiveHysteresis": 0.0,
 			    "negativeHysteresis": 0.0
+			}
+		},
+		{
+			"name": "Fan01_RPM",
+			"type": "fan",
+			"inputs": ["Fan01_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan02_RPM",
+			"type": "fan",
+			"inputs": ["Fan02_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan03_RPM",
+			"type": "fan",
+			"inputs": ["Fan03_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan04_RPM",
+			"type": "fan",
+			"inputs": ["Fan04_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan05_RPM",
+			"type": "fan",
+			"inputs": ["Fan05_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan06_RPM",
+			"type": "fan",
+			"inputs": ["Fan06_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan07_RPM",
+			"type": "fan",
+			"inputs": ["Fan07_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan08_RPM",
+			"type": "fan",
+			"inputs": ["Fan08_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan09_RPM",
+			"type": "fan",
+			"inputs": ["Fan09_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan10_RPM",
+			"type": "fan",
+			"inputs": ["Fan10_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan11_RPM",
+			"type": "fan",
+			"inputs": ["Fan11_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan12_RPM",
+			"type": "fan",
+			"inputs": ["Fan12_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan13_RPM",
+			"type": "fan",
+			"inputs": ["Fan13_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan14_RPM",
+			"type": "fan",
+			"inputs": ["Fan14_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan15_RPM",
+			"type": "fan",
+			"inputs": ["Fan15_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan16_RPM",
+			"type": "fan",
+			"inputs": ["Fan16_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan17_RPM",
+			"type": "fan",
+			"inputs": ["Fan17_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan18_RPM",
+			"type": "fan",
+			"inputs": ["Fan18_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan19_RPM",
+			"type": "fan",
+			"inputs": ["Fan19_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan20_RPM",
+			"type": "fan",
+			"inputs": ["Fan20_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan21_RPM",
+			"type": "fan",
+			"inputs": ["Fan21_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan22_RPM",
+			"type": "fan",
+			"inputs": ["Fan22_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan23_RPM",
+			"type": "fan",
+			"inputs": ["Fan23_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
+			}
+		},
+		{
+			"name": "Fan24_RPM",
+			"type": "fan",
+			"inputs": ["Fan24_RPM"],
+			"setpoint": 40.0,
+			"pid": {
+			    "samplePeriod": 1.0,
+			    "proportionalCoeff": 0.0,
+			    "integralCoeff": 0.0,
+			    "feedFwdOffsetCoeff": 0.0,
+			    "feedFwdGainCoeff": 1.0,
+			    "integralLimit_min": 0.0,
+			    "integralLimit_max": 0.0,
+			    "outLim_min": 3.0,
+			    "outLim_max": 100.0,
+			    "slewNeg": 0.0,
+			    "slewPos": 0.0
 			}
 		}
             ]
