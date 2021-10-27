@@ -1,0 +1,153 @@
+[
+	{
+		"path": "system/chassis/motherboard/powersupply0",
+		"endpoints":
+		[
+		    {
+			"types":
+			{
+			    "rType": "inventory",
+			    "fType": "sensors"
+			},
+			"paths":
+			[
+			    "/xyz/openbmc_project/sensors/current/psu0_input_current",
+			    "/xyz/openbmc_project/sensors/current/psu0_output_current",
+			    "/xyz/openbmc_project/sensors/power/psu0_output_power",
+			    "/xyz/openbmc_project/sensors/temperature/psu0_temp",
+			    "/xyz/openbmc_project/sensors/voltage/psu0_input_voltage",
+			    "/xyz/openbmc_project/sensors/voltage/psu0_output_voltage"
+			]
+		    }
+		]
+	    },
+	{
+		"path": "system/chassis/motherboard/powersupply1",
+		"endpoints":
+		[
+		    {
+			"types":
+			{
+			    "rType": "inventory",
+			    "fType": "sensors"
+			},
+			"paths":
+			[
+			    "/xyz/openbmc_project/sensors/current/psu1_input_current",
+			    "/xyz/openbmc_project/sensors/current/psu1_output_current",
+			    "/xyz/openbmc_project/sensors/power/psu1_output_power",
+			    "/xyz/openbmc_project/sensors/temperature/psu1_temp",
+			    "/xyz/openbmc_project/sensors/voltage/psu1_input_voltage",
+			    "/xyz/openbmc_project/sensors/voltage/psu1_output_voltage"
+			]
+		    }
+		]
+	    },
+	{
+		"path": "system/chassis/motherboard/powersupply2",
+		"endpoints":
+		[
+		    {
+			"types":
+			{
+			    "rType": "inventory",
+			    "fType": "sensors"
+			},
+			"paths":
+			[
+			    "/xyz/openbmc_project/sensors/current/psu2_input_current",
+			    "/xyz/openbmc_project/sensors/current/psu2_output_current",
+			    "/xyz/openbmc_project/sensors/power/psu2_output_power",
+			    "/xyz/openbmc_project/sensors/temperature/psu2_temp",
+			    "/xyz/openbmc_project/sensors/voltage/psu2_input_voltage",
+			    "/xyz/openbmc_project/sensors/voltage/psu2_output_voltage"
+			]
+		    }
+		]
+	    },
+	{
+		"path": "system/chassis/motherboard/powersupply3",
+		"endpoints":
+		[
+		{
+			"types":
+			{
+			"rType": "inventory",
+			"fType": "sensors"
+			},
+			"paths":
+			[
+			"/xyz/openbmc_project/sensors/current/psu3_input_current",
+			"/xyz/openbmc_project/sensors/current/psu3_output_current",
+			"/xyz/openbmc_project/sensors/power/psu3_output_power",
+			"/xyz/openbmc_project/sensors/temperature/psu3_temp",
+			"/xyz/openbmc_project/sensors/voltage/psu3_input_voltage",
+			"/xyz/openbmc_project/sensors/voltage/psu3_output_voltage"
+			]
+		}
+		]
+	},
+	{
+	"path": "/system/chassis/motherboard/management_card/bmc",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "leds"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/led/groups/power_on"
+		]
+		}
+	]
+	},
+	{
+	"path": "system/chassis/motherboard",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/voltage/P3V3_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P1V8_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P12V",
+			"/xyz/openbmc_project/sensors/voltage/P3V3_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P2V5_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P5V_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX"
+		]
+		}
+	]
+	},
+	{
+	"path": "system/chassis",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "chassis",
+			"fType": "all_sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/voltage/P3V3_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P1V8_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P12V",
+			"/xyz/openbmc_project/sensors/voltage/P3V3_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P2V5_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P5V_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX"
+		]
+		}
+	]
+	}
+]
