@@ -10,13 +10,18 @@ PACKAGES = " \
 	${PN}-system \
 	"
 
+PROVIDES += "virtual/obmc-chassis-mgmt"
 PROVIDES += "virtual/obmc-flash-mgmt"
 PROVIDES += "virtual/obmc-fan-mgmt"
 PROVIDES += "virtual/obmc-system-mgmt"
 
+RPROVIDES_${PN}-chassis += "virtual-obmc-chassis-mgmt"
 RPROVIDES_${PN}-flash += "virtual-obmc-flash-mgmt"
 RPROVIDES_${PN}-fans += "virtual-obmc-fan-mgmt"
 RPROVIDES_${PN}-system += "virtual-obmc-system-mgmt"
+
+SUMMARY_${PN}-chassis = "IBM Cloud Chassis"
+RDEPENDS_${PN}-chassis = ""
 
 SUMMARY_${PN}-flash = "IBM Cloud Flash"
 RDEPENDS_${PN}-flash = " \
