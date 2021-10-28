@@ -33,11 +33,11 @@ SUMMARY_${PN}-system = "IBM Cloud System"
 RDEPENDS_${PN}-system = " \
 	bmcweb \
 	entity-manager \
-	dbus-sensors \
 	webui-vue \
 	phosphor-host-postd \
 	phosphor-ipmi-kcs \
 	phosphor-post-code-manager \
+	phosphor-power-psu-monitor \
 	strace \
 	ldd \
 	ethtool \
