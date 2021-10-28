@@ -38,7 +38,7 @@ CHIPS_FAN = " \
         i2c@2/mux@70/i2c@6/hwmon@2e \
         i2c@2/mux@70/i2c@7/hwmon@2e \
         "
-ITEMSFMT2 = "ahb/apb/bus@1e78a000/i2c-bus@440/mux@77/{0}.conf"
+ITEMSFMT2 = "ahb/apb/bus@1e78a000/i2c-bus@400/mux@77/{0}.conf"
 
 ITEMS += "${@compose_list(d, 'ITEMSFMT2', 'CHIPS_FAN')}"
 
