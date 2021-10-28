@@ -1,1 +1,0 @@
-PACKAGECONFIG_gen3 = "hwmontempsensor"
