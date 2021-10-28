@@ -5,6 +5,7 @@ inherit packagegroup
 
 PROVIDES = "${PACKAGES}"
 PACKAGES = " \
+	${PN}-chassis \
 	${PN}-flash \
 	${PN}-fans \
 	${PN}-system \
