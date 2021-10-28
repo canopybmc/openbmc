@@ -1,3 +1,5 @@
+DEPENDS_append_gen3 = " inventory-cleanup"
+
 FILESEXTRAPATHS_prepend_gen3 := "${THISDIR}/${PN}:"
 PACKAGECONFIG_append_gen3 = " associations"
 SRC_URI_append_gen3 = " file://associations.json"
