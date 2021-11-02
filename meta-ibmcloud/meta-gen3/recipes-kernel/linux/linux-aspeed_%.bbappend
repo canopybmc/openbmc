@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
-KBRANCH = "dev-5.10"
-LINUX_VERSION = "5.10.53"
+KBRANCH = "dev-5.15"
+LINUX_VERSION = "5.15"
 
 SRCREV = "${AUTOREV}"
 
