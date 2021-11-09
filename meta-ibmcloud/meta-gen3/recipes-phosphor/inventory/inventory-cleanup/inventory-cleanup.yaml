@@ -14,3 +14,51 @@ events:
                       Type:
                           value: "xyz.openbmc_project.Inventory.Item.Chassis.ChassisType.RackMount"
                           type: string
+    - name: Add PSU0 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply0:
+                  Present:
+                      Type:
+                          value: true
+                          type: bool
+    - name: Add PSU1 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply1:
+                  Present:
+                      Type:
+                          value: true
+                          type: bool
+    - name: Add PSU2 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply2:
+                  Present:
+                      Type:
+                          value: true
+                          type: bool
+    - name: Add PSU3 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply3:
+                  Present:
+                      Type:
+                          value: true
+                          type: bool
