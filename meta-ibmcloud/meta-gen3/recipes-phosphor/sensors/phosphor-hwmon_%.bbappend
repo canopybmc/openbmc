@@ -43,13 +43,6 @@ ITEMSFMT2 = "ahb/apb/bus@1e78a000/i2c-bus@400/mux@77/{0}.conf"
 ITEMS += "${@compose_list(d, 'ITEMSFMT2', 'CHIPS_FAN')}"
 
 ITEMS_append_gen3 += " iio-hwmon.conf"
-ITEMS_append_gen3 += " iio-hwmon-12v.conf"
-ITEMS_append_gen3 += " iio-hwmon-p1v8_bmc_aux.conf"
-ITEMS_append_gen3 += " iio-hwmon-p2V5_aux.conf"
-ITEMS_append_gen3 += " iio-hwmon-p3v3_aux.conf"
-ITEMS_append_gen3 += " iio-hwmon-p3v3_bmc_aux.conf"
-ITEMS_append_gen3 += " iio-hwmon-p5v_aux.conf"
-ITEMS_append_gen3 += " iio-hwmon-p5v_bmc_aux.conf"
 
 ENVS = "obmc/hwmon/{0}"
 SYSTEMD_ENVIRONMENT_FILE_${PN}_append_gen3 = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
