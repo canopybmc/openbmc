@@ -22,8 +22,8 @@ events:
           - name: createObjects
             objs:
                 /system/chassis/motherboard/powersupply0:
-                  Present:
-                      Type:
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+                      Present:
                           value: true
                           type: bool
     - name: Add PSU1 interface
@@ -34,8 +34,8 @@ events:
           - name: createObjects
             objs:
                 /system/chassis/motherboard/powersupply1:
-                  Present:
-                      Type:
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+                      Present:
                           value: true
                           type: bool
     - name: Add PSU2 interface
@@ -46,8 +46,8 @@ events:
           - name: createObjects
             objs:
                 /system/chassis/motherboard/powersupply2:
-                  Present:
-                      Type:
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+                      Present:
                           value: true
                           type: bool
     - name: Add PSU3 interface
@@ -58,7 +58,7 @@ events:
           - name: createObjects
             objs:
                 /system/chassis/motherboard/powersupply3:
-                  Present:
-                      Type:
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+                      Present:
                           value: true
                           type: bool
