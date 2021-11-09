@@ -1,3 +1,3 @@
 #!bin/bash
 
-echo 255 > /sys/class/hwmon/*/pwm1
+for i in $(ls /sys/class/hwmon/*/pwm1); do echo 255 > $i; done
