@@ -22,7 +22,9 @@ RPROVIDES_${PN}-fans += "virtual-obmc-fan-mgmt"
 RPROVIDES_${PN}-system += "virtual-obmc-system-mgmt"
 
 SUMMARY_${PN}-chassis = "IBM Cloud Chassis"
-RDEPENDS_${PN}-chassis = ""
+RDEPENDS_${PN}-chassis = " \
+	pwrseqd \
+	"
 
 SUMMARY_${PN}-flash = "IBM Cloud Flash"
 RDEPENDS_${PN}-flash = " \
