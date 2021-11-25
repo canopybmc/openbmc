@@ -11,8 +11,9 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 
-inherit cmake
+inherit cmake systemd
 
+DEPENDS += "systemd"
 DEPENDS += "boost"
 DEPENDS += "libgpiod"
 DEPENDS += "libyaml"
@@ -25,11 +26,10 @@ EXTRA_OECMAKE = "\
                  -DBUILD_EXAMPLE=OFF \
                  "
 
-SYSTEMD_SERVICE_${PN} += "xyz.openbmc_project.Chassis.Control.Power@0.service \
-			  chassis-system-reset.service \
+SYSTEMD_SERVICE_${PN} += "xyz.openbmc_project.Chassis.Control.Power@${MACHINE}.service \
+                          chassis-system-reset.service \
                           chassis-system-reset.target"
 
 FILES_${PN}  += "${systemd_system_unitdir}/xyz.openbmc_project.Chassis.Control.Power@.service"
 FILES_${PN}  += "${systemd_system_unitdir}/chassis-system-reset.service"
 FILES_${PN}  += "${systemd_system_unitdir}/chassis-system-reset.target"
-
