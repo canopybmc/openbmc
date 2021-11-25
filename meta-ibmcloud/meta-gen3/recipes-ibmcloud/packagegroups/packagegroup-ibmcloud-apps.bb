@@ -24,6 +24,7 @@ RPROVIDES_${PN}-system += "virtual-obmc-system-mgmt"
 SUMMARY_${PN}-chassis = "IBM Cloud Chassis"
 RDEPENDS_${PN}-chassis = " \
 	pwrseqd \
+	phosphor-state-manager-chassis \
 	"
 
 SUMMARY_${PN}-flash = "IBM Cloud Flash"
