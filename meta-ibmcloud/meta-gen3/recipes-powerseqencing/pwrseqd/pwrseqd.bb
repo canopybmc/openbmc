@@ -25,9 +25,11 @@ EXTRA_OECMAKE = "\
                  -DBUILD_EXAMPLE=OFF \
                  "
 
-do_install_append() {
-	# In the future these might be required as a dependency for other packages.
-	# At the moment just delete them to avoid warnings
-	rm -rf ${D}${includedir}/
-	rm -rf ${D}${libdir}/
-}
+SYSTEMD_SERVICE_${PN} += "xyz.openbmc_project.Chassis.Control.Power@0.service \
+			  chassis-system-reset.service \
+                          chassis-system-reset.target"
+
+FILES_${PN}  += "${systemd_system_unitdir}/xyz.openbmc_project.Chassis.Control.Power@.service"
+FILES_${PN}  += "${systemd_system_unitdir}/chassis-system-reset.service"
+FILES_${PN}  += "${systemd_system_unitdir}/chassis-system-reset.target"
+
