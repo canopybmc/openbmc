@@ -54,4 +54,5 @@ RDEPENDS_${PN}-system = " \
 	lmsensors-sensors \
 	tcpdump \
 	screen \
+	gdb \
 	"
