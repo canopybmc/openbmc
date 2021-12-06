@@ -29,6 +29,7 @@ RDEPENDS_${PN}-chassis = " \
 
 SUMMARY_${PN}-flash = "IBM Cloud Flash"
 RDEPENDS_${PN}-flash = " \
+	phosphor-software-manager \
 	obmc-control-bmc \
 	phosphor-ipmi-flash \
 	"
