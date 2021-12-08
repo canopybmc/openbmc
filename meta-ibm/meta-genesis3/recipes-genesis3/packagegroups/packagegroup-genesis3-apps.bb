@@ -1,4 +1,4 @@
-SUMMARY = "OpenBMC for IBM Cloud - Applications"
+SUMMARY = "OpenBMC for IBM - Applications"
 PR = "r1"
 
 inherit packagegroup
@@ -21,25 +21,25 @@ RPROVIDES_${PN}-flash += "virtual-obmc-flash-mgmt"
 RPROVIDES_${PN}-fans += "virtual-obmc-fan-mgmt"
 RPROVIDES_${PN}-system += "virtual-obmc-system-mgmt"
 
-SUMMARY_${PN}-chassis = "IBM Cloud Chassis"
+SUMMARY_${PN}-chassis = "IBM Chassis"
 RDEPENDS_${PN}-chassis = " \
 	pwrseqd \
 	phosphor-state-manager-chassis \
 	"
 
-SUMMARY_${PN}-flash = "IBM Cloud Flash"
+SUMMARY_${PN}-flash = "IBM Flash"
 RDEPENDS_${PN}-flash = " \
 	phosphor-software-manager \
 	obmc-control-bmc \
 	phosphor-ipmi-flash \
 	"
 
-SUMMARY_${PN}-fans = "IBM Cloud Fans"
+SUMMARY_${PN}-fans = "IBM Fans"
 RDEPENDS_${PN}-fans = " \
 	phosphor-pid-control \
 "
 
-SUMMARY_${PN}-system = "IBM Cloud System"
+SUMMARY_${PN}-system = "IBM System"
 RDEPENDS_${PN}-system = " \
 	bmcweb \
 	entity-manager \
@@ -47,7 +47,6 @@ RDEPENDS_${PN}-system = " \
 	phosphor-host-postd \
 	phosphor-ipmi-kcs \
 	phosphor-post-code-manager \
-	phosphor-power-psu-monitor \
 	strace \
 	ldd \
 	ethtool \
