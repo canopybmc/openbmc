@@ -13,8 +13,7 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-openembedded/meta-python \
   ##OEROOT##/meta-phosphor \
   ##OEROOT##/meta-aspeed \
-  ##OEROOT##/meta-ibmcloud \
-  ##OEROOT##/meta-ibmcloud/meta-gen3 \
+  ##OEROOT##/meta-ibm/meta-genesis3 \
   "
 BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta \
@@ -24,6 +23,5 @@ BBLAYERS_NON_REMOVABLE ?= " \
   ##OEROOT##/meta-openembedded/meta-python \
   ##OEROOT##/meta-phosphor \
   ##OEROOT##/meta-aspeed \
-  ##OEROOT##/meta-ibmcloud \
-  ##OEROOT##/meta-ibmcloud/meta-gen3 \
+  ##OEROOT##/meta-ibm/meta-genesis3 \
   "

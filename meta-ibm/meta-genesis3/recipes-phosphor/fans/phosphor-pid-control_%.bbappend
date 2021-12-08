@@ -1,6 +1,6 @@
 FILESEXTRAPATHS_prepend_gen3 := "${THISDIR}/${PN}:"
 
-SRC_URI_append_gen3 = " file://config-gen3-ibmcloud.json"
+SRC_URI_append_gen3 = " file://config-ibm-genesis3.json"
 SRC_URI_append_gen3 = " file://fan-full-speed.sh"
 SRC_URI_append_gen3 = " file://phosphor-pid-control.service"
 SRC_URI_append_gen3 = " file://fan-reboot-control.service"
@@ -18,7 +18,7 @@ do_install_append_gen3() {
     install -m 0755 ${WORKDIR}/fan-full-speed.sh ${D}/${bindir}
 
     install -d ${D}${datadir}/swampd
-    install -m 0644 -D ${WORKDIR}/config-gen3-ibmcloud.json \
+    install -m 0644 -D ${WORKDIR}/config-ibm-genesis3.json \
         ${D}${datadir}/swampd/config.json
 
     install -d ${D}${systemd_unitdir}/system/
