@@ -16,31 +16,31 @@ PROVIDES += "virtual/obmc-flash-mgmt"
 PROVIDES += "virtual/obmc-fan-mgmt"
 PROVIDES += "virtual/obmc-system-mgmt"
 
-RPROVIDES_${PN}-chassis += "virtual-obmc-chassis-mgmt"
-RPROVIDES_${PN}-flash += "virtual-obmc-flash-mgmt"
-RPROVIDES_${PN}-fans += "virtual-obmc-fan-mgmt"
-RPROVIDES_${PN}-system += "virtual-obmc-system-mgmt"
+RPROVIDES:${PN}-chassis += "virtual-obmc-chassis-mgmt"
+RPROVIDES:${PN}-flash += "virtual-obmc-flash-mgmt"
+RPROVIDES:${PN}-fans += "virtual-obmc-fan-mgmt"
+RPROVIDES:${PN}-system += "virtual-obmc-system-mgmt"
 
-SUMMARY_${PN}-chassis = "IBM Chassis"
-RDEPENDS_${PN}-chassis = " \
+SUMMARY:${PN}-chassis = "IBM Chassis"
+RDEPENDS:${PN}-chassis = " \
 	pwrseqd \
 	phosphor-state-manager-chassis \
 	"
 
-SUMMARY_${PN}-flash = "IBM Flash"
-RDEPENDS_${PN}-flash = " \
+SUMMARY:${PN}-flash = "IBM Flash"
+RDEPENDS:${PN}-flash = " \
 	phosphor-software-manager \
 	obmc-control-bmc \
 	phosphor-ipmi-flash \
 	"
 
-SUMMARY_${PN}-fans = "IBM Fans"
-RDEPENDS_${PN}-fans = " \
+SUMMARY:${PN}-fans = "IBM Fans"
+RDEPENDS:${PN}-fans = " \
 	phosphor-pid-control \
 "
 
-SUMMARY_${PN}-system = "IBM System"
-RDEPENDS_${PN}-system = " \
+SUMMARY:${PN}-system = "IBM System"
+RDEPENDS:${PN}-system = " \
 	bmcweb \
 	entity-manager \
 	webui-vue \

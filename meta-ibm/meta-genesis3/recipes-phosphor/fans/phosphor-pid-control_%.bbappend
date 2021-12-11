@@ -1,19 +1,19 @@
-FILESEXTRAPATHS_prepend_genesis3 := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend:genesis3 := "${THISDIR}/${PN}:"
 
-SRC_URI_append_genesis3 = " file://config-ibm-genesis3.json"
-SRC_URI_append_genesis3 = " file://fan-full-speed.sh"
-SRC_URI_append_genesis3 = " file://phosphor-pid-control.service"
-SRC_URI_append_genesis3 = " file://fan-reboot-control.service"
+SRC_URI:append:genesis3 = " file://config-ibm-genesis3.json"
+SRC_URI:append:genesis3 = " file://fan-full-speed.sh"
+SRC_URI:append:genesis3 = " file://phosphor-pid-control.service"
+SRC_URI:append:genesis3 = " file://fan-reboot-control.service"
 
-FILES_${PN}_append_genesis3 = " ${bindir}/fan-full-speed.sh"
-FILES_${PN}_append_genesis3 = " ${datadir}/swampd/config.json"
+FILES:${PN}:append_genesis3 = " ${bindir}/fan-full-speed.sh"
+FILES:${PN}:append_genesis3 = " ${datadir}/swampd/config.json"
 
-RDEPENDS_${PN} += "bash"
+RDEPENDS:${PN} += "bash"
 
-SYSTEMD_SERVICE_${PN}_append_genesis3 = " phosphor-pid-control.service"
-SYSTEMD_SERVICE_${PN}_append_genesis3 = " fan-reboot-control.service"
+SYSTEMD_SERVICE:${PN}:append:genesis3 = " phosphor-pid-control.service"
+SYSTEMD_SERVICE:${PN}:append:genesis3 = " fan-reboot-control.service"
 
-do_install_append_genesis3() {
+do_install:append:genesis3() {
     install -d ${D}/${bindir}
     install -m 0755 ${WORKDIR}/fan-full-speed.sh ${D}/${bindir}
 
