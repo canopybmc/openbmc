@@ -5,8 +5,8 @@ SRC_URI:append:genesis3 = " file://fan-full-speed.sh"
 SRC_URI:append:genesis3 = " file://phosphor-pid-control.service"
 SRC_URI:append:genesis3 = " file://fan-reboot-control.service"
 
-FILES:${PN}:append_genesis3 = " ${bindir}/fan-full-speed.sh"
-FILES:${PN}:append_genesis3 = " ${datadir}/swampd/config.json"
+FILES:${PN}:append:genesis3 = " ${bindir}/fan-full-speed.sh"
+FILES:${PN}:append:genesis3 = " ${datadir}/swampd/config.json"
 
 RDEPENDS:${PN} += "bash"
 
