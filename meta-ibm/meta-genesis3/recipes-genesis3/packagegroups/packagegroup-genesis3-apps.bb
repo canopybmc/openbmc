@@ -56,4 +56,5 @@ RDEPENDS:${PN}-system = " \
 	tcpdump \
 	screen \
 	gdb \
+	aspeedtech-tools \
 	"
