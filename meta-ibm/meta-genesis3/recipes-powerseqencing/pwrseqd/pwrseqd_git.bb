@@ -1,13 +1,15 @@
 SUMMARY = "Power sequencing daemon"
 DESCRIPTION = "universal userspace powerseqencing, fault handling and ACPI state tracking"
 HOMEPAGE = "https://9esec.io"
-BUGTRACKER = "https://github.com/9elements/openbmc-x86-power-sequencer/"
+BUGTRACKER = "https://github.com/9elements/pwrseqd/issues"
 SECTION = "base"
 
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57"
-SRC_URI = "git://github.com/9elements/openbmc-x86-power-sequencer.git"
-SRCREV = "c58db6dd524140215412ef33999950b808688d15"
+
+BRANCH = "main"
+SRC_URI = "git://github.com/9elements/pwrseqd.git;branch=${BRANCH}"
+SRCREV = "691151819378910cddaa95a9a613336b24d6fd4c"
 
 S = "${WORKDIR}/git"
 
