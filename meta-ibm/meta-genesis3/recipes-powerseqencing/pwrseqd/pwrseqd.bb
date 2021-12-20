@@ -7,7 +7,7 @@ SECTION = "base"
 LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57"
 SRC_URI = "git://github.com/9elements/openbmc-x86-power-sequencer.git"
-SRCREV = "bcb1a1f005fd381a5f3ea290e183129105f6afe5"
+SRCREV = "c58db6dd524140215412ef33999950b808688d15"
 
 S = "${WORKDIR}/git"
 
