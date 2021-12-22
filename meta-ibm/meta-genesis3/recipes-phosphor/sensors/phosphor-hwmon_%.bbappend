@@ -1,6 +1,9 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-EXTRA_OEMESON:append:genesis3 = " -Dnegative-errno-on-fail=true"
+EXTRA_OEMESON:append:genesis3 = " \
+  -Dupdate-functional-on-fail=true \
+  -Dnegative-errno-on-fail=false \
+"
 
 CHIPS_PSU = " \
         i2c@4/regulator@5f \
@@ -43,6 +46,7 @@ ITEMSFMT2 = "ahb/apb/bus@1e78a000/i2c-bus@400/mux@77/{0}.conf"
 ITEMS += "${@compose_list(d, 'ITEMSFMT2', 'CHIPS_FAN')}"
 
 ITEMS:append:genesis3 += " iio-hwmon.conf"
+ITEMS:append:genesis3 += " iio-hwmon-rtcbat.conf"
 ITEMS:append:genesis3 += " iio-hwmon-fan-ssbs.conf"
 
 ENVS = "obmc/hwmon/{0}"
