@@ -122,7 +122,10 @@
 			"/xyz/openbmc_project/sensors/voltage/P3V3_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P2V5_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P5V_AUX",
-			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX"
+			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY1_LDO",
+			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY2_LDO",
+			"/xyz/openbmc_project/sensors/voltage/RTC_BATT_SNS"
 		]
 		}
 	]
@@ -165,11 +168,14 @@
 			"/xyz/openbmc_project/sensors/voltage/psu3_output_voltage",
 			"/xyz/openbmc_project/sensors/voltage/P3V3_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P1V8_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY1_LDO",
+			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY2_LDO",
 			"/xyz/openbmc_project/sensors/voltage/P12V",
 			"/xyz/openbmc_project/sensors/voltage/P3V3_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P2V5_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P5V_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/RTC_BATT_SNS",
 			"/xyz/openbmc_project/sensors/temperature/fan01_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan02_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan03_temp",
@@ -194,7 +200,6 @@
 			"/xyz/openbmc_project/sensors/temperature/fan22_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan23_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan24_temp",
-			"/xyz/openbmc_project/sensors/temperature/fan01_temp",
 			"/xyz/openbmc_project/sensors/fan_tach/fan01",
 			"/xyz/openbmc_project/sensors/fan_tach/fan02",
 			"/xyz/openbmc_project/sensors/fan_tach/fan03",
