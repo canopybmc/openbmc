@@ -44,7 +44,6 @@ RDEPENDS:${PN}-system = " \
 	bmcweb \
 	entity-manager \
 	webui-vue \
-	phosphor-host-postd \
 	phosphor-ipmi-kcs \
 	phosphor-post-code-manager \
 	strace \
