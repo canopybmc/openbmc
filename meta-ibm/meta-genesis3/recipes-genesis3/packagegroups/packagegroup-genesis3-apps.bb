@@ -23,7 +23,6 @@ RPROVIDES:${PN}-system += "virtual-obmc-system-mgmt"
 
 SUMMARY:${PN}-chassis = "IBM Chassis"
 RDEPENDS:${PN}-chassis = " \
-	pwrseqd \
 	phosphor-state-manager-chassis \
 	"
 
