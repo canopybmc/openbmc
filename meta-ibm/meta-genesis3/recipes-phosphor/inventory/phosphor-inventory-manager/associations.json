@@ -243,6 +243,66 @@
 	]
 	},
 	{
+	"path": "system/chassis/motherboard/fan0",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/temperature/fan01_temp",
+			"/xyz/openbmc_project/sensors/fan_tach/fan01",
+			"/xyz/openbmc_project/sensors/current/FAN01_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/voltage/FAN01_SSB_VOLTAGE"
+		]
+		}
+	]
+	},
+	{
+	"path": "system/chassis/motherboard/fan1",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/temperature/fan02_temp",
+			"/xyz/openbmc_project/sensors/fan_tach/fan02",
+			"/xyz/openbmc_project/sensors/current/FAN01_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/voltage/FAN01_SSB_VOLTAGE"
+		]
+		}
+	]
+	},
+	{
+	"path": "system/chassis/motherboard/fan2",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/temperature/fan03_temp",
+			"/xyz/openbmc_project/sensors/fan_tach/fan03",
+			"/xyz/openbmc_project/sensors/current/FAN01_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/voltage/FAN01_SSB_VOLTAGE"
+		]
+		}
+	]
+	},
+	{
 	"path": "system/chassis",
 	"endpoints":
 	[
@@ -389,7 +449,55 @@
 			"/xyz/openbmc_project/sensors/fan_tach/fan21",
 			"/xyz/openbmc_project/sensors/fan_tach/fan22",
 			"/xyz/openbmc_project/sensors/fan_tach/fan23",
-			"/xyz/openbmc_project/sensors/fan_tach/fan24"
+			"/xyz/openbmc_project/sensors/fan_tach/fan24",
+			"/xyz/openbmc_project/sensors/current/FAN01_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN02_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN03_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN04_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN05_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN06_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN07_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN08_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN09_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN10_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN11_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN12_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN13_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN14_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN15_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN16_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN17_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN18_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN19_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN20_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN21_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN22_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN23_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/current/FAN24_SSB_CURRENT",
+			"/xyz/openbmc_project/sensors/voltage/FAN01_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN02_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN03_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN04_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN05_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN06_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN07_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN08_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN09_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN10_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN11_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN12_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN13_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN14_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN15_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN16_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN17_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN18_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN19_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN20_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN21_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN22_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN23_SSB_VOLTAGE",
+			"/xyz/openbmc_project/sensors/voltage/FAN24_SSB_VOLTAGE"
 		]
 		}
 	]
