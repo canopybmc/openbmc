@@ -131,6 +131,118 @@
 	]
 	},
 	{
+	"path": "system/chassis/motherboard/cpu0",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu0_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu0_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu0_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu0_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu0_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu0_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu0_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu0_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu0_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu0_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu0_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu0_output_voltage"
+		]
+		}
+	]
+	},
+	{
+	"path": "system/chassis/motherboard/cpu1",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu1_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu1_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu1_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu1_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu1_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu1_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu1_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu1_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu1_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu1_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu1_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu1_output_voltage"
+		]
+		}
+	]
+	},
+	{
+	"path": "system/chassis/motherboard/cpu2",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu2_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu2_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu2_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu2_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu2_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu2_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu2_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu2_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu2_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu2_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu2_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu2_output_voltage"
+		]
+		}
+	]
+	},
+	{
+	"path": "system/chassis/motherboard/cpu3",
+	"endpoints":
+	[
+		{
+		"types":
+		{
+			"rType": "inventory",
+			"fType": "sensors"
+		},
+		"paths":
+		[
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu3_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu3_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu3_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu3_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu3_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu3_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu3_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu3_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu3_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu3_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu3_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu3_output_voltage"
+		]
+		}
+	]
+	},
+	{
 	"path": "system/chassis",
 	"endpoints":
 	[
@@ -166,6 +278,7 @@
 			"/xyz/openbmc_project/sensors/temperature/psu3_temp",
 			"/xyz/openbmc_project/sensors/voltage/psu3_input_voltage",
 			"/xyz/openbmc_project/sensors/voltage/psu3_output_voltage",
+
 			"/xyz/openbmc_project/sensors/voltage/P3V3_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P1V8_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY1_LDO",
@@ -176,6 +289,59 @@
 			"/xyz/openbmc_project/sensors/voltage/P5V_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/RTC_BATT_SNS",
+
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu0_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu0_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu0_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu0_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu0_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu0_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu0_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu0_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu0_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu0_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu0_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu0_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu1_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu1_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu1_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu1_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu1_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu1_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu1_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu1_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu1_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu1_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu1_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu1_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu2_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu2_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu2_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu2_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu2_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu2_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu2_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu2_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu2_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu2_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu2_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu2_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvccio_cpu3_input_current",
+			"/xyz/openbmc_project/sensors/power/pvccio_cpu3_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu3_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccio_cpu3_output_voltage",
+			"/xyz/openbmc_project/sensors/current/pvccin_cpu3_input_current",
+			"/xyz/openbmc_project/sensors/current/pvccsa_cpu3_current",
+			"/xyz/openbmc_project/sensors/power/pvccin_cpu3_output_power",
+			"/xyz/openbmc_project/sensors/power/pvccsa_cpu3_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvccin_cpu3_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvccsa_cpu3_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu3_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu3_output_voltage",
+
 			"/xyz/openbmc_project/sensors/temperature/fan01_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan02_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan03_temp",
