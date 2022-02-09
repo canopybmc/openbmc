@@ -87,31 +87,3 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item.PowerSupply:
 
-
-    - name: Add CPU0 interface
-      description: >
-          Add the CPU interface on the chassis inventory path
-      type: startup
-      actions:
-          - name: createObjects
-            objs:
-                /system/chassis/motherboard/cpu0:
-                  xyz.openbmc_project.Inventory.Item:
-                      Present:
-                          value: true
-                          type: boolean
-                  xyz.openbmc_project.Inventory.Item.Cpu:
-
-    - name: Add DIMM ABC interface
-      description: >
-          Add the DIMM ABC group interface on the chassis inventory path
-      type: startup
-      actions:
-          - name: createObjects
-            objs:
-                /system/chassis/motherboard/dimm_abc:
-                  xyz.openbmc_project.Inventory.Item:
-                      Present:
-                          value: true
-                          type: boolean
-                  xyz.openbmc_project.Inventory.Item.Dimm:
