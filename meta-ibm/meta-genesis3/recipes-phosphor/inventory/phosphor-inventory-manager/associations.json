@@ -358,6 +358,11 @@
 			"/xyz/openbmc_project/sensors/voltage/P3V3_PCH_Voltage",
 			"/xyz/openbmc_project/sensors/voltage/P5V_Voltage",
 
+			"/xyz/openbmc_project/sensors/current/M2_SSD1_Current",
+			"/xyz/openbmc_project/sensors/current/M2_SSD2_Current",
+			"/xyz/openbmc_project/sensors/voltage/M2_SSD1_Voltage",
+			"/xyz/openbmc_project/sensors/voltage/M2_SSD2_Voltage",
+
 			"/xyz/openbmc_project/sensors/current/pvccio_cpu0_input_current",
 			"/xyz/openbmc_project/sensors/power/pvccio_cpu0_output_power",
 			"/xyz/openbmc_project/sensors/temperature/pvccio_cpu0_temp",
