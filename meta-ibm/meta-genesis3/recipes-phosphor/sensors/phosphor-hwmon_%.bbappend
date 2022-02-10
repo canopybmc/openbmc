@@ -89,6 +89,7 @@ ITEMS:append:genesis3 += " iio-hwmon.conf"
 ITEMS:append:genesis3 += " iio-hwmon-rtcbat.conf"
 ITEMS:append:genesis3 += " iio-hwmon-fan-ssbs.conf"
 ITEMS:append:genesis3 += " iio-hwmon-m2-ssb.conf"
+ITEMS:append:genesis3 += " iio-hwmon-pch-ssb.conf"
 
 ENVS = "obmc/hwmon/{0}"
 SYSTEMD_ENVIRONMENT_FILE:${PN}:append:genesis3 = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
