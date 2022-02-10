@@ -402,6 +402,69 @@
 			"/xyz/openbmc_project/sensors/voltage/pvccin_cpu3_output_voltage",
 			"/xyz/openbmc_project/sensors/voltage/pvccsa_cpu3_output_voltage",
 
+			"/xyz/openbmc_project/sensors/current/pvddq_abc_input_current",
+			"/xyz/openbmc_project/sensors/current/pvpp_abc_output_current",
+			"/xyz/openbmc_project/sensors/power/pvddq_abc_output_power",
+			"/xyz/openbmc_project/sensors/power/pvpp_abc_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvddq_abc_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvpp_abc_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvddq_abc_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvpp_abc_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvddq_def_input_current",
+			"/xyz/openbmc_project/sensors/current/pvpp_def_output_current",
+			"/xyz/openbmc_project/sensors/power/pvddq_def_output_power",
+			"/xyz/openbmc_project/sensors/power/pvpp_def_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvddq_def_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvpp_def_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvddq_def_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvpp_def_output_voltage",
+		
+			"/xyz/openbmc_project/sensors/current/pvddq_ghj_input_current",
+			"/xyz/openbmc_project/sensors/current/pvpp_ghj_output_current",
+			"/xyz/openbmc_project/sensors/power/pvddq_ghj_output_power",
+			"/xyz/openbmc_project/sensors/power/pvpp_ghj_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvddq_ghj_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvpp_ghj_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvddq_ghj_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvpp_ghj_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvddq_klm_input_current",
+			"/xyz/openbmc_project/sensors/current/pvpp_klm_output_current",
+			"/xyz/openbmc_project/sensors/power/pvddq_klm_output_power",
+			"/xyz/openbmc_project/sensors/power/pvpp_klm_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvddq_klm_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvpp_klm_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvddq_klm_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvpp_klm_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvddq_rst_input_current",
+			"/xyz/openbmc_project/sensors/current/pvpp_rst_output_current",
+			"/xyz/openbmc_project/sensors/power/pvddq_rst_output_power",
+			"/xyz/openbmc_project/sensors/power/pvpp_rst_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvddq_rst_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvpp_rst_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvddq_rst_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvpp_rst_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvddq_uvw_input_current",
+			"/xyz/openbmc_project/sensors/current/pvpp_uvw_output_current",
+			"/xyz/openbmc_project/sensors/power/pvddq_uvw_output_power",
+			"/xyz/openbmc_project/sensors/power/pvpp_uvw_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvddq_uvw_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvpp_uvw_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvddq_uvw_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvpp_uvw_output_voltage",
+
+			"/xyz/openbmc_project/sensors/current/pvddq_xyz_input_current",
+			"/xyz/openbmc_project/sensors/current/pvpp_xyz_output_current",
+			"/xyz/openbmc_project/sensors/power/pvddq_xyz_output_power",
+			"/xyz/openbmc_project/sensors/power/pvpp_xyz_output_power",
+			"/xyz/openbmc_project/sensors/temperature/pvddq_xyz_temp",
+			"/xyz/openbmc_project/sensors/temperature/pvpp_xyz_temp",
+			"/xyz/openbmc_project/sensors/voltage/pvddq_xyz_output_voltage",
+			"/xyz/openbmc_project/sensors/voltage/pvpp_xyz_output_voltage",
+
 			"/xyz/openbmc_project/sensors/temperature/fan01_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan02_temp",
 			"/xyz/openbmc_project/sensors/temperature/fan03_temp",
@@ -503,3 +566,5 @@
 	]
 	}
 ]
+
+
