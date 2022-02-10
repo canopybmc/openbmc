@@ -125,7 +125,11 @@
 			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY1_LDO",
 			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY2_LDO",
-			"/xyz/openbmc_project/sensors/voltage/RTC_BATT_SNS"
+			"/xyz/openbmc_project/sensors/voltage/RTC_BATT_SNS",
+			"/xyz/openbmc_project/sensors/current/P3V3_PCH_Current",
+			"/xyz/openbmc_project/sensors/current/P5V_Current",
+			"/xyz/openbmc_project/sensors/voltage/P3V3_PCH_Voltage",
+			"/xyz/openbmc_project/sensors/voltage/P5V_Voltage"
 		]
 		}
 	]
@@ -349,6 +353,10 @@
 			"/xyz/openbmc_project/sensors/voltage/P5V_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/RTC_BATT_SNS",
+			"/xyz/openbmc_project/sensors/current/P3V3_PCH_Current",
+			"/xyz/openbmc_project/sensors/current/P5V_Current",
+			"/xyz/openbmc_project/sensors/voltage/P3V3_PCH_Voltage",
+			"/xyz/openbmc_project/sensors/voltage/P5V_Voltage",
 
 			"/xyz/openbmc_project/sensors/current/pvccio_cpu0_input_current",
 			"/xyz/openbmc_project/sensors/power/pvccio_cpu0_output_power",
