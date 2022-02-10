@@ -88,7 +88,7 @@ ITEMS += "${@compose_list(d, 'ITEMSFMT6', 'CHIPS_CPU3')}"
 ITEMS:append:genesis3 += " iio-hwmon.conf"
 ITEMS:append:genesis3 += " iio-hwmon-rtcbat.conf"
 ITEMS:append:genesis3 += " iio-hwmon-fan-ssbs.conf"
-ITEMS:append:genesis3 += " iio-hwmon-m2.conf"
+ITEMS:append:genesis3 += " iio-hwmon-m2-ssb.conf"
 
 ENVS = "obmc/hwmon/{0}"
 SYSTEMD_ENVIRONMENT_FILE:${PN}:append:genesis3 = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
