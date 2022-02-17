@@ -8,12 +8,12 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
 BRANCH = "main"
-SRC_URI = "git://github.com/9elements/pwrseqd.git;branch=${BRANCH}"
+SRC_URI = "gitsm://github.com/9elements/pwrseqd.git;branch=${BRANCH};protocol=https"
 SRCREV = "74d63d530d9f563ef381779629c008bf45d955b4"
 
 S = "${WORKDIR}/git"
 
-inherit cmake systemd
+inherit cmake systemd pkgconfig
 
 DEPENDS += "systemd"
 DEPENDS += "boost"
