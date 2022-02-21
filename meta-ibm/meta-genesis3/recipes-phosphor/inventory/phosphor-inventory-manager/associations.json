@@ -123,6 +123,7 @@
 			"/xyz/openbmc_project/sensors/voltage/P2V5_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P5V_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P5V_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P1V2_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY1_LDO",
 			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY2_LDO",
 			"/xyz/openbmc_project/sensors/voltage/RTC_BATT_SNS",
@@ -345,6 +346,7 @@
 
 			"/xyz/openbmc_project/sensors/voltage/P3V3_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P1V8_BMC_AUX",
+			"/xyz/openbmc_project/sensors/voltage/P1V2_BMC_AUX",
 			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY1_LDO",
 			"/xyz/openbmc_project/sensors/voltage/P1V2_PHY2_LDO",
 			"/xyz/openbmc_project/sensors/voltage/P12V",
