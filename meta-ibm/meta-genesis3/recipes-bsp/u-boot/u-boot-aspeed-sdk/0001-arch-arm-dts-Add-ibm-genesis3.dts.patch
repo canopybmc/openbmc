@@ -1,0 +1,99 @@
+From 33ca4b7209376f5f076846519ea6cc30435b5de1 Mon Sep 17 00:00:00 2001
+From: Patrick Rudolph <patrick.rudolph@9elements.com>
+Date: Thu, 17 Feb 2022 16:21:50 +0100
+Subject: [PATCH] arch/arm/dts: Add IBM genesis3
+
+Signed-off-by: Patrick Rudolph <patrick.rudolph@9elements.com>
+---
+ arch/arm/dts/Makefile         |   1 +
+ arch/arm/dts/ibm-genesis3.dts | 110 ++++++++++++++++++++++++++++++++++
+ 2 files changed, 111 insertions(+)
+ create mode 100644 arch/arm/dts/ibm-genesis3.dts
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 39d3e0e320..d525559f47 100755
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -677,6 +677,7 @@ dtb-$(CONFIG_ARCH_BCM6858) += \
+ dtb-$(CONFIG_ARCH_ASPEED) += \
+ 	ast2400-evb.dtb \
+ 	ast2500-evb.dtb \
++	ibm-genesis3.dtb \
+ 	ast2600-evb.dtb \
+ 	ast2600-ncsi.dtb \
+ 	ast2600-pfr.dtb \
+diff --git a/arch/arm/dts/ibm-genesis3.dts b/arch/arm/dts/ibm-genesis3.dts
+new file mode 100644
+index 0000000000..f375522425
+--- /dev/null
++++ b/arch/arm/dts/ibm-genesis3.dts
+@@ -0,0 +1,66 @@
++/dts-v1/;
++
++#include "ast2500-u-boot.dtsi"
++
++/ {
++        model = "IBM Genesis3-1";
++        compatible = "ibm,genesis3", "aspeed,ast2500";
++
++	memory {
++		device_type = "memory";
++		reg = <0x80000000 0x20000000>;
++	};
++
++	chosen {
++		stdout-path = &uart5;
++	};
++
++	aliases {
++		spi0 = &fmc;
++	};
++};
++
++&uart5 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&sdrammc {
++	clock-frequency = <400000000>;
++};
++
++&wdt1 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&wdt2 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&wdt3 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&fmc {
++	status = "okay";
++	timing-calibration-disabled;
++	flash@0 {
++		compatible = "spi-flash", "spansion,s25fl256l";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <2>;
++		spi-rx-bus-width = <2>;
++	};
++
++	flash@1 {
++                compatible = "spi-flash", "spansion,s25fl256l";
++                status = "okay";
++                spi-max-frequency = <50000000>;
++                spi-tx-bus-width = <2>;
++                spi-rx-bus-width = <2>;
++        };
++};
++
+-- 
+2.34.1
+
