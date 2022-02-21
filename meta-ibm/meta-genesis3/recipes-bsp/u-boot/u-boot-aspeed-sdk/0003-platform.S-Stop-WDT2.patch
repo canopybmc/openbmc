@@ -1,0 +1,31 @@
+From c7dad7e56b1f9897414678f2e0541ee6aa15fa60 Mon Sep 17 00:00:00 2001
+From: Patrick Rudolph <patrick.rudolph@9elements.com>
+Date: Mon, 21 Feb 2022 11:59:28 +0100
+Subject: [PATCH] platform.S: Stop WDT2
+
+Signed-off-by: Patrick Rudolph <patrick.rudolph@9elements.com>
+---
+ arch/arm/mach-aspeed/ast2500/platform.S | 2 --
+ 1 file changed, 2 deletions(-)
+
+diff --git a/arch/arm/mach-aspeed/ast2500/platform.S b/arch/arm/mach-aspeed/ast2500/platform.S
+index aef55c4a0a..12fbc88d08 100644
+--- a/arch/arm/mach-aspeed/ast2500/platform.S
++++ b/arch/arm/mach-aspeed/ast2500/platform.S
+@@ -642,13 +642,11 @@ bypass_USB_init:
+ /******************************************************************************
+  Disable WDT2 for 2nd boot function
+  ******************************************************************************/
+-/*
+ #ifndef CONFIG_FIRMWARE_2ND_BOOT
+     ldr   r0, =0x1e78502c
+     mov   r1, #0
+     str   r1, [r0]
+ #endif
+-*/
+ /******************************************************************************
+  Disable WDT3 for SPI Address mode (3 or 4 bytes) detection function
+  ******************************************************************************/
+-- 
+2.34.1
+
