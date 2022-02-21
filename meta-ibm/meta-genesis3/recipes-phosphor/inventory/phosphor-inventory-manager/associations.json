@@ -453,6 +453,15 @@
 			"/xyz/openbmc_project/sensors/voltage/pvddq_klm_output_voltage",
 			"/xyz/openbmc_project/sensors/voltage/pvpp_klm_output_voltage",
 
+			"/xyz/openbmc_project/sensors/current/pvddq_npq_input_current",
+                        "/xyz/openbmc_project/sensors/current/pvpp_npq_output_current",
+                        "/xyz/openbmc_project/sensors/power/pvddq_npq_output_power",
+                        "/xyz/openbmc_project/sensors/power/pvpp_npq_output_power",
+                        "/xyz/openbmc_project/sensors/temperature/pvddq_npq_temp",
+                        "/xyz/openbmc_project/sensors/temperature/pvpp_npq_temp",
+                        "/xyz/openbmc_project/sensors/voltage/pvddq_npq_output_voltage",
+                        "/xyz/openbmc_project/sensors/voltage/pvpp_npq_output_voltage",
+
 			"/xyz/openbmc_project/sensors/current/pvddq_rst_input_current",
 			"/xyz/openbmc_project/sensors/current/pvpp_rst_output_current",
 			"/xyz/openbmc_project/sensors/power/pvddq_rst_output_power",
