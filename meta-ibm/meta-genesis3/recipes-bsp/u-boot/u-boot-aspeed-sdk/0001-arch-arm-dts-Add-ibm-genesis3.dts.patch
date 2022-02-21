@@ -27,7 +27,7 @@ new file mode 100644
 index 0000000000..f375522425
 --- /dev/null
 +++ b/arch/arm/dts/ibm-genesis3.dts
-@@ -0,0 +1,66 @@
+@@ -0,0 +1,83 @@
 +/dts-v1/;
 +
 +#include "ast2500-u-boot.dtsi"
@@ -47,6 +47,8 @@ index 0000000000..f375522425
 +
 +	aliases {
 +		spi0 = &fmc;
++		ethernet0 = &mac0;
++		ethernet1 = &mac1;
 +	};
 +};
 +
@@ -72,6 +74,21 @@ index 0000000000..f375522425
 +&wdt3 {
 +	u-boot,dm-pre-reloc;
 +	status = "okay";
++};
++
++&mac0 {
++	status = "okay";
++	phy-mode = "rgmii";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_mac1link_default &pinctrl_mdio1_default>;
++};
++
++&mac1 {
++	status = "okay";
++	phy-mode = "rgmii";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_mac2link_default &pinctrl_mdio2_default>;
 +};
 +
 +&fmc {
