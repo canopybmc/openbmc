@@ -85,11 +85,11 @@ ITEMSFMT6 = "ahb/apb/bus@1e78a000/i2c-bus@440/mux@77/{0}.conf"
 
 ITEMS += "${@compose_list(d, 'ITEMSFMT6', 'CHIPS_CPU3')}"
 
-ITEMS:append:genesis3 += " iio-hwmon.conf"
-ITEMS:append:genesis3 += " iio-hwmon-rtcbat.conf"
-ITEMS:append:genesis3 += " iio-hwmon-fan-ssbs.conf"
-ITEMS:append:genesis3 += " iio-hwmon-m2-ssb.conf"
-ITEMS:append:genesis3 += " iio-hwmon-pch-ssb.conf"
+ITEMS:append:genesis3 = " iio-hwmon.conf"
+ITEMS:append:genesis3 = " iio-hwmon-rtcbat.conf"
+ITEMS:append:genesis3 = " iio-hwmon-fan-ssbs.conf"
+ITEMS:append:genesis3 = " iio-hwmon-m2-ssb.conf"
+ITEMS:append:genesis3 = " iio-hwmon-pch-ssb.conf"
 
 ENVS = "obmc/hwmon/{0}"
 SYSTEMD_ENVIRONMENT_FILE:${PN}:append:genesis3 = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
