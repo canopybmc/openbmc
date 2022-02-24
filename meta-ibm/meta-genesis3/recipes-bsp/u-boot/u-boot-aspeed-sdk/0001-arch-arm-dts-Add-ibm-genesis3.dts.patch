@@ -33,7 +33,7 @@ index 0000000000..f375522425
 +#include "ast2500-u-boot.dtsi"
 +
 +/ {
-+        model = "IBM Genesis3-1";
++        model = "IBM Genesis3";
 +        compatible = "ibm,genesis3", "aspeed,ast2500";
 +
 +	memory {
