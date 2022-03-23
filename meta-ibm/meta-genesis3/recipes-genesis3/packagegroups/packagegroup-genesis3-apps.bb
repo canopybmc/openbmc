@@ -57,4 +57,6 @@ RDEPENDS:${PN}-system = " \
 	screen \
 	gdb \
 	aspeedtech-tools \
+	phosphor-ipmi-ipmb \
+	ipmitool \
 	"
