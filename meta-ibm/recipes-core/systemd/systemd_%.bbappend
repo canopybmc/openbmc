@@ -8,6 +8,8 @@ SRC_URI:append:p10bmc = " file://systemd-journald-override.conf"
 SRC_URI:append:p10bmc = " file://journald-size-policy-16MB.conf"
 SRC_URI:append:p10bmc = " file://vm.conf"
 
+SRC_URI:append:sbp1 = " file://override.conf"
+
 FILES:${PN}:append:ibm-ac-server = " ${systemd_unitdir}/journald.conf.d/journald-storage-policy.conf"
 FILES:${PN}:append:ibm-ac-server = " ${systemd_system_unitdir}/systemd-journald.service.d/systemd-journald-override.conf"
 FILES:${PN}:append:ibm-ac-server = " ${systemd_unitdir}/journald.conf.d/journald-size-policy.conf"
@@ -16,6 +18,8 @@ FILES:${PN}:append:p10bmc = " ${systemd_unitdir}/journald.conf.d/journald-storag
 FILES:${PN}:append:p10bmc = " ${systemd_system_unitdir}/systemd-journald.service.d/systemd-journald-override.conf"
 FILES:${PN}:append:p10bmc = " ${systemd_unitdir}/journald.conf.d/journald-size-policy.conf"
 FILES:${PN}:append:p10bmc = " ${sysconfdir}/sysctl.d/vm.conf"
+
+FILES:${PN}:append:sbp1 = " ${systemd_system_unitdir}/systemd-networkd-wait-online.service.d/override.conf"
 
 do_install:append:ibm-ac-server() {
         install -m 644 -D ${WORKDIR}/journald-storage-policy.conf ${D}${systemd_unitdir}/journald.conf.d/journald-storage-policy.conf
@@ -29,6 +33,11 @@ do_install:append:p10bmc() {
         install -m 644 -D ${WORKDIR}/vm.conf ${D}${sysconfdir}/sysctl.d/vm.conf
 }
 
+# Genesis3 uses both BMC's RGMII MACs, so wait for only one to be online
+do_install:append:sbp1() {
+        install -d ${D}${systemd_system_unitdir}/systemd-networkd-wait-online.service.d/
+        install -m 644 -D ${WORKDIR}/override.conf ${D}${systemd_system_unitdir}/systemd-networkd-wait-online.service.d/override.conf
+}
 # Witherspoon doesn't have the space for the both zstd and xz compression
 # libraries and currently phosphor-debug-collector is using xz.  Switch systemd
 # to use xz so only one of the two is added into the image.
