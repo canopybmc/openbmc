@@ -1,0 +1,72 @@
+From 73d50f5715737621f4087236f1d96f386868a34e Mon Sep 17 00:00:00 2001
+From: Naresh Solanki <Naresh.Solanki@9elements.com>
+Date: Mon, 25 Apr 2022 17:28:53 +0200
+Subject: [PATCH] fw_env: Store default loaded env and mac address
+
+This is temporary solution.
+These should be handled in board specific init of genesis3.
+During power up, if uboot-env region is blank, then initialize it
+with default env & also store the randomized mac address generated
+in first run for later use.
+
+This will make sure the BMC ip address remains the same across reboots.
+
+TEST= Build for genesis3 & flash the image. Run reboot cycle & make sure
+the IP address of BMC & mac address do not change.
+
+Signed-off-by: Naresh Solanki <Naresh.Solanki@9elements.com>
+---
+ cmd/nvedit.c     | 6 ++++--
+ env/env.c        | 1 +
+ net/eth-uclass.c | 1 +
+ 3 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/cmd/nvedit.c b/cmd/nvedit.c
+index 24a6cf7824..a2d97c5bd7 100644
+--- a/cmd/nvedit.c
++++ b/cmd/nvedit.c
+@@ -372,13 +372,15 @@ int eth_env_get_enetaddr(const char *name, uint8_t *enetaddr)
+ int eth_env_set_enetaddr(const char *name, const uint8_t *enetaddr)
+ {
+ 	char buf[ARP_HLEN_ASCII + 1];
+-
++	uint8_t ret;
+ 	if (eth_env_get_enetaddr(name, (uint8_t *)buf))
+ 		return -EEXIST;
+ 
+ 	sprintf(buf, "%pM", enetaddr);
+ 
+-	return env_set(name, buf);
++	ret = env_set(name, buf);
++	env_save();
++	return ret;
+ }
+ 
+ #ifndef CONFIG_SPL_BUILD
+diff --git a/env/env.c b/env/env.c
+index 4b417b90a2..22c02b2c44 100644
+--- a/env/env.c
++++ b/env/env.c
+@@ -200,6 +200,7 @@ int env_load(void)
+ 			printf("OK\n");
+ 			return 0;
+ 		} else if (ret == -ENOMSG) {
++			env_save();
+ 			/* Handle "bad CRC" case */
+ 			if (best_prio == -1)
+ 				best_prio = prio;
+diff --git a/net/eth-uclass.c b/net/eth-uclass.c
+index a7f8792710..5065cd67d1 100644
+--- a/net/eth-uclass.c
++++ b/net/eth-uclass.c
+@@ -522,6 +522,7 @@ static int eth_post_probe(struct udevice *dev)
+ 		net_random_ethaddr(pdata->enetaddr);
+ 		printf("\nWarning: %s (eth%d) using random MAC address - %pM\n",
+ 		       dev->name, dev->seq, pdata->enetaddr);
++		eth_env_set_enetaddr_by_index("eth", dev->seq, pdata->enetaddr);
+ #else
+ 		printf("\nError: %s address not set.\n",
+ 		       dev->name);
+-- 
+2.35.1
+
