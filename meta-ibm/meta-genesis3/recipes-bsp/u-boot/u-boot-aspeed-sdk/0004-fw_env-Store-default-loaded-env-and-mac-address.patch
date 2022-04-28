@@ -1,7 +1,7 @@
-From 73d50f5715737621f4087236f1d96f386868a34e Mon Sep 17 00:00:00 2001
+From acd12ddaf74be6831fb652f571b193bd1b868c07 Mon Sep 17 00:00:00 2001
 From: Naresh Solanki <Naresh.Solanki@9elements.com>
 Date: Mon, 25 Apr 2022 17:28:53 +0200
-Subject: [PATCH] fw_env: Store default loaded env and mac address
+Subject: [PATCH 4/4] fw_env: Store default loaded env and mac address
 
 This is temporary solution.
 These should be handled in board specific init of genesis3.
