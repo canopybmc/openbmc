@@ -57,7 +57,9 @@ pkg_postinst:${PN}-chassis:append() {
         mkdir -p $D$systemd_system_unitdir/multi-user.target.requires
         LINK="$D$systemd_system_unitdir/multi-user.target.requires/xyz.openbmc_project.State.Chassis@${i}.service"
         TARGET="../xyz.openbmc_project.State.Chassis@.service"
-        ln -s $TARGET $LINK
+	if [ -f $D$systemd_system_unitdir/xyz.openbmc_project.State.Chassis@.service ] ; then
+        	ln -s $TARGET $LINK
+	fi
     done
 }
 
