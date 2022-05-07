@@ -1,0 +1,89 @@
+description: >
+    Mt.Jade inventory fixups
+
+events:
+    - name: Add Chassis interface
+      description: >
+          Add the chassis interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis:
+                  xyz.openbmc_project.Inventory.Item.Chassis:
+                      Type:
+                          value: "xyz.openbmc_project.Inventory.Item.Chassis.ChassisType.RackMount"
+                          type: string
+    - name: Add motherboard interface
+      description: >
+          Add the motherboard interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                      PrettyName:
+                          value: "Gen3"
+                          type: string
+                  xyz.openbmc_project.Inventory.Item.Board:
+
+    - name: Add PSU0 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply0:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+  
+    - name: Add PSU1 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply1:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+
+    - name: Add PSU2 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply2:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+
+    - name: Add PSU3 interface
+      description: >
+          Add the power supply interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/powersupply3:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.PowerSupply:
+
