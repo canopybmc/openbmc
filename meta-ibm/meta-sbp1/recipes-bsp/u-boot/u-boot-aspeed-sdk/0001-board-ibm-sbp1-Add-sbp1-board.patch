@@ -1,0 +1,551 @@
+From a7a123f98d1ffbd4e9529aea2084617b42f9a39a Mon Sep 17 00:00:00 2001
+From: Naresh Solanki <Naresh.Solanki@9elements.com>
+Date: Mon, 16 May 2022 10:19:54 +0200
+Subject: [PATCH] board/ibm/sbp1: Add sbp1 board
+
+sbp1 is secured boot platform from IBM based on ast2600 SoC.
+
+Signed-off-by: Naresh Solanki <Naresh.Solanki@9elements.com>
+---
+ arch/arm/dts/Makefile                |   1 +
+ arch/arm/dts/ast2600-ibm-sbp1.dts    | 321 +++++++++++++++++++++++++++
+ arch/arm/mach-aspeed/ast2600/Kconfig |   7 +
+ board/ibm/sbp1/Kconfig               |  13 ++
+ board/ibm/sbp1/Makefile              |   1 +
+ board/ibm/sbp1/sbp1.c                | 133 +++++++++++
+ 6 files changed, 476 insertions(+)
+ create mode 100644 arch/arm/dts/ast2600-ibm-sbp1.dts
+ create mode 100644 board/ibm/sbp1/Kconfig
+ create mode 100644 board/ibm/sbp1/Makefile
+ create mode 100644 board/ibm/sbp1/sbp1.c
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index a79f885f54..6190735e0b 100755
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -682,6 +682,7 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
+ 	ast2600-bletchley.dtb \
+ 	ast2600-evb.dtb \
+ 	ast2600-fpga.dtb \
++	ast2600-ibm-sbp1.dtb \
+ 	ast2600-intel.dtb \
+ 	ast2600-ncsi.dtb \
+ 	ast2600-pfr.dtb \
+diff --git a/arch/arm/dts/ast2600-ibm-sbp1.dts b/arch/arm/dts/ast2600-ibm-sbp1.dts
+new file mode 100644
+index 0000000000..0e3432114d
+--- /dev/null
++++ b/arch/arm/dts/ast2600-ibm-sbp1.dts
+@@ -0,0 +1,321 @@
++// SPDX-License-Identifier: GPL-2.0+
++/dts-v1/;
++
++#include "ast2600-u-boot.dtsi"
++
++/ {
++	model = "AST2600 IBM SBP1 server board";
++	compatible = "aspeed,ast2600-ibm", "aspeed,ast2600";
++
++	memory {
++		device_type = "memory";
++		reg = <0x80000000 0x40000000>;
++	};
++
++	chosen {
++		stdout-path = &uart5;
++	};
++
++	aliases {
++		mmc0 = &emmc_slot0;
++		mmc1 = &sdhci_slot0;
++		mmc2 = &sdhci_slot1;
++		spi0 = &fmc;
++		spi1 = &spi1;
++		spi2 = &spi2;
++		ethernet0 = &mac0;
++		ethernet1 = &mac1;
++		ethernet2 = &mac2;
++		ethernet3 = &mac3;
++	};
++
++	cpus {
++		cpu@0 {
++			clock-frequency = <1200000000>;
++		};
++		cpu@1 {
++			clock-frequency = <1200000000>;
++		};
++	};
++};
++
++&uart5 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&sdrammc {
++	clock-frequency = <400000000>;
++};
++
++&wdt1 {
++	status = "okay";
++};
++
++&wdt2 {
++	status = "okay";
++};
++
++&wdt3 {
++	status = "okay";
++};
++
++&mdio {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <	&pinctrl_mdio1_default &pinctrl_mdio2_default
++			&pinctrl_mdio3_default &pinctrl_mdio4_default>;
++	#address-cells = <1>;
++	#size-cells = <0>;
++	ethphy0: ethernet-phy@0 {
++		reg = <0>;
++	};
++
++	ethphy1: ethernet-phy@1 {
++		reg = <0>;
++	};
++
++	ethphy2: ethernet-phy@2 {
++		reg = <0>;
++	};
++
++	ethphy3: ethernet-phy@3 {
++		reg = <0>;
++	};
++};
++
++&mac0 {
++	status = "okay";
++	phy-mode = "rgmii";
++	phy-handle = <&ethphy0>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_rgmii1_default>;
++};
++
++&mac1 {
++	status = "okay";
++	phy-mode = "rgmii";
++	phy-handle = <&ethphy1>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_rgmii2_default>;
++};
++
++&mac2 {
++	status = "okay";
++	phy-mode = "rgmii";
++	phy-handle = <&ethphy2>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_rgmii3_default>;
++};
++
++&mac3 {
++	status = "okay";
++	phy-mode = "rgmii";
++	phy-handle = <&ethphy3>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_rgmii4_default>;
++};
++
++&fmc {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_fmcquad_default>;
++
++	flash@0 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++
++	flash@1 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++
++	flash@2 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++};
++
++&spi1 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_spi1_default &pinctrl_spi1abr_default
++			&pinctrl_spi1cs1_default &pinctrl_spi1wp_default
++			&pinctrl_spi1wp_default &pinctrl_spi1quad_default>;
++
++	flash@0 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++
++	flash@1 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++};
++
++&spi2 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_spi2_default &pinctrl_spi2cs1_default
++			&pinctrl_spi2cs2_default &pinctrl_spi2quad_default>;
++
++	flash@0 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++
++	flash@1 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++
++	flash@2 {
++		compatible = "spi-flash", "sst,w25q256";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++};
++
++&emmc {
++	u-boot,dm-pre-reloc;
++	timing-phase = <0x700ff>;
++};
++
++&emmc_slot0 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++	bus-width = <4>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_emmc_default>;
++	sdhci-drive-type = <1>;
++};
++
++&sdhci {
++	timing-phase = <0xc6ffff>;
++};
++
++&sdhci_slot0 {
++	status = "okay";
++	bus-width = <4>;
++	pwr-gpios = <&gpio0 ASPEED_GPIO(V, 0) GPIO_ACTIVE_HIGH>;
++	pwr-sw-gpios = <&gpio0 ASPEED_GPIO(V, 1) GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_sd1_default>;
++	sdhci-drive-type = <1>;
++};
++
++&sdhci_slot1 {
++	status = "okay";
++	bus-width = <4>;
++	pwr-gpios = <&gpio0 ASPEED_GPIO(V, 2) GPIO_ACTIVE_HIGH>;
++	pwr-sw-gpios = <&gpio0 ASPEED_GPIO(V, 3) GPIO_ACTIVE_HIGH>;
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_sd2_default>;
++	sdhci-drive-type = <1>;
++};
++
++&i2c4 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c5_default>;
++};
++
++&i2c5 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c6_default>;
++};
++
++&i2c6 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c7_default>;
++};
++
++&i2c7 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c8_default>;
++};
++
++&i2c8 {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_i2c9_default>;
++};
++
++#if 0
++&fsim0 {
++	status = "okay";
++};
++
++&fsim1 {
++	status = "okay";
++};
++#endif
++
++&ehci1 {
++	status = "okay";
++};
++
++&display_port {
++	status = "okay";
++};
++
++&scu {
++	mac0-clk-delay = <0x1d 0x1c
++			  0x10 0x17
++			  0x10 0x17>;
++	mac1-clk-delay = <0x1d 0x10
++			  0x10 0x10
++			  0x10 0x10>;
++	mac2-clk-delay = <0x0a 0x04
++			  0x08 0x04
++			  0x08 0x04>;
++	mac3-clk-delay = <0x0a 0x04
++			  0x08 0x04
++			  0x08 0x04>;
++};
++
++&hace {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&acry {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
+diff --git a/arch/arm/mach-aspeed/ast2600/Kconfig b/arch/arm/mach-aspeed/ast2600/Kconfig
+index fcdc425de5..1f03da0538 100644
+--- a/arch/arm/mach-aspeed/ast2600/Kconfig
++++ b/arch/arm/mach-aspeed/ast2600/Kconfig
+@@ -38,11 +38,18 @@ config TARGET_AST2600_INTEL
+ 	  AST2600-INTEL is an Intel Eagle Stream CRB with
+ 	  AST2600 as the BMC.
+ 
++config TARGET_IBM_SBP1
++	bool "AST2600-IBM"
++	depends on ASPEED_AST2600
++	help
++	  AST2600-IBM is Secured Boot Platform based on
++	  Intel Eagle Stream.
+ endchoice
+ 
+ source "board/aspeed/evb_ast2600/Kconfig"
+ source "board/aspeed/fpga_ast2600/Kconfig"
+ source "board/aspeed/slt_ast2600/Kconfig"
+ source "board/aspeed/ast2600_intel/Kconfig"
++source "board/ibm/sbp1/Kconfig"
+ 
+ endif
+diff --git a/board/ibm/sbp1/Kconfig b/board/ibm/sbp1/Kconfig
+new file mode 100644
+index 0000000000..79d539d0e4
+--- /dev/null
++++ b/board/ibm/sbp1/Kconfig
+@@ -0,0 +1,13 @@
++if TARGET_IBM_SBP1
++
++config SYS_BOARD
++	default "sbp1"
++
++config SYS_VENDOR
++	default "ibm"
++
++config SYS_CONFIG_NAME
++	string "board configuration name"
++	default "ibm_sbp1"
++
++endif
+diff --git a/board/ibm/sbp1/Makefile b/board/ibm/sbp1/Makefile
+new file mode 100644
+index 0000000000..ba9d92acc2
+--- /dev/null
++++ b/board/ibm/sbp1/Makefile
+@@ -0,0 +1 @@
++obj-y += sbp1.o
+diff --git a/board/ibm/sbp1/sbp1.c b/board/ibm/sbp1/sbp1.c
+new file mode 100644
+index 0000000000..72ecb18c15
+--- /dev/null
++++ b/board/ibm/sbp1/sbp1.c
+@@ -0,0 +1,133 @@
++// SPDX-License-Identifier: GPL-2.0+
++/*
++ * Copyright (C) ASPEED Technology Inc.
++ */
++#include <common.h>
++#include <asm/io.h>
++
++#define SCU_BASE	0x1e6e2000
++#define ESPI_BASE	0x1e6ee000
++#define LPC_BASE	0x1e789000
++#define   LPC_HICR5		(LPC_BASE + 0x80)
++#define   LPC_HICR6		(LPC_BASE + 0x84)
++#define   LPC_SNPWADR	(LPC_BASE + 0x90)
++#define   LPC_HICRB		(LPC_BASE + 0x100)
++#define GPIO_BASE	0x1e780000
++
++/* HICR5 Bits */
++#define HICR5_EN_SIOGIO (1 << 31)		/* Enable SIOGIO */
++#define HICR5_EN80HGIO (1 << 30)		/* Enable 80hGIO */
++#define HICR5_SEL80HGIO (0x1f << 24)		/* Select 80hGIO */
++#define SET_SEL80HGIO(x) ((x & 0x1f) << 24)	/* Select 80hGIO Offset */
++#define HICR5_UNKVAL_MASK 0x1FFF0000		/* Bits with unknown values on reset */
++#define HICR5_ENINT_SNP0W (1 << 1)		/* Enable Snooping address 0 */
++#define HICR5_EN_SNP0W (1 << 0)			/* Enable Snooping address 0 */
++
++/* HRCR6 Bits */
++#define HICR6_STR_SNP0W (1 << 0)	/* Interrupt Status Snoop address 0 */
++#define HICR6_STR_SNP1W (1 << 1)	/* Interrupt Status Snoop address 1 */
++
++/* HICRB Bits */
++#define HICRB_EN80HSGIO (1 << 13)	/* Enable 80hSGIO */
++
++static void __maybe_unused port80h_snoop_init(void)
++{
++	u32 value;
++	/* enable port80h snoop and sgpio */
++	/* set lpc snoop #0 to port 0x80 */
++	value = readl(LPC_SNPWADR) & 0xffff0000;
++	writel(value | 0x80, LPC_SNPWADR);
++
++	/* clear interrupt status */
++	value = readl(LPC_HICR6);
++	value |= HICR6_STR_SNP0W | HICR6_STR_SNP1W;
++	writel(value, LPC_HICR6);
++
++	/* enable lpc snoop #0 and SIOGIO */
++	value = readl(LPC_HICR5) & ~(HICR5_UNKVAL_MASK);
++	value |= HICR5_EN_SIOGIO | HICR5_EN_SNP0W;
++	writel(value, LPC_HICR5);
++
++	/* enable port80h snoop on SGPIO */
++	value = readl(LPC_HICRB) | HICRB_EN80HSGIO;
++	writel(value, LPC_HICRB);
++}
++
++static void __maybe_unused sgpio_init(void)
++{
++#define SGPIO_CLK_DIV(N)	((N) << 16)
++#define SGPIO_BYTES(N)		((N) << 6)
++#define SGPIO_ENABLE		1
++#define GPIO554			0x554
++#define SCU_414			0x414 /* Multi-function Pin Control #5 */
++#define SCU_414_SGPM_MASK	GENMASK(27, 24)
++
++	u32 value;
++	/* set the sgpio clock to pclk/(2*(5+1)) or ~2 MHz */
++	value = SGPIO_CLK_DIV(256) | SGPIO_BYTES(10) | SGPIO_ENABLE;
++	writel(value, GPIO_BASE + GPIO554);
++	writel(readl(SCU_BASE | SCU_414) | SCU_414_SGPM_MASK,
++		SCU_BASE | SCU_414);
++}
++
++static void __maybe_unused espi_init(void)
++{
++	u32 reg;
++
++	/* skip eSPI init if LPC mode is selected */
++	reg = readl(SCU_BASE + 0x510);
++	if (reg & BIT(6))
++		return;
++
++	/*
++	 * Aspeed STRONGLY NOT recommend to use eSPI early init.
++	 *
++	 * This eSPI early init sequence merely set OOB_FREE. It
++	 * is NOT able to actually handle OOB requests from PCH.
++	 *
++	 * During the power on stage, PCH keep waiting OOB_FREE
++	 * to continue its booting. In general, OOB_FREE is set
++	 * when BMC firmware is ready. That is, the eSPI kernel
++	 * driver is mounted and ready to serve eSPI. However,
++	 * it means that PCH must wait until BMC kernel ready.
++	 *
++	 * For customers that request PCH booting as soon as
++	 * possible. You may use this early init to set OOB_FREE
++	 * to prevent PCH from blocking by OOB_FREE before BMC
++	 * kernel ready.
++	 *
++	 * If you are not sure what you are doing, DO NOT use it.
++	 */
++	reg = readl(ESPI_BASE + 0x000);
++	reg |= 0xef;
++	writel(reg, ESPI_BASE + 0x000);
++
++	writel(0x0, ESPI_BASE + 0x110);
++	writel(0x0, ESPI_BASE + 0x114);
++
++	reg = readl(ESPI_BASE + 0x00c);
++	reg |= 0x80000000;
++	writel(reg, ESPI_BASE + 0x00c);
++
++	writel(0xffffffff, ESPI_BASE + 0x094);
++	writel(0x1, ESPI_BASE + 0x100);
++	writel(0x1, ESPI_BASE + 0x120);
++
++	reg = readl(ESPI_BASE + 0x080);
++	reg |= 0x50;
++	writel(reg, ESPI_BASE + 0x080);
++
++	reg = readl(ESPI_BASE + 0x000);
++	reg |= 0x10;
++	writel(reg, ESPI_BASE + 0x000);
++}
++
++int board_early_init_f(void)
++{
++#if 0
++	port80h_snoop_init();
++	sgpio_init();
++#endif
++	espi_init();
++	return 0;
++}
+-- 
+2.35.3
+
