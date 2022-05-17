@@ -34,6 +34,7 @@ RDEPENDS:${PN}-flash = " \
 	phosphor-software-manager \
 	obmc-control-bmc \
 	phosphor-ipmi-flash \
+	flashrom \
 	"
 
 SUMMARY:${PN}-fans = "IBM Fans"
