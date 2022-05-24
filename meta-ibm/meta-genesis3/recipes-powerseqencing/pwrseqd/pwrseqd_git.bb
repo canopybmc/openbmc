@@ -8,7 +8,7 @@ LICENSE = "Apache-2.0"
 LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
 BRANCH = "main"
-SRC_URI = "gitsm://github.com/9elements/pwrseqd.git;branch=${BRANCH};protocol=https"
+SRC_URI = "git://github.com/9elements/pwrseqd.git;branch=${BRANCH};protocol=https"
 SRCREV = "7d51a679ff0e7512956099cf5df0f947a98c9201"
 
 S = "${WORKDIR}/git"
@@ -26,6 +26,7 @@ DEPENDS += "phosphor-logging"
 EXTRA_OECMAKE = "\
                  -DBUILD_TESTS=OFF \
                  -DBUILD_EXAMPLE=OFF \
+                 -DGIT_SUBMODULE=OFF \
                  "
 
 SYSTEMD_SERVICE:${PN} += "xyz.openbmc_project.Chassis.Control.Power@${MACHINE}.service \
