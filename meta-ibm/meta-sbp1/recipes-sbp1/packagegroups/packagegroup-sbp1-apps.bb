@@ -25,7 +25,6 @@ SUMMARY:${PN}-chassis = "IBM Chassis"
 RDEPENDS:${PN}-chassis = " \
 	phosphor-post-code-manager \
 	phosphor-host-postd \
-	phosphor-state-manager-chassis \
 	"
 
 SUMMARY:${PN}-flash = "IBM Flash"
