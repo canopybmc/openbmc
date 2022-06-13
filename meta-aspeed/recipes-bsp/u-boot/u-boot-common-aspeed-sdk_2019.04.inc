@@ -8,8 +8,8 @@ PE = "1"
 
 # We use the revision in order to avoid having to fetch it from the
 # repo during parse
-SRCREV = "21fa3f3380749b5bfda4d95230d2911671cf3fcf"
-SRC_URI = "git://git@github.com/openbmc/u-boot.git;nobranch=1;protocol=https"
+SRCREV = "8c47485011ff9d40aad2076b542d56d084bbe5ef"
+SRC_URI = "git://git@github.com/PatrickRudolph/u-boot.git;nobranch=1;protocol=https"
 
 S = "${WORKDIR}/git"
 B = "${WORKDIR}/build"
