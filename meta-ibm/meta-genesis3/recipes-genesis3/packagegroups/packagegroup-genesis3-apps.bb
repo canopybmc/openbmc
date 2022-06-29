@@ -44,20 +44,16 @@ RDEPENDS:${PN}-fans = " \
 
 SUMMARY:${PN}-system = "IBM System"
 RDEPENDS:${PN}-system = " \
+	dbus-sensors \
 	bmcweb \
 	entity-manager \
 	webui-vue \
 	phosphor-ipmi-kcs \
 	phosphor-post-code-manager \
-	strace \
-	ldd \
 	ethtool \
 	net-tools \
-	phosphor-logging-test \
 	lmsensors-sensors \
-	tcpdump \
 	screen \
-	gdb \
 	phosphor-ipmi-ipmb \
 	ipmitool \
-	"
+"
