@@ -1,0 +1,81 @@
+{
+    "Exposes": [
+	 {
+            "EthIndex": 0,
+            "Name": "Dedicated Management NIC",
+            "Type": "NIC"
+         },
+         {
+            "EthIndex": 1,
+            "Name": "Dedicated Managment NIC",
+            "Type": "NIC"
+         },
+	 {
+            "Address": "0x30",
+            "Bus": 0,
+            "CpuID": 1,
+            "Name": "CPU 1",
+	    "PiromI2cBus": 97,
+            "PresenceGpio": [
+                {
+                    "Name": "FM_CPU0_SKTOCC_N",
+                    "Polarity": "Low"
+                }
+            ],
+            "Type": "XeonCPU"
+        },
+        {
+            "Address": "0x31",
+            "Bus": 0,
+            "CpuID": 2,
+            "Name": "CPU 2",
+	    "PiromI2cBus": 79,
+            "PresenceGpio": [
+                {
+                    "Name": "FM_CPU1_SKTOCC_N",
+                    "Polarity": "Low"
+                }
+            ],
+            "Type": "XeonCPU"
+        },
+	{
+            "Address": "0x32",
+            "Bus": 0,
+            "CpuID": 3,
+            "Name": "CPU 3",
+	    "PiromI2cBus": 61,
+            "PresenceGpio": [
+                {
+                    "Name": "FM_CPU2_SKTOCC_N",
+                    "Polarity": "Low"
+                }
+            ],
+            "Type": "XeonCPU"
+        },
+        {
+            "Address": "0x33",
+            "Bus": 0,
+            "CpuID": 4,
+            "Name": "CPU 4",
+	    "PiromI2cBus": 66,
+            "PresenceGpio": [
+                {
+                    "Name": "FM_CPU3_SKTOCC_N",
+                    "Polarity": "Low"
+                }
+            ],
+            "Type": "XeonCPU"
+        }
+    ],
+    "Name": "IBM Genesis3 Baseboard",
+    "Probe": "TRUE",
+    "Type": "Board",
+    "ProductId": "1",
+    "xyz.openbmc_project.Inventory.Decorator.Asset": {
+        "Manufacturer": "IBM",
+        "Model": "Genesis3",
+        "PartNumber": "",
+        "SerialNumber": ""
+    }
+}
+

@@ -1,0 +1,7 @@
+{
+    "Exposes": [],
+    "Name": "IBM Genesis3 Chassis",
+    "Probe": "FOUND('IBM Genesis3 Baseboard')",
+    "Type": "Chassis"
+}
+
