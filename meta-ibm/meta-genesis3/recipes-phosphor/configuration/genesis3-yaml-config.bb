@@ -7,6 +7,7 @@ inherit allarch
 
 SRC_URI:genesis3 = " \
     file://genesis3-ipmi-fru.yaml \
+    file://genesis3-ipmi-fru-properties.yaml \
     "
 
 S = "${WORKDIR}"
@@ -14,10 +15,13 @@ S = "${WORKDIR}"
 do_install:genesis3() {
     install -m 0644 -D genesis3-ipmi-fru.yaml \
         ${D}${datadir}/${BPN}/ipmi-fru-read.yaml
+    install -m 0644 -D genesis3-ipmi-fru-properties.yaml \
+        ${D}${datadir}/${BPN}/ipmi-extra-properties.yaml
 }
 
 FILES:${PN}-dev = " \
     ${datadir}/${BPN}/ipmi-fru-read.yaml \
+    ${datadir}/${BPN}/ipmi-extra-properties.yaml \
     "
 
 ALLOW_EMPTY:${PN} = "1"

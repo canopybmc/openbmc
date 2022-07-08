@@ -67,7 +67,7 @@
             "Type": "XeonCPU"
         }
     ],
-    "Name": "IBM Genesis3 Baseboard",
+    "Name": "Baseboard",
     "Probe": "TRUE",
     "Type": "Board",
     "ProductId": "1",
