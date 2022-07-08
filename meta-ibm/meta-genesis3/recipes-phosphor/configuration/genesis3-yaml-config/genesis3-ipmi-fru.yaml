@@ -1,5 +1,5 @@
 0:
-    /xyz/openbmc_project/inventory/system/board/baseboard:
+    /system/board/Baseboard:
         entityID: 7
         entityInstance: 1
         interfaces:
@@ -27,7 +27,7 @@
                     IPMIFruProperty: Name
                     IPMIFruSection: Product
             xyz.openbmc_project.Inventory.Item.System:
-    /xyz/openbmc_project/inventory/system/board/Baseboard/bmc:
+    /system/board/Baseboard/bmc:
         entityID: 6
         entityInstance: 1
         interfaces:
@@ -55,7 +55,7 @@
                 PrettyName:
                     IPMIFruProperty: Name
                     IPMIFruSection: Board
-    /xyz/openbmc_project/inventory/system/chassis/Chassis:
+    /system/chassis/Chassis:
         entityID: 7
         entityInstance: 1
         interfaces:
@@ -69,7 +69,7 @@
                 Model:
                     IPMIFruProperty: Type
                     IPMIFruSection: Chassis
-    /xyz/openbmc_project/inventory/system/board/Baseboard/bmc/ethernet0:
+    /system/board/Baseboard/bmc/ethernet0:
         entityID: 6
         entityInstance: 1
         interfaces:
@@ -78,9 +78,9 @@
                     IPMIFruProperty: Custom Field 2
                     IPMIFruSection: Board
             xyz.openbmc_project.Inventory.Item.Ethernet:
-    /xyz/openbmc_project/inventory/system/board/Baseboard/bmc/ethernet1:
+    /system/board/Baseboard/bmc/ethernet1:
         entityID: 6
-        entityInstance: 1
+        entityInstance: 2
         interfaces:
             xyz.openbmc_project.Inventory.Item.NetworkInterface:
                 MACAddress:
