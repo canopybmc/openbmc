@@ -19,6 +19,9 @@
                 SerialNumber:
                     IPMIFruProperty: Serial Number
                     IPMIFruSection: Product
+                AssetTag:
+                    IPMIFruProperty: Asset Tag
+                    IPMIFruSection: Product
             xyz.openbmc_project.Inventory.Decorator.Revision:
                 Version:
                     IPMIFruProperty: Version
