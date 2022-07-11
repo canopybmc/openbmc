@@ -9,47 +9,39 @@ bmc_booted:
 
 power_on:
     power:
-        Action: 'Blink'
+        Action: 'On'
         DutyOn: 70
         Period: 200
 
 LED_ID_DWR_FRNT_P:
     LED_ID_DWR_FRNT_P:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
 LED_PWR_DWR_FRNT:
     LED_PWR_DWR_FRNT:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
 LED_PWR_DWR_BACK:
     LED_PWR_DWR_BACK:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
 LED_ID_DWR_BACK_P:
     LED_ID_DWR_BACK_P:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
 LED_ID_CPU0:
     LED_ID_CPU0:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
 LED_ID_CPU1:
     LED_ID_CPU1:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
 LED_ID_CPU2:
     LED_ID_CPU2:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
 LED_ID_CPU3:
     LED_ID_CPU3:
-        Action: 'Blink'
-        DutyOn: 50
-        Period: 250
+        Action: 'On'
+        Period: 1000
