@@ -4,8 +4,6 @@
 bmc_booted:
     power:
         Action: 'On'
-        DutyOn: 100
-        Period: 0
     LED_ID_DWR_FRNT_P:
         Action: 'Off'
     LED_ID_DWR_BACK_P:
@@ -14,38 +12,28 @@ bmc_booted:
 power_on:
     power:
         Action: 'On'
-        DutyOn: 70
-        Period: 200
 
 led_id_dwr:
     LED_ID_DWR_FRNT_P:
         Action: 'On'
-        Period: 1000
     LED_ID_DWR_BACK_P:
         Action: 'On'
-        Period: 1000
 
 led_pwr_dwr:
     LED_PWR_DWR_FRNT:
         Action: 'On'
-        Period: 1000
     LED_PWR_DWR_BACK:
         Action: 'On'
-        Period: 1000
 
 led_id_cpu0:
     LED_ID_CPU0:
         Action: 'On'
-        Period: 1000
 led_id_cpu1:
     LED_ID_CPU1:
         Action: 'On'
-        Period: 1000
 led_id_cpu2:
     LED_ID_CPU2:
         Action: 'On'
-        Period: 1000
 led_id_cpu3:
     LED_ID_CPU3:
         Action: 'On'
-        Period: 1000
