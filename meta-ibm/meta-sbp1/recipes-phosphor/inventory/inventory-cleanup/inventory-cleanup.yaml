@@ -1,36 +1,91 @@
 description: >
-    Mt.Jade inventory fixups
+    SBP1 inventory fixups
 
 events:
-    - name: Add Chassis interface
+    - name: Add BMC details
       description: >
-          Add the chassis interface on the chassis inventory path
+          Add the BMC inventory path
       type: startup
       actions:
           - name: createObjects
             objs:
-                /system/chassis:
-                  xyz.openbmc_project.Inventory.Item.Chassis:
-                      Type:
-                          value: "xyz.openbmc_project.Inventory.Item.Chassis.ChassisType.RackMount"
-                          type: string
-    - name: Add motherboard interface
-      description: >
-          Add the motherboard interface on the chassis inventory path
-      type: startup
-      actions:
-          - name: createObjects
-            objs:
-                /system/chassis/motherboard:
+                /system/chassis/motherboard/bmc:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
                           value: true
                           type: boolean
-                      PrettyName:
-                          value: "Gen3"
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Aspeed"
                           type: string
-                  xyz.openbmc_project.Inventory.Item.Board:
-
+                      Model:
+                          value: "AST2600"
+                          type: string
+                  xyz.openbmc_project.Inventory.Item.Bmc:
+    - name: Add CPU0
+      description: >
+          Add the CPU0 inventory path.
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/cpu0:
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Intel"
+                          type: string
+                      Model:
+                          value: "4th Generation Intel Xeon Scalable Processors"
+                          type: string
+                  xyz.openbmc_project.Inventory.Item.Cpu:
+    - name: Add CPU1
+      description: >
+          Add the CPU1 inventory path.
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/cpu1:
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Intel"
+                          type: string
+                      Model:
+                          value: "4th Generation Intel Xeon Scalable Processors"
+                          type: string
+                  xyz.openbmc_project.Inventory.Item.Cpu:
+    - name: Add CPU2
+      description: >
+          Add the CPU2 inventory path.
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/cpu2:
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Intel"
+                          type: string
+                      Model:
+                          value: "4th Generation Intel Xeon Scalable Processors"
+                          type: string
+                  xyz.openbmc_project.Inventory.Item.Cpu:
+    - name: Add CPU3
+      description: >
+          Add the CPU3 inventory path.
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/cpu3:
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Intel"
+                          type: string
+                      Model:
+                          value: "4th Generation Intel Xeon Scalable Processors"
+                          type: string
+                  xyz.openbmc_project.Inventory.Item.Cpu:
     - name: Add PSU0 interface
       description: >
           Add the power supply interface on the chassis inventory path
@@ -43,6 +98,13 @@ events:
                       Present:
                           value: true
                           type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Vicor"
+                          type: string
+                      Model:
+                          value: "BCM 6123"
+                          type: string
                   xyz.openbmc_project.Inventory.Item.PowerSupply:
   
     - name: Add PSU1 interface
@@ -57,6 +119,13 @@ events:
                       Present:
                           value: true
                           type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Vicor"
+                          type: string
+                      Model:
+                          value: "BCM 6123"
+                          type: string
                   xyz.openbmc_project.Inventory.Item.PowerSupply:
 
     - name: Add PSU2 interface
@@ -71,6 +140,13 @@ events:
                       Present:
                           value: true
                           type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Vicor"
+                          type: string
+                      Model:
+                          value: "BCM 6123"
+                          type: string
                   xyz.openbmc_project.Inventory.Item.PowerSupply:
 
     - name: Add PSU3 interface
@@ -85,5 +161,11 @@ events:
                       Present:
                           value: true
                           type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Asset:
+                      Manufacturer:
+                          value: "Vicor"
+                          type: string
+                      Model:
+                          value: "BCM 6123"
+                          type: string
                   xyz.openbmc_project.Inventory.Item.PowerSupply:
-
