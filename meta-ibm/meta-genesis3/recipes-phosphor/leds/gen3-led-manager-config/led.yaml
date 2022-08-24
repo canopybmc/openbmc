@@ -37,3 +37,106 @@ led_id_cpu2:
 led_id_cpu3:
     LED_ID_CPU3:
         Action: 'On'
+
+led_rssd01_power:
+    "rssd01:green:power" :
+        Action: 'On'
+led_rssd02_power:
+    "rssd02:green:power" :
+        Action: 'On'
+led_rssd03_power:
+    "rssd03:green:power" :
+        Action: 'On'
+led_rssd04_power:
+    "rssd04:green:power" :
+        Action: 'On'
+led_rssd05_power:
+    "rssd05:green:power" :
+        Action: 'On'
+led_rssd06_power:
+    "rssd06:green:power" :
+        Action: 'On'
+led_rssd07_power:
+    "rssd07:green:power" :
+        Action: 'On'
+led_rssd08_power:
+    "rssd08:green:power" :
+        Action: 'On'
+led_rssd09_power:
+    "rssd09:green:power" :
+        Action: 'On'
+led_rssd10_power:
+    "rssd10:green:power" :
+        Action: 'On'
+led_rssd11_power:
+    "rssd11:green:power" :
+        Action: 'On'
+led_rssd12_power:
+    "rssd12:green:power" :
+        Action: 'On'
+led_rssd13_power:
+    "rssd13:green:power" :
+        Action: 'On'
+led_rssd14_power:
+    "rssd14:green:power" :
+        Action: 'On'
+led_rssd15_power:
+    "rssd15:green:power" :
+        Action: 'On'
+led_rssd16_power:
+    "rssd16:green:power" :
+        Action: 'On'
+led_rssd17_power:
+    "rssd17:green:power" :
+        Action: 'On'
+led_rssd18_power:
+    "rssd18:green:power" :
+        Action: 'On'
+led_rssd19_power:
+    "rssd19:green:power" :
+        Action: 'On'
+led_rssd20_power:
+    "rssd20:green:power" :
+        Action: 'On'
+led_rssd21_power:
+    "rssd21:green:power" :
+        Action: 'On'
+led_rssd22_power:
+    "rssd22:green:power" :
+        Action: 'On'
+led_rssd23_power:
+    "rssd23:green:power" :
+        Action: 'On'
+led_rssd24_power:
+    "rssd24:green:power" :
+        Action: 'On'
+led_rssd25_power:
+    "rssd25:green:power" :
+        Action: 'On'
+led_rssd26_power:
+    "rssd26:green:power" :
+        Action: 'On'
+led_rssd27_power:
+    "rssd27:green:power" :
+        Action: 'On'
+led_rssd28_power:
+    "rssd28:green:power" :
+        Action: 'On'
+led_rssd29_power:
+    "rssd29:green:power" :
+        Action: 'On'
+led_rssd30_power:
+    "rssd30:green:power" :
+        Action: 'On'
+led_rssd31_power:
+    "rssd31:green:power" :
+        Action: 'On'
+led_rssd32_power:
+    "rssd32:green:power" :
+        Action: 'On'
+led_m2_ssb_ssd1_power:
+    "m2_ssb_ssd1:green:power" :
+        Action: 'On'
+led_m2_ssb_ssd2_power:
+    "m2_ssb_ssd2:green:power" :
+        Action: 'On'

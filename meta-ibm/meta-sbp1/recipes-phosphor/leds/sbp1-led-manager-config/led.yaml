@@ -360,39 +360,141 @@ led_id_rssd32:
     LED_ID_RSSD32:
         Action: 'On'
 
-id_fan_asm01:
+led_id_fan_asm01:
     LED_ID_FAN_ASM01:
         Action: 'On'
-id_fan_asm02:
+led_id_fan_asm02:
     LED_ID_FAN_ASM02:
         Action: 'On'
-id_fan_asm03:
+led_id_fan_asm03:
     LED_ID_FAN_ASM03:
         Action: 'On'
-id_fan_asm04:
+led_id_fan_asm04:
     LED_ID_FAN_ASM04:
         Action: 'On'
-id_fan_asm05:
+led_id_fan_asm05:
     LED_ID_FAN_ASM05:
         Action: 'On'
-id_fan_asm06:
+led_id_fan_asm06:
     LED_ID_FAN_ASM06:
         Action: 'On'
-id_fan_asm07:
+led_id_fan_asm07:
     LED_ID_FAN_ASM07:
         Action: 'On'
-id_fan_asm08:
+led_id_fan_asm08:
     LED_ID_FAN_ASM08:
         Action: 'On'
-id_fan_asm09:
+led_id_fan_asm09:
     LED_ID_FAN_ASM09:
         Action: 'On'
-id_fan_asm10:
+led_id_fan_asm10:
     LED_ID_FAN_ASM10:
         Action: 'On'
-id_fan_asm11:
+led_id_fan_asm11:
     LED_ID_FAN_ASM11:
         Action: 'On'
-id_fan_asm12:
+led_id_fan_asm12:
     LED_ID_FAN_ASM12:
+        Action: 'On'
+led_rssd01_power:
+    "rssd01:green:power" :
+        Action: 'On'
+led_rssd02_power:
+    "rssd02:green:power" :
+        Action: 'On'
+led_rssd03_power:
+    "rssd03:green:power" :
+        Action: 'On'
+led_rssd04_power:
+    "rssd04:green:power" :
+        Action: 'On'
+led_rssd05_power:
+    "rssd05:green:power" :
+        Action: 'On'
+led_rssd06_power:
+    "rssd06:green:power" :
+        Action: 'On'
+led_rssd07_power:
+    "rssd07:green:power" :
+        Action: 'On'
+led_rssd08_power:
+    "rssd08:green:power" :
+        Action: 'On'
+led_rssd09_power:
+    "rssd09:green:power" :
+        Action: 'On'
+led_rssd10_power:
+    "rssd10:green:power" :
+        Action: 'On'
+led_rssd11_power:
+    "rssd11:green:power" :
+        Action: 'On'
+led_rssd12_power:
+    "rssd12:green:power" :
+        Action: 'On'
+led_rssd13_power:
+    "rssd13:green:power" :
+        Action: 'On'
+led_rssd14_power:
+    "rssd14:green:power" :
+        Action: 'On'
+led_rssd15_power:
+    "rssd15:green:power" :
+        Action: 'On'
+led_rssd16_power:
+    "rssd16:green:power" :
+        Action: 'On'
+led_rssd17_power:
+    "rssd17:green:power" :
+        Action: 'On'
+led_rssd18_power:
+    "rssd18:green:power" :
+        Action: 'On'
+led_rssd19_power:
+    "rssd19:green:power" :
+        Action: 'On'
+led_rssd20_power:
+    "rssd20:green:power" :
+        Action: 'On'
+led_rssd21_power:
+    "rssd21:green:power" :
+        Action: 'On'
+led_rssd22_power:
+    "rssd22:green:power" :
+        Action: 'On'
+led_rssd23_power:
+    "rssd23:green:power" :
+        Action: 'On'
+led_rssd24_power:
+    "rssd24:green:power" :
+        Action: 'On'
+led_rssd25_power:
+    "rssd25:green:power" :
+        Action: 'On'
+led_rssd26_power:
+    "rssd26:green:power" :
+        Action: 'On'
+led_rssd27_power:
+    "rssd27:green:power" :
+        Action: 'On'
+led_rssd28_power:
+    "rssd28:green:power" :
+        Action: 'On'
+led_rssd29_power:
+    "rssd29:green:power" :
+        Action: 'On'
+led_rssd30_power:
+    "rssd30:green:power" :
+        Action: 'On'
+led_rssd31_power:
+    "rssd31:green:power" :
+        Action: 'On'
+led_rssd32_power:
+    "rssd32:green:power" :
+        Action: 'On'
+led_m2_ssb_ssd1_power:
+    "m2_ssb_ssd1:green:power" :
+        Action: 'On'
+led_m2_ssb_ssd2_power:
+    "m2_ssb_ssd2:green:power" :
         Action: 'On'
