@@ -1,9 +1,9 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-KBRANCH = "dev-5.15-33"
+KBRANCH = "dev-5.15-34"
 LINUX_VERSION = "5.15.50"
 
-SRCREV = "b271746e9ed3b22f9591242e7245f51f2520083e"
+SRCREV = "69199bc02129650dcc2aa2890aa9311d4a54b77f"
 
 KSRC = "git://github.com/9elements/linux;protocol=https;branch=${KBRANCH}"
 SRC_URI += "file://sbp1.cfg"
