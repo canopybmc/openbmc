@@ -22,9 +22,11 @@ RPROVIDES:${PN}-fans += "virtual-obmc-fan-mgmt"
 RPROVIDES:${PN}-system += "virtual-obmc-system-mgmt"
 
 SUMMARY:${PN}-chassis = "IBM Chassis"
+# phosphor-state-manager-chassis for obmcutil
 RDEPENDS:${PN}-chassis = " \
 	phosphor-post-code-manager \
 	phosphor-host-postd \
+	phosphor-state-manager-chassis \
 	"
 
 SUMMARY:${PN}-flash = "IBM Flash"
