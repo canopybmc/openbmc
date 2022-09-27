@@ -57,7 +57,6 @@ RDEPENDS:${PN}-system = " \
 	tcpdump \
 	screen \
 	gdb \
-	aspeedtech-tools \
 	phosphor-ipmi-ipmb \
 	ipmitool \
 	"
