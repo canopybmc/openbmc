@@ -123,4 +123,4 @@ ITEMS:append:genesis3 = " iio-hwmon-m2-ssb.conf"
 ITEMS:append:genesis3 = " iio-hwmon-pch-ssb.conf"
 
 ENVS = "obmc/hwmon/{0}"
-SYSTEMD_ENVIRONMENT_FILE:${PN}:append:genesis3 = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
+SYSTEMD_ENVIRONMENT_FILE:${PN}:append:sbp1 = " ${@compose_list(d, 'ENVS', 'ITEMS')}"
