@@ -169,3 +169,63 @@ events:
                           value: "BCM 6123"
                           type: string
                   xyz.openbmc_project.Inventory.Item.PowerSupply:
+
+    - name: Add NVMe M.2 interface 1
+      description: >
+          Add the M.2 NVMe interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/m2_ssd1:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.PCIeSlot:
+                      HotPluggable:
+                          value: true
+                          type: boolean
+                      Lanes:
+                          value: 4
+                          type: int
+                      SlotType:
+                          value: "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.M_2"
+                          type: string
+
+    - name: Add NVMe M.2 interface 2
+      description: >
+          Add the M.2 NVMe interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/m2_ssd2:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.PCIeSlot:
+                      HotPluggable:
+                          value: true
+                          type: boolean
+                      Lanes:
+                          value: 4
+                          type: int
+                      SlotType:
+                          value: "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.M_2"
+                          type: string
+
+    - name: Add RTC battery
+      description: >
+          Add the RTC interface on the chassis inventory path
+      type: startup
+      actions:
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/rtc_bat:
+                  xyz.openbmc_project.Inventory.Item:
+                      Present:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.Battery:
