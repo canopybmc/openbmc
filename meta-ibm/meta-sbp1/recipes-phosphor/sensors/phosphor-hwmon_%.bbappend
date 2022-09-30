@@ -1,6 +1,6 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-EXTRA_OEMESON:append:genesis3 = " \
+EXTRA_OEMESON:append:sbp1 = " \
   -Dupdate-functional-on-fail=true \
   -Dnegative-errno-on-fail=false \
 "
