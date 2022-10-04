@@ -183,15 +183,6 @@ events:
                           value: true
                           type: boolean
                   xyz.openbmc_project.Inventory.Item.PCIeSlot:
-                      HotPluggable:
-                          value: true
-                          type: boolean
-                      Lanes:
-                          value: 4
-                          type: int
-                      SlotType:
-                          value: "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.M_2"
-                          type: string
 
     - name: Add NVMe M.2 interface 2
       description: >
@@ -206,15 +197,6 @@ events:
                           value: true
                           type: boolean
                   xyz.openbmc_project.Inventory.Item.PCIeSlot:
-                      HotPluggable:
-                          value: true
-                          type: boolean
-                      Lanes:
-                          value: 4
-                          type: int
-                      SlotType:
-                          value: "xyz.openbmc_project.Inventory.Item.PCIeSlot.SlotTypes.M_2"
-                          type: string
 
     - name: Add RTC battery
       description: >
