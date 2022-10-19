@@ -1,0 +1,183 @@
+diff --git a/include/Utils.hpp b/include/Utils.hpp
+index 0a89d13a..bc890b01 100644
+--- a/include/Utils.hpp
++++ b/include/Utils.hpp
+@@ -284,6 +284,7 @@ struct GetSensorConfiguration :
+                 {
+                     if (objDict.empty())
+                     {
++                        std::cerr << "Empty return\n";
+                         return;
+                     }
+                     const std::string& owner = objDict.begin()->first;
+diff --git a/src/CPUSensorMain.cpp b/src/CPUSensorMain.cpp
+index 4f377aaa..2aba81b8 100644
+--- a/src/CPUSensorMain.cpp
++++ b/src/CPUSensorMain.cpp
+@@ -51,7 +51,7 @@ extern "C" {
+ #endif
+ // clang-format on
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ boost::container::flat_map<std::string, std::shared_ptr<CPUSensor>> gCpuSensors;
+ boost::container::flat_map<std::string,
+diff --git a/src/ChassisIntrusionSensor.cpp b/src/ChassisIntrusionSensor.cpp
+index 9b35da20..5f13f97c 100644
+--- a/src/ChassisIntrusionSensor.cpp
++++ b/src/ChassisIntrusionSensor.cpp
+@@ -36,7 +36,7 @@ extern "C"
+ #include <linux/i2c-dev.h>
+ }
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ static constexpr unsigned int intrusionSensorPollSec = 1;
+ 
+diff --git a/src/ExitAirTempSensor.cpp b/src/ExitAirTempSensor.cpp
+index 58f74682..5c095b25 100644
+--- a/src/ExitAirTempSensor.cpp
++++ b/src/ExitAirTempSensor.cpp
+@@ -50,7 +50,7 @@ constexpr const char* settingsDaemon = "xyz.openbmc_project.Settings";
+ constexpr const char* cfmSettingPath = "/xyz/openbmc_project/control/cfm_limit";
+ constexpr const char* cfmSettingIface = "xyz.openbmc_project.Control.CFMLimit";
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ static constexpr double cfmMaxReading = 255;
+ static constexpr double cfmMinReading = 0;
+diff --git a/src/ExternalSensor.cpp b/src/ExternalSensor.cpp
+index 5fba9b48..634e2253 100644
+--- a/src/ExternalSensor.cpp
++++ b/src/ExternalSensor.cpp
+@@ -17,7 +17,7 @@
+ #include <string>
+ #include <vector>
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ ExternalSensor::ExternalSensor(
+     const std::string& objectType, sdbusplus::asio::object_server& objectServer,
+diff --git a/src/ExternalSensorMain.cpp b/src/ExternalSensorMain.cpp
+index 477a4c6f..53f9230f 100644
+--- a/src/ExternalSensorMain.cpp
++++ b/src/ExternalSensorMain.cpp
+@@ -50,7 +50,7 @@
+ // https://gerrit.openbmc-project.xyz/c/openbmc/docs/+/41452
+ // https://github.com/openbmc/docs/tree/master/designs/
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ static const char* sensorType =
+     "xyz.openbmc_project.Configuration.ExternalSensor";
+diff --git a/src/IntrusionSensorMain.cpp b/src/IntrusionSensorMain.cpp
+index bed66752..848cd1cf 100644
+--- a/src/IntrusionSensorMain.cpp
++++ b/src/IntrusionSensorMain.cpp
+@@ -42,7 +42,7 @@
+ #include <utility>
+ #include <vector>
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ static constexpr const char* sensorType =
+     "xyz.openbmc_project.Configuration.ChassisIntrusionSensor";
+diff --git a/src/IpmbSensor.cpp b/src/IpmbSensor.cpp
+index c5699974..1541be91 100644
+--- a/src/IpmbSensor.cpp
++++ b/src/IpmbSensor.cpp
+@@ -35,7 +35,7 @@
+ #include <variant>
+ #include <vector>
+ 
+-constexpr const bool debug = false;
++constexpr const bool debug = true;
+ 
+ constexpr const char* configInterface =
+     "xyz.openbmc_project.Configuration.IpmbSensor";
+diff --git a/src/MCUTempSensor.cpp b/src/MCUTempSensor.cpp
+index 4653bc86..0b646b23 100644
+--- a/src/MCUTempSensor.cpp
++++ b/src/MCUTempSensor.cpp
+@@ -38,7 +38,7 @@ extern "C"
+ #include <linux/i2c-dev.h>
+ }
+ 
+-constexpr const bool debug = false;
++constexpr const bool debug = true;
+ 
+ constexpr const char* configInterface =
+     "xyz.openbmc_project.Configuration.MCUTempSensor";
+diff --git a/src/PSUSensor.cpp b/src/PSUSensor.cpp
+index bbc0d2f0..1df2c903 100644
+--- a/src/PSUSensor.cpp
++++ b/src/PSUSensor.cpp
+@@ -33,7 +33,7 @@
+ 
+ static constexpr const char* sensorPathPrefix = "/xyz/openbmc_project/sensors/";
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ PSUSensor::PSUSensor(const std::string& path, const std::string& objectType,
+                      sdbusplus::asio::object_server& objectServer,
+diff --git a/src/PSUSensorMain.cpp b/src/PSUSensorMain.cpp
+index 7ca5d3d3..712e4bb1 100644
+--- a/src/PSUSensorMain.cpp
++++ b/src/PSUSensorMain.cpp
+@@ -38,7 +38,7 @@
+ #include <variant>
+ #include <vector>
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ 
+ static constexpr auto sensorTypes{std::to_array<const char*>(
+     {"xyz.openbmc_project.Configuration.ADM1266",
+@@ -73,7 +73,12 @@ static constexpr auto sensorTypes{std::to_array<const char*>(
+      "xyz.openbmc_project.Configuration.RAA229004",
+      "xyz.openbmc_project.Configuration.RAA229126",
+      "xyz.openbmc_project.Configuration.TPS546D24",
+-     "xyz.openbmc_project.Configuration.XDPE12284"})};
++     "xyz.openbmc_project.Configuration.XDPE12284",
++     "xyz.openbmc_project.Configuration.ir38060",
++     "xyz.openbmc_project.Configuration.ir38164",
++     "xyz.openbmc_project.Configuration.ir38263",
++     "xyz.openbmc_project.Configuration.pli1209bc",
++     "xyz.openbmc_project.Configuration.xdpe11280"})};
+ 
+ // clang-format off
+ static constexpr auto pmbusNames{std::to_array<const char*>({
+@@ -109,7 +114,12 @@ static constexpr auto pmbusNames{std::to_array<const char*>({
+     "raa229004",
+     "raa229126",
+     "tps546d24",
+-    "xdpe12284"
++    "xdpe12284",
++    "ir38060",
++    "ir38164",
++    "ir38263",
++    "pli1209bc",
++    "xdpe11280"
+ })};
+ //clang-format on
+ 
+diff --git a/src/Thresholds.cpp b/src/Thresholds.cpp
+index 5fa82aa7..7499a94f 100644
+--- a/src/Thresholds.cpp
++++ b/src/Thresholds.cpp
+@@ -16,7 +16,7 @@
+ #include <variant>
+ #include <vector>
+ 
+-static constexpr bool debug = false;
++static constexpr bool debug = true;
+ namespace thresholds
+ {
+ Level findThresholdLevel(uint8_t sev)

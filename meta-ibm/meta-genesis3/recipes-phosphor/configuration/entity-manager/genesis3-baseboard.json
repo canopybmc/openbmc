@@ -1,81 +1,1659 @@
 {
     "Exposes": [
-	 {
-            "EthIndex": 0,
-            "Name": "Dedicated Management NIC",
-            "Type": "NIC"
-         },
-         {
-            "EthIndex": 1,
-            "Name": "Dedicated Managment NIC",
-            "Type": "NIC"
-         },
-	 {
-            "Address": "0x30",
-            "Bus": 0,
-            "CpuID": 1,
-            "Name": "CPU 1",
-	    "PiromI2cBus": 97,
-            "PresenceGpio": [
+        {
+            "Address": "0x40",
+            "Bus": 103,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "PVCCIO_CPU3",
+            "PowerState": "On",
+            "Thresholds": [
                 {
-                    "Name": "FM_CPU0_SKTOCC_N",
-                    "Polarity": "Low"
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 40.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.101,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.898
                 }
             ],
-            "Type": "XeonCPU"
+            "Type": "ir38164"
         },
         {
-            "Address": "0x31",
-            "Bus": 0,
-            "CpuID": 2,
-            "Name": "CPU 2",
-	    "PiromI2cBus": 79,
-            "PresenceGpio": [
+            "Address": "0x40",
+            "Bus": 31,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "P5V_AUX",
+            "PowerState": "Always",
+            "Thresholds": [
                 {
-                    "Name": "FM_CPU1_SKTOCC_N",
-                    "Polarity": "Low"
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 16.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 5.3,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 4.5
                 }
             ],
-            "Type": "XeonCPU"
-        },
-	{
-            "Address": "0x32",
-            "Bus": 0,
-            "CpuID": 3,
-            "Name": "CPU 3",
-	    "PiromI2cBus": 61,
-            "PresenceGpio": [
-                {
-                    "Name": "FM_CPU2_SKTOCC_N",
-                    "Polarity": "Low"
-                }
-            ],
-            "Type": "XeonCPU"
+            "Type": "ir38263"
         },
         {
-            "Address": "0x33",
-            "Bus": 0,
-            "CpuID": 4,
-            "Name": "CPU 4",
-	    "PiromI2cBus": 66,
-            "PresenceGpio": [
+            "Address": "0x40",
+            "Bus": 32,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "P3V3_AUX",
+            "PowerState": "Always",
+            "Thresholds": [
                 {
-                    "Name": "FM_CPU3_SKTOCC_N",
-                    "Polarity": "Low"
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 24.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 3.699,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 2.8
                 }
             ],
-            "Type": "XeonCPU"
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 40,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "PVCORE_NIC2",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 20.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.3,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.679
+                }
+            ],
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 41,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "PVCORE_NIC1",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 20.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.3,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.679
+                }
+            ],
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 43,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "P3V3_NIC",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 16.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 3.699,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 2.8
+                }
+            ],
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 44,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "P1V2_NIC",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 16.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.351,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.5
+                }
+            ],
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 45,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "P1V8_NIC",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 32.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.5
+                }
+            ],
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 54,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "PVNN_AUX",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 28.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.3,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.679
+                }
+            ],
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 55,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "P1V05_AUX",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 24.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.351,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.5
+                }
+            ],
+            "Type": "ir38263"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 56,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "P1V8_AUX",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 6.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.101,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.5
+                }
+            ],
+            "Type": "ir38060"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 63,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "PVCCIO_CPU2",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 40.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.101,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.898
+                }
+            ],
+            "Type": "ir38164"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 71,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "PVCCIO_CPU1",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 40.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.101,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.898
+                }
+            ],
+            "Type": "ir38164"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 88,
+            "Labels": [
+                "iout1",
+                "vin",
+                "vout1",
+                "pout1"
+            ],
+            "Name": "PVCCIO_CPU0",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 40.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.101,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.898
+                }
+            ],
+            "Type": "ir38164"
+        },
+        {
+            "Address": "0x5f",
+            "Bus": 34,
+            "Labels": [
+                "iin2",
+                "iout2",
+                "vin2",
+                "vout2",
+                "pin2",
+                "pout2"
+            ],
+            "Name": "P12V_X",
+            "Name1": "P12V_A",
+            "PowerState": "Always",
+            "Type": "pli1209bc"
+        },
+        {
+            "Address": "0x5f",
+            "Bus": 35,
+            "Labels": [
+                "iin2",
+                "iout2",
+                "vin2",
+                "vout2",
+                "pin2",
+                "pout2"
+            ],
+            "Name": "P12V_XB",
+            "Name1": "P12V_B",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 10.0,
+                    "Severity": 1
+                }
+            ],
+            "Type": "pli1209bc"
+        },
+        {
+            "Address": "0x5f",
+            "Bus": 36,
+            "Labels": [
+                "iin2",
+                "iout2",
+                "vin2",
+                "vout2",
+                "pin2",
+                "pout2"
+            ],
+            "Name": "P12V_XC",
+            "Name1": "P12V_C",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 10.0,
+                    "Severity": 1
+                }
+            ],
+            "Type": "pli1209bc"
+        },
+        {
+            "Address": "0x5f",
+            "Bus": 37,
+            "Labels": [
+                "iin2",
+                "iout2",
+                "vin2",
+                "vout2",
+                "pin2",
+                "pout2"
+            ],
+            "Name": "P12V_XD",
+            "Name1": "P12V_D",
+            "PowerState": "On",
+            "Type": "pli1209bc"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 104,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_UVW_CPU3",
+            "Name1": "PVPP_UVW_CPU3",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 106,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVCCIN_CPU3",
+            "Name1": "PVCCSA_CPU3",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 440.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 14.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 13.812,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.6904
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 107,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_XYZ_CPU3",
+            "Name1": "PVPP_XYZ_CPU3",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 64,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVCCIN_CPU2",
+            "Name1": "PVCCSA_CPU2",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 440.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 14.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 13.812,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.0164,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.6776
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 65,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_NPQ_CPU2",
+            "Name1": "PVPP_NPQ_CPU2",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 66,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_RST_CPU2",
+            "Name1": "PVPP_RST_CPU2",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 75,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_KLM_CPU1",
+            "Name1": "PVPP_KLM_CPU1",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 76,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVCCIN_CPU1",
+            "Name1": "PVCCSA_CPU1",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 440.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 14.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 13.812,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.6904
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 77,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_GHJ_CPU1",
+            "Name1": "PVPP_GHJ_CPU1",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 89,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVCCIN_CPU0",
+            "Name1": "PVCCSA_CPU0",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 440.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 14.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 13.812,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 2.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.002,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 0.668
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 90,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_DEF_CPU0",
+            "Name1": "PVPP_DEF_CPU0",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
+        },
+        {
+            "Address": "0x40",
+            "Bus": 91,
+            "Labels": [
+                "iin1",
+                "iin2",
+                "iout1",
+                "iout2",
+                "vin1",
+                "vin2",
+                "vout1",
+                "vout2",
+                "pin1",
+                "pin2",
+                "pout1",
+                "pout2"
+            ],
+            "Name": "PVDDQ_ABC_CPU0",
+            "Name1": "PVPP_ABC_CPU0",
+            "PowerState": "On",
+            "Thresholds": [
+                {
+                    "Direction": "greater than",
+                    "Label": "iout1",
+                    "Name": "upper critical",
+                    "Value": 102.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "iout2",
+                    "Name": "upper critical",
+                    "Value": 12.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin1",
+                    "Name": "upper critical",
+                    "Value": 15.0,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vin2",
+                    "Name": "upper critical",
+                    "Value": 14.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout1",
+                    "Name": "upper critical",
+                    "Value": 1.25,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout1",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.148
+                },
+                {
+                    "Direction": "greater than",
+                    "Label": "vout2",
+                    "Name": "upper critical",
+                    "Value": 1.5,
+                    "Severity": 1
+                },
+                {
+                    "Direction": "less than",
+                    "Label": "vout2",
+                    "Name": "lower critical",
+                    "Severity": 0,
+                    "Value": 1.0
+                }
+            ],
+            "Type": "xdpe11280"
         }
     ],
     "Name": "Baseboard",
-    "Probe": "TRUE",
+    "Probe": "xyz.openbmc_project.FruDevice({'PRODUCT_PRODUCT_NAME': '.*Genesis3'})",
     "Type": "Board",
     "ProductId": "1",
     "xyz.openbmc_project.Inventory.Decorator.Asset": {
-        "Manufacturer": "IBM",
-        "Model": "Genesis3",
-        "PartNumber": "",
-        "SerialNumber": ""
+    "Manufacturer": "$PRODUCT_MANUFACTURER",
+    "Model": "$PRODUCT_PRODUCT_NAME",
+    "PartNumber": "$PRODUCT_PART_NUMBER",
+    "SerialNumber": "Naresh0007"
     }
 }
 
