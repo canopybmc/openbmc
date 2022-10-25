@@ -59,4 +59,5 @@ RDEPENDS:${PN}-system = " \
 	gdb \
 	phosphor-ipmi-ipmb \
 	ipmitool \
+	asd \
 	"
