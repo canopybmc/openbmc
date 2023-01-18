@@ -135,8 +135,8 @@ led_rssd32_power:
     rssd32_power_green :
         Action: 'On'
 led_m2_ssb_ssd1_power:
-    m2_ssb_ssd1_green_power:
+    m2_ssb_ssd1_power_green:
         Action: 'On'
 led_m2_ssb_ssd2_power:
-    m2_ssb_ssd2_green_power:
+    m2_ssb_ssd2_power_green:
         Action: 'On'

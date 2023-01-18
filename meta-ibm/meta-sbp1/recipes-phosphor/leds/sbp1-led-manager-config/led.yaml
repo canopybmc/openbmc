@@ -397,104 +397,104 @@ led_id_fan_asm12:
     LED_ID_FAN_ASM12:
         Action: 'On'
 led_rssd01_power:
-    rssd01_green_power:
+    rssd01_power_green:
         Action: 'On'
 led_rssd02_power:
-    rssd02_green_power:
+    rssd02_power_green:
         Action: 'On'
 led_rssd03_power:
-    rssd03_green_power:
+    rssd03_power_green:
         Action: 'On'
 led_rssd04_power:
-    rssd04_green_power:
+    rssd04_power_green:
         Action: 'On'
 led_rssd05_power:
-    rssd05_green_power:
+    rssd05_power_green:
         Action: 'On'
 led_rssd06_power:
-    rssd06_green_power:
+    rssd06_power_green:
         Action: 'On'
 led_rssd07_power:
-    rssd07_green_power:
+    rssd07_power_green:
         Action: 'On'
 led_rssd08_power:
-   rssd08_green_power:
+   rssd08_power_green:
         Action: 'On'
 led_rssd09_power:
-    rssd09_green_power:
+    rssd09_power_green:
         Action: 'On'
 led_rssd10_power:
-    rssd10_green_power:
+    rssd10_power_green:
         Action: 'On'
 led_rssd11_power:
-    rssd11_green_power:
+    rssd11_power_green:
         Action: 'On'
 led_rssd12_power:
-    rssd12_green_power:
+    rssd12_power_green:
         Action: 'On'
 led_rssd13_power:
-    rssd13_green_power:
+    rssd13_power_green:
         Action: 'On'
 led_rssd14_power:
-    rssd14_green_power:
+    rssd14_power_green:
         Action: 'On'
 led_rssd15_power:
-    rssd15_green_power:
+    rssd15_power_green:
         Action: 'On'
 led_rssd16_power:
-    rssd16_green_power:
+    rssd16_power_green:
         Action: 'On'
 led_rssd17_power:
-    rssd17_green_power:
+    rssd17_power_green:
         Action: 'On'
 led_rssd18_power:
-    rssd18_green_power:
+    rssd18_power_green:
         Action: 'On'
 led_rssd19_power:
-    rssd19_green_power:
+    rssd19_power_green:
         Action: 'On'
 led_rssd20_power:
-    rssd20_green_power:
+    rssd20_power_green:
         Action: 'On'
 led_rssd21_power:
-    rssd21_green_power:
+    rssd21_power_green:
         Action: 'On'
 led_rssd22_power:
-    rssd22_green_power:
+    rssd22_power_green:
         Action: 'On'
 led_rssd23_power:
-    rssd23_green_power:
+    rssd23_power_green:
         Action: 'On'
 led_rssd24_power:
-    rssd24_green_power:
+    rssd24_power_green:
         Action: 'On'
 led_rssd25_power:
-    rssd25_green_power:
+    rssd25_power_green:
         Action: 'On'
 led_rssd26_power:
-    rssd26_green_power:
+    rssd26_power_green:
         Action: 'On'
 led_rssd27_power:
-    rssd27_green_power:
+    rssd27_power_green:
         Action: 'On'
 led_rssd28_power:
-    rssd28_green_power:
+    rssd28_power_green:
         Action: 'On'
 led_rssd29_power:
-    rssd29_green_power:
+    rssd29_power_green:
         Action: 'On'
 led_rssd30_power:
-    rssd30_green_power:
+    rssd30_power_green:
         Action: 'On'
 led_rssd31_power:
-    rssd31_green_power:
+    rssd31_power_green:
         Action: 'On'
 led_rssd32_power:
-    rssd32_green_power:
+    rssd32_power_green:
         Action: 'On'
 led_m2_ssb_ssd1_power:
-    m2_ssb_ssd1_green_power:
+    m2_ssb_ssd1_power_green:
         Action: 'On'
 led_m2_ssb_ssd2_power:
-    m2_ssb_ssd2_green_power:
+    m2_ssb_ssd2_power_green:
         Action: 'On'
