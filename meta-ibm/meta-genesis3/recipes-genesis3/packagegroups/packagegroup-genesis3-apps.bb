@@ -26,6 +26,8 @@ RDEPENDS:${PN}-chassis = " \
 	phosphor-post-code-manager \
 	phosphor-host-postd \
 	phosphor-state-manager-chassis \
+	i2c-tools-misc \
+	phosphor-gpio-monitor-monitor \
 	"
 
 SUMMARY:${PN}-flash = "IBM Flash"

@@ -1,0 +1,8 @@
+[Unit]
+Description=Presence GPIO event
+Wants=mapper-wait@-xyz-openbmc_project-inventory.service
+After=mapper-wait@-xyz-openbmc_project-inventory.service
+
+[Service]
+Restart=no
+ExecStart=/usr/bin/env dbus-object-presence.sh %I
