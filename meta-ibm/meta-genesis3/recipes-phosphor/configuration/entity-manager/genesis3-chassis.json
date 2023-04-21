@@ -14,17 +14,11 @@
             "PowerState": "Always",
             "BindConnector": "Fan01 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_01_Con",
-                "Pwm": 0,
-                "PwmName": "Fan01_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
                 "PinName": "PLUG_DETECT_FAN_ASM01"
             },
-            "Type": "I2CFan"
-
+	    "Type": "I2CFan"
           },
           {
             "Class": "fan",
@@ -61,17 +55,7 @@
             "PowerState": "Always",
             "BindConnector": "Fan02 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_02_Con",
-                "Pwm": 0,
-                "PwmName": "Fan02_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM02"
-            },
             "Type": "I2CFan"
-
           },
           {
             "Class": "fan",
@@ -108,14 +92,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan03 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_03_Con",
-                "Pwm": 0,
-                "PwmName": "Fan03_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM03"
+                "PinName": "PLUG_DETECT_FAN_ASM02"
             },
             "Type": "I2CFan"
           },
@@ -154,15 +133,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan04 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_04_Con",
-                "Pwm": 0,
-                "PwmName": "Fan04_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM04"
-            },
             "Type": "I2CFan"
           },
           {
@@ -200,14 +170,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan05 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_05_Con",
-                "Pwm": 0,
-                "PwmName": "Fan05_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM05"
+                "PinName": "PLUG_DETECT_FAN_ASM03"
             },
             "Type": "I2CFan"
           },
@@ -246,15 +211,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan06 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_06_Con",
-                "Pwm": 0,
-                "PwmName": "Fan06_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM06"
-            },
             "Type": "I2CFan"
           },
           {
@@ -292,14 +248,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan07 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_07_Con",
-                "Pwm": 0,
-                "PwmName": "Fan07_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM07"
+                "PinName": "PLUG_DETECT_FAN_ASM04"
             },
             "Type": "I2CFan"
           },
@@ -343,10 +294,6 @@
                 "Pwm": 0,
                 "PwmName": "Fan08_Pwm"
             },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM08"
-            },
             "Type": "I2CFan"
           },
           {
@@ -384,14 +331,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan09 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_09_Con",
-                "Pwm": 0,
-                "PwmName": "Fan09_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM09"
+                "PinName": "PLUG_DETECT_FAN_ASM05"
             },
             "Type": "I2CFan"
           },
@@ -430,15 +372,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan10 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_10_Con",
-                "Pwm": 0,
-                "PwmName": "Fan10_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM10"
-            },
             "Type": "I2CFan"
           },
           {
@@ -476,14 +409,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan11 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_11_Con",
-                "Pwm": 0,
-                "PwmName": "Fan11_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM11"
+                "PinName": "PLUG_DETECT_FAN_ASM06"
             },
             "Type": "I2CFan"
           },
@@ -522,15 +450,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan12 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_12_Con",
-                "Pwm": 0,
-                "PwmName": "Fan12_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM12"
-            },
             "Type": "I2CFan"
           },
           {
@@ -568,14 +487,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan13 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_13_Con",
-                "Pwm": 0,
-                "PwmName": "Fan13_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM13"
+                "PinName": "PLUG_DETECT_FAN_ASM07"
             },
             "Type": "I2CFan"
           },
@@ -614,15 +528,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan14 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_14_Con",
-                "Pwm": 0,
-                "PwmName": "Fan14_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM14"
-            },
             "Type": "I2CFan"
           },
           {
@@ -660,14 +565,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan15 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_15_Con",
-                "Pwm": 0,
-                "PwmName": "Fan15_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM15"
+                "PinName": "PLUG_DETECT_FAN_ASM08"
             },
             "Type": "I2CFan"
           },
@@ -706,15 +606,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan16 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_16_Con",
-                "Pwm": 0,
-                "PwmName": "Fan16_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM16"
-            },
             "Type": "I2CFan"
           },
           {
@@ -752,14 +643,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan17 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_17_Con",
-                "Pwm": 0,
-                "PwmName": "Fan17_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM17"
+                "PinName": "PLUG_DETECT_FAN_ASM09"
             },
             "Type": "I2CFan"
           },
@@ -798,15 +684,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan18 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_18_Con",
-                "Pwm": 0,
-                "PwmName": "Fan18_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM18"
-            },
             "Type": "I2CFan"
           },
           {
@@ -844,14 +721,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan19 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_19_Con",
-                "Pwm": 0,
-                "PwmName": "Fan19_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM19"
+                "PinName": "PLUG_DETECT_FAN_ASM10"
             },
             "Type": "I2CFan"
           },
@@ -890,15 +762,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan20 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_20_Con",
-                "Pwm": 0,
-                "PwmName": "Fan20_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM20"
-            },
             "Type": "I2CFan"
           },
           {
@@ -936,14 +799,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan21 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_21_Con",
-                "Pwm": 0,
-                "PwmName": "Fan21_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM21"
+                "PinName": "PLUG_DETECT_FAN_ASM11"
             },
             "Type": "I2CFan"
           },
@@ -982,15 +840,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan22 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_22_Con",
-                "Pwm": 0,
-                "PwmName": "Fan22_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM22"
-            },
             "Type": "I2CFan"
           },
           {
@@ -1028,14 +877,9 @@
             "PowerState": "Always",
             "BindConnector": "Fan23 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_23_Con",
-                "Pwm": 0,
-                "PwmName": "Fan23_Pwm"
-            },
             "Presence": {
                 "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM23"
+                "PinName": "PLUG_DETECT_FAN_ASM12"
             },
             "Type": "I2CFan"
           },
@@ -1074,15 +918,6 @@
             "PowerState": "Always",
             "BindConnector": "Fan24 connector",
             "MaxReading": 0,
-            "Connector": {
-                "Name": "MAX6639_24_Con",
-                "Pwm": 0,
-                "PwmName": "Fan24_Pwm"
-            },
-            "Presence": {
-                "Polarity": "Low",
-                "PinName": "PLUG_DETECT_FAN_ASM24"
-            },
             "Type": "I2CFan"
           },
           {
