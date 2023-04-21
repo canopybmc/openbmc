@@ -4,6 +4,7 @@ SRC_URI:append:genesis3 = " \
     file://blacklist.json \
     file://genesis3-baseboard.json \
     file://genesis3-chassis.json \
+    file://genesis3-psu.json \
     "
 
 do_install:append:genesis3 () {
@@ -12,4 +13,5 @@ do_install:append:genesis3 () {
     install -d ${D}/usr/share/entity-manager/configurations
     install -m 0444 ${WORKDIR}/genesis3-baseboard.json ${D}/usr/share/entity-manager/configurations
     install -m 0444 ${WORKDIR}/genesis3-chassis.json ${D}/usr/share/entity-manager/configurations
+    install -m 0444 ${WORKDIR}/genesis3-psu.json ${D}/usr/share/entity-manager/configurations
 }
