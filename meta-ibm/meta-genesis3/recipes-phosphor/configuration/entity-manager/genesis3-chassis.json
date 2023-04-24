@@ -976,7 +976,7 @@
             "Type": "Pid"
           }
     ],
-    "Name": "Chassis",
+    "Name": "IBM Genesis3 Chassis",
     "Probe": "xyz.openbmc_project.FruDevice({'BOARD_PRODUCT_NAME': '.*Genesis3'})",
     "xyz.openbmc_project.Inventory.Decorator.Asset": {
         "Manufacturer": "$PRODUCT_MANUFACTURER",
