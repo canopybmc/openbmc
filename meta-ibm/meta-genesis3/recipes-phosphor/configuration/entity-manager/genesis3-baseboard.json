@@ -2,169 +2,169 @@
     "Exposes": [
         {
             "Name": "Fan01 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan01_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan01_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan02 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan02_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan02_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan03 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan03_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan03_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan04 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan04_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan04_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan05 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan05_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan05_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan06 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan06_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan06_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan07 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan07_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan07_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan08 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan08_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan08_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan09 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan09_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan09_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan10 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan10_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan10_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan11 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan11_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan11_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan12 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan12_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan12_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan13 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan13_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan13_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan14 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan14_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan14_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan15 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan15_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan15_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan16 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan16_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan16_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan17 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan17_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan17_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan18 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan18_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan18_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan19 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan19_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan19_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan20 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan20_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan20_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan21 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan21_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan21_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan22 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan22_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan22_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan23 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan23_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan23_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
         {
             "Name": "Fan24 connector",
-	    "Pwm": 0,
-	    "PwmName": "Fan24_Pwm",
+            "Pwm": 0,
+            "PwmName": "Fan24_Pwm",
             "Status": "disabled",
             "Type": "FanConnector"
         },
