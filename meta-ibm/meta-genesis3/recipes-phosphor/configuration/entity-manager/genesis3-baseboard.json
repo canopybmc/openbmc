@@ -217,7 +217,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38164"
+            "Type": "ir38164",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -268,7 +269,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -319,7 +321,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -370,7 +373,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -421,7 +425,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -472,7 +477,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -523,7 +529,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -574,7 +581,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -625,7 +633,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -676,7 +685,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38263"
+            "Type": "ir38263",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -727,7 +737,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38060"
+            "Type": "ir38060",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -778,7 +789,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38164"
+            "Type": "ir38164",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -829,7 +841,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38164"
+            "Type": "ir38164",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -880,7 +893,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "ir38164"
+            "Type": "ir38164",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -976,7 +990,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1072,7 +1087,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1168,7 +1184,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1264,7 +1281,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1360,7 +1378,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1456,7 +1475,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1552,7 +1572,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1648,7 +1669,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1744,7 +1766,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1840,7 +1863,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -1936,7 +1960,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "Address": "0x40",
@@ -2032,7 +2057,8 @@
                     "Severity": 1
                 }
             ],
-            "Type": "xdpe11280"
+            "Type": "xdpe11280",
+            "xyz.openbmc_project.Inventory.Item.Vrm" : {}
         },
         {
             "EthIndex": 0,
@@ -2040,7 +2066,8 @@
             "Type": "NIC",
             "xyz.openbmc_project.Inventory.Item.NetworkInterface" : {
               "MACAddress": "$BOARD_INFO_AM2"
-            }
+            },
+            "xyz.openbmc_project.Inventory.Item.Ethernet" : {}
         },
         {
             "EthIndex": 1,
@@ -2048,7 +2075,8 @@
             "Type": "NIC",
             "xyz.openbmc_project.Inventory.Item.NetworkInterface" : {
               "MACAddress": "$BOARD_INFO_AM3"
-            }
+            },
+            "xyz.openbmc_project.Inventory.Item.Ethernet" : {}
         },
         {
             "Index": 0,
@@ -2097,5 +2125,6 @@
     },
     "xyz.openbmc_project.Inventory.Decorator.AssetTag": {
         "AssetTag": "$PRODUCT_ASSET_TAG"
-    }
+    },
+    "xyz.openbmc_project.Inventory.Item.System": {}
 }

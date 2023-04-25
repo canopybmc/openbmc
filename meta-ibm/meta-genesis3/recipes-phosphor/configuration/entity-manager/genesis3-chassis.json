@@ -18,7 +18,12 @@
                 "Polarity": "Low",
                 "PinName": "PLUG_DETECT_FAN_ASM01"
             },
-	    "Type": "I2CFan"
+            "Type": "I2CFan",
+            "xyz.openbmc_project.Inventory.Decorator.Asset": {
+                "Manufacturer": "Sanyo Denki",
+                "Model": "San Ace 40",
+                "PartNumber": "9CRJ0412P5J001"
+            }
           },
           {
             "Class": "fan",
@@ -972,25 +977,17 @@
             "SlewPos": 0,
             "Zones": [
                 "PSU"
-            ],      
+            ],
             "Type": "Pid"
           }
     ],
-    "Name": "IBM Genesis3 Chassis",
+    "Name": "chassis",
     "Probe": "xyz.openbmc_project.FruDevice({'BOARD_PRODUCT_NAME': '.*Genesis3'})",
     "xyz.openbmc_project.Inventory.Decorator.Asset": {
         "Manufacturer": "$PRODUCT_MANUFACTURER",
         "Model": "$PRODUCT_PRODUCT_NAME",
         "PartNumber": "$CHASSIS_PART_NUMBER",
         "SerialNumber": "$CHASSIS_SERIAL_NUMBER"
-    },
-    "xyz.openbmc_project.Association": {
-        "powered_by": [
-		"/xyz/openbmc_project/inventory/system/powersupply/Vicor_BCM_6123_750W__1",
-		"/xyz/openbmc_project/inventory/system/powersupply/Vicor_BCM_6123_750W__2",
-		"/xyz/openbmc_project/inventory/system/powersupply/Vicor_BCM_6123_750W__3",
-		"/xyz/openbmc_project/inventory/system/powersupply/Vicor_BCM_6123_750W__4"
-	]
     },
     "Type": "Chassis"
 }
