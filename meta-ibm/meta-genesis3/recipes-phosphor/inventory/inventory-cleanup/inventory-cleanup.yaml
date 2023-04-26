@@ -42,6 +42,9 @@ events:
                       PrettyName:
                           value: "DIMM A0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_A0"
@@ -61,6 +64,9 @@ events:
                       PrettyName:
                           value: "DIMM A1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_A1"
@@ -80,6 +86,9 @@ events:
                       PrettyName:
                           value: "DIMM B0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_B0"
@@ -99,6 +108,9 @@ events:
                       PrettyName:
                           value: "DIMM B1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_B1"
@@ -118,6 +130,9 @@ events:
                       PrettyName:
                           value: "DIMM C0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_C0"
@@ -137,6 +152,9 @@ events:
                       PrettyName:
                           value: "DIMM C1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_C1"
@@ -156,6 +174,9 @@ events:
                       PrettyName:
                           value: "DIMM D0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_D0"
@@ -175,6 +196,9 @@ events:
                       PrettyName:
                           value: "DIMM D1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_D1"
@@ -194,6 +218,9 @@ events:
                       PrettyName:
                           value: "DIMM E0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_E0"
@@ -213,6 +240,9 @@ events:
                       PrettyName:
                           value: "DIMM E1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_E1"
@@ -232,6 +262,9 @@ events:
                       PrettyName:
                           value: "DIMM F0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_F0"
@@ -251,6 +284,9 @@ events:
                       PrettyName:
                           value: "DIMM F1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU0_DIMM_F1"
@@ -270,6 +306,9 @@ events:
                       PrettyName:
                           value: "DIMM G0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_G0"
@@ -289,6 +328,9 @@ events:
                       PrettyName:
                           value: "DIMM G1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_G1"
@@ -308,6 +350,9 @@ events:
                       PrettyName:
                           value: "DIMM H0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_H0"
@@ -327,6 +372,9 @@ events:
                       PrettyName:
                           value: "DIMM H1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_H1"
@@ -346,6 +394,9 @@ events:
                       PrettyName:
                           value: "DIMM J0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_J0"
@@ -365,6 +416,9 @@ events:
                       PrettyName:
                           value: "DIMM J1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_J1"
@@ -384,6 +438,9 @@ events:
                       PrettyName:
                           value: "DIMM K0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_K0"
@@ -403,6 +460,9 @@ events:
                       PrettyName:
                           value: "DIMM K1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_K1"
@@ -422,6 +482,9 @@ events:
                       PrettyName:
                           value: "DIMM L0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_L0"
@@ -441,6 +504,9 @@ events:
                       PrettyName:
                           value: "DIMM L1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_L1"
@@ -460,6 +526,9 @@ events:
                       PrettyName:
                           value: "DIMM M0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_M0"
@@ -479,6 +548,9 @@ events:
                       PrettyName:
                           value: "DIMM M1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU1_DIMM_M1"
@@ -498,6 +570,9 @@ events:
                       PrettyName:
                           value: "DIMM N0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_N0"
@@ -517,6 +592,9 @@ events:
                       PrettyName:
                           value: "DIMM N1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_N1"
@@ -536,6 +614,9 @@ events:
                       PrettyName:
                           value: "DIMM P0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_P0"
@@ -555,6 +636,9 @@ events:
                       PrettyName:
                           value: "DIMM P1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_P1"
@@ -574,6 +658,9 @@ events:
                       PrettyName:
                           value: "DIMM Q0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_Q0"
@@ -593,6 +680,9 @@ events:
                       PrettyName:
                           value: "DIMM Q1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_Q1"
@@ -612,6 +702,9 @@ events:
                       PrettyName:
                           value: "DIMM R0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_R0"
@@ -631,6 +724,9 @@ events:
                       PrettyName:
                           value: "DIMM R1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_R1"
@@ -650,6 +746,9 @@ events:
                       PrettyName:
                           value: "DIMM S0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_S0"
@@ -669,6 +768,9 @@ events:
                       PrettyName:
                           value: "DIMM S1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_S1"
@@ -688,6 +790,9 @@ events:
                       PrettyName:
                           value: "DIMM T0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_T0"
@@ -707,6 +812,9 @@ events:
                       PrettyName:
                           value: "DIMM T1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU2_DIMM_T1"
@@ -726,6 +834,9 @@ events:
                       PrettyName:
                           value: "DIMM U0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_U0"
@@ -745,6 +856,9 @@ events:
                       PrettyName:
                           value: "DIMM U1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_U1"
@@ -764,6 +878,9 @@ events:
                       PrettyName:
                           value: "DIMM V0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_V0"
@@ -783,6 +900,9 @@ events:
                       PrettyName:
                           value: "DIMM V1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_V1"
@@ -802,6 +922,9 @@ events:
                       PrettyName:
                           value: "DIMM W0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_W0"
@@ -821,6 +944,9 @@ events:
                       PrettyName:
                           value: "DIMM W1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_W1"
@@ -840,6 +966,9 @@ events:
                       PrettyName:
                           value: "DIMM X0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_X0"
@@ -859,6 +988,9 @@ events:
                       PrettyName:
                           value: "DIMM X1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_X1"
@@ -878,6 +1010,9 @@ events:
                       PrettyName:
                           value: "DIMM Y0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_Y0"
@@ -897,6 +1032,9 @@ events:
                       PrettyName:
                           value: "DIMM Y1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_Y1"
@@ -916,6 +1054,9 @@ events:
                       PrettyName:
                           value: "DIMM Z0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_Z0"
@@ -935,6 +1076,9 @@ events:
                       PrettyName:
                           value: "DIMM Z1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
                   xyz.openbmc_project.Inventory.Item.Dimm:
                       MemoryDeviceLocator:
                           value: "CPU3_DIMM_Z1"
@@ -950,7 +1094,7 @@ events:
                 /system/chassis/motherboard/rssd01:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD01"
@@ -970,7 +1114,7 @@ events:
                 /system/chassis/motherboard/rssd02:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD02"
@@ -990,7 +1134,7 @@ events:
                 /system/chassis/motherboard/rssd03:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD03"
@@ -1010,7 +1154,7 @@ events:
                 /system/chassis/motherboard/rssd04:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD04"
@@ -1030,7 +1174,7 @@ events:
                 /system/chassis/motherboard/rssd05:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD05"
@@ -1050,7 +1194,7 @@ events:
                 /system/chassis/motherboard/rssd06:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD06"
@@ -1070,7 +1214,7 @@ events:
                 /system/chassis/motherboard/rssd07:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD07"
@@ -1090,7 +1234,7 @@ events:
                 /system/chassis/motherboard/rssd08:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD08"
@@ -1110,7 +1254,7 @@ events:
                 /system/chassis/motherboard/rssd09:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD09"
@@ -1130,7 +1274,7 @@ events:
                 /system/chassis/motherboard/rssd10:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD10"
@@ -1150,7 +1294,7 @@ events:
                 /system/chassis/motherboard/rssd11:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD11"
@@ -1170,7 +1314,7 @@ events:
                 /system/chassis/motherboard/rssd12:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD12"
@@ -1190,7 +1334,7 @@ events:
                 /system/chassis/motherboard/rssd13:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD13"
@@ -1210,7 +1354,7 @@ events:
                 /system/chassis/motherboard/rssd14:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD14"
@@ -1230,7 +1374,7 @@ events:
                 /system/chassis/motherboard/rssd15:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD15"
@@ -1250,7 +1394,7 @@ events:
                 /system/chassis/motherboard/rssd16:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD16"
@@ -1270,7 +1414,7 @@ events:
                 /system/chassis/motherboard/rssd17:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD17"
@@ -1290,7 +1434,7 @@ events:
                 /system/chassis/motherboard/rssd18:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD18"
@@ -1310,7 +1454,7 @@ events:
                 /system/chassis/motherboard/rssd19:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD19"
@@ -1330,7 +1474,7 @@ events:
                 /system/chassis/motherboard/rssd20:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD20"
@@ -1350,7 +1494,7 @@ events:
                 /system/chassis/motherboard/rssd21:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD21"
@@ -1370,7 +1514,7 @@ events:
                 /system/chassis/motherboard/rssd22:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD22"
@@ -1390,7 +1534,7 @@ events:
                 /system/chassis/motherboard/rssd23:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD23"
@@ -1410,7 +1554,7 @@ events:
                 /system/chassis/motherboard/rssd24:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD24"
@@ -1430,7 +1574,7 @@ events:
                 /system/chassis/motherboard/rssd25:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD25"
@@ -1450,7 +1594,7 @@ events:
                 /system/chassis/motherboard/rssd26:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD26"
@@ -1470,7 +1614,7 @@ events:
                 /system/chassis/motherboard/rssd27:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD27"
@@ -1490,7 +1634,7 @@ events:
                 /system/chassis/motherboard/rssd28:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD28"
@@ -1510,7 +1654,7 @@ events:
                 /system/chassis/motherboard/rssd29:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD29"
@@ -1530,7 +1674,7 @@ events:
                 /system/chassis/motherboard/rssd30:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD30"
@@ -1550,7 +1694,7 @@ events:
                 /system/chassis/motherboard/rssd31:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD31"
@@ -1570,7 +1714,7 @@ events:
                 /system/chassis/motherboard/rssd32:
                   xyz.openbmc_project.Inventory.Item:
                       Present:
-                          value: true
+                          value: false
                           type: boolean
                       PrettyName:
                           value: "RSSD22"
