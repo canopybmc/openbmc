@@ -5,4 +5,4 @@ Description=Phosphor Multi GPIO monitor
 Restart=no
 ExecStartPre=/usr/bin/phosphor-multi-gpio-monitor-gen-config.sh
 ExecStart=/usr/bin/phosphor-multi-gpio-monitor --config /usr/share/phosphor-gpio-monitor/phosphor-multi-gpio-monitor.json
-TimeoutStartSec=180
+TimeoutStartSec=300
