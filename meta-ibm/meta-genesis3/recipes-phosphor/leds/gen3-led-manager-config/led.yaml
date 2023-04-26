@@ -12,19 +12,16 @@ bmc_booted:
 power_on:
     power:
         Action: 'On'
-
 led_id_dwr:
     LED_ID_DWR_FRNT_P:
         Action: 'On'
     LED_ID_DWR_BACK_P:
         Action: 'On'
-
 led_pwr_dwr:
     LED_PWR_DWR_FRNT:
         Action: 'On'
     LED_PWR_DWR_BACK:
         Action: 'On'
-
 led_id_cpu0:
     LED_ID_CPU0:
         Action: 'On'
@@ -37,7 +34,6 @@ led_id_cpu2:
 led_id_cpu3:
     LED_ID_CPU3:
         Action: 'On'
-
 led_rssd01_power:
     rssd01_power_green:
         Action: 'On'
@@ -140,7 +136,6 @@ led_m2_ssb_ssd1_power:
 led_m2_ssb_ssd2_power:
     m2_ssb_ssd2_power_green:
         Action: 'On'
-
 led_id_dimm_a0:
     LED_ID_DIMM_A0:
         Action: 'On'
@@ -284,4 +279,100 @@ led_id_dimm_z0:
         Action: 'On'
 led_id_dimm_z1:
     LED_ID_DIMM_Z1:
+        Action: 'On'
+led_id_rssd01:
+    LED_ID_RSSD01:
+        Action: 'On'
+led_id_rssd02:
+    LED_ID_RSSD02:
+        Action: 'On'
+led_id_rssd03:
+    LED_ID_RSSD03:
+        Action: 'On'
+led_id_rssd04:
+    LED_ID_RSSD04:
+        Action: 'On'
+led_id_rssd05:
+    LED_ID_RSSD05:
+        Action: 'On'
+led_id_rssd06:
+    LED_ID_RSSD06:
+        Action: 'On'
+led_id_rssd07:
+    LED_ID_RSSD07:
+        Action: 'On'
+led_id_rssd08:
+    LED_ID_RSSD08:
+        Action: 'On'
+led_id_rssd09:
+    LED_ID_RSSD09:
+        Action: 'On'
+led_id_rssd10:
+    LED_ID_RSSD10:
+        Action: 'On'
+led_id_rssd11:
+    LED_ID_RSSD11:
+        Action: 'On'
+led_id_rssd12:
+    LED_ID_RSSD12:
+        Action: 'On'
+led_id_rssd13:
+    LED_ID_RSSD13:
+        Action: 'On'
+led_id_rssd14:
+    LED_ID_RSSD14:
+        Action: 'On'
+led_id_rssd15:
+    LED_ID_RSSD15:
+        Action: 'On'
+led_id_rssd16:
+    LED_ID_RSSD16:
+        Action: 'On'
+led_id_rssd17:
+    LED_ID_RSSD17:
+        Action: 'On'
+led_id_rssd18:
+    LED_ID_RSSD18:
+        Action: 'On'
+led_id_rssd19:
+    LED_ID_RSSD19:
+        Action: 'On'
+led_id_rssd20:
+    LED_ID_RSSD20:
+        Action: 'On'
+led_id_rssd21:
+    LED_ID_RSSD21:
+        Action: 'On'
+led_id_rssd22:
+    LED_ID_RSSD22:
+        Action: 'On'
+led_id_rssd23:
+    LED_ID_RSSD23:
+        Action: 'On'
+led_id_rssd24:
+    LED_ID_RSSD24:
+        Action: 'On'
+led_id_rssd25:
+    LED_ID_RSSD25:
+        Action: 'On'
+led_id_rssd26:
+    LED_ID_RSSD26:
+        Action: 'On'
+led_id_rssd27:
+    LED_ID_RSSD27:
+        Action: 'On'
+led_id_rssd28:
+    LED_ID_RSSD28:
+        Action: 'On'
+led_id_rssd29:
+    LED_ID_RSSD29:
+        Action: 'On'
+led_id_rssd30:
+    LED_ID_RSSD30:
+        Action: 'On'
+led_id_rssd31:
+    LED_ID_RSSD31:
+        Action: 'On'
+led_id_rssd32:
+    LED_ID_RSSD32:
         Action: 'On'
