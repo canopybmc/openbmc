@@ -140,3 +140,148 @@ led_m2_ssb_ssd1_power:
 led_m2_ssb_ssd2_power:
     m2_ssb_ssd2_power_green:
         Action: 'On'
+
+led_id_dimm_a0:
+    LED_ID_DIMM_A0:
+        Action: 'On'
+led_id_dimm_a1:
+    LED_ID_DIMM_A1:
+        Action: 'On'
+led_id_dimm_b0:
+    LED_ID_DIMM_B0:
+        Action: 'On'
+led_id_dimm_b1:
+    LED_ID_DIMM_B1:
+        Action: 'On'
+led_id_dimm_c0:
+    LED_ID_DIMM_C0:
+        Action: 'On'
+led_id_dimm_c1:
+    LED_ID_DIMM_C1:
+        Action: 'On'
+led_id_dimm_d0:
+    LED_ID_DIMM_D0:
+        Action: 'On'
+led_id_dimm_d1:
+    LED_ID_DIMM_D1:
+        Action: 'On'
+led_id_dimm_e0:
+    LED_ID_DIMM_E0:
+        Action: 'On'
+led_id_dimm_e1:
+    LED_ID_DIMM_E1:
+        Action: 'On'
+led_id_dimm_f0:
+    LED_ID_DIMM_F0:
+        Action: 'On'
+led_id_dimm_f1:
+    LED_ID_DIMM_F1:
+        Action: 'On'
+led_id_dimm_g0:
+    LED_ID_DIMM_G0:
+        Action: 'On'
+led_id_dimm_g1:
+    LED_ID_DIMM_G1:
+        Action: 'On'
+led_id_dimm_h0:
+    LED_ID_DIMM_H0:
+        Action: 'On'
+led_id_dimm_h1:
+    LED_ID_DIMM_H1:
+        Action: 'On'
+led_id_dimm_j0:
+    LED_ID_DIMM_J0:
+        Action: 'On'
+led_id_dimm_j1:
+    LED_ID_DIMM_J1:
+        Action: 'On'
+led_id_dimm_k0:
+    LED_ID_DIMM_K0:
+        Action: 'On'
+led_id_dimm_k1:
+    LED_ID_DIMM_K1:
+        Action: 'On'
+led_id_dimm_l0:
+    LED_ID_DIMM_L0:
+        Action: 'On'
+led_id_dimm_l1:
+    LED_ID_DIMM_L1:
+        Action: 'On'
+led_id_dimm_m0:
+    LED_ID_DIMM_M0:
+        Action: 'On'
+led_id_dimm_m1:
+    LED_ID_DIMM_M1:
+        Action: 'On'
+led_id_dimm_n0:
+    LED_ID_DIMM_N0:
+        Action: 'On'
+led_id_dimm_n1:
+    LED_ID_DIMM_N1:
+        Action: 'On'
+led_id_dimm_p0:
+    LED_ID_DIMM_P0:
+        Action: 'On'
+led_id_dimm_p1:
+    LED_ID_DIMM_P1:
+        Action: 'On'
+led_id_dimm_q0:
+    LED_ID_DIMM_Q0:
+        Action: 'On'
+led_id_dimm_q1:
+    LED_ID_DIMM_Q1:
+        Action: 'On'
+led_id_dimm_r0:
+    LED_ID_DIMM_R0:
+        Action: 'On'
+led_id_dimm_r1:
+    LED_ID_DIMM_R1:
+        Action: 'On'
+led_id_dimm_s0:
+    LED_ID_DIMM_S0:
+        Action: 'On'
+led_id_dimm_s1:
+    LED_ID_DIMM_S1:
+        Action: 'On'
+led_id_dimm_t0:
+    LED_ID_DIMM_T0:
+        Action: 'On'
+led_id_dimm_t1:
+    LED_ID_DIMM_T1:
+        Action: 'On'
+led_id_dimm_u0:
+    LED_ID_DIMM_U0:
+        Action: 'On'
+led_id_dimm_u1:
+    LED_ID_DIMM_U1:
+        Action: 'On'
+led_id_dimm_v0:
+    LED_ID_DIMM_V0:
+        Action: 'On'
+led_id_dimm_v1:
+    LED_ID_DIMM_V1:
+        Action: 'On'
+led_id_dimm_w0:
+    LED_ID_DIMM_W0:
+        Action: 'On'
+led_id_dimm_w1:
+    LED_ID_DIMM_W1:
+        Action: 'On'
+led_id_dimm_x0:
+    LED_ID_DIMM_X0:
+        Action: 'On'
+led_id_dimm_x1:
+    LED_ID_DIMM_X1:
+        Action: 'On'
+led_id_dimm_y0:
+    LED_ID_DIMM_Y0:
+        Action: 'On'
+led_id_dimm_y1:
+    LED_ID_DIMM_Y1:
+        Action: 'On'
+led_id_dimm_z0:
+    LED_ID_DIMM_Z0:
+        Action: 'On'
+led_id_dimm_z1:
+    LED_ID_DIMM_Z1:
+        Action: 'On'
