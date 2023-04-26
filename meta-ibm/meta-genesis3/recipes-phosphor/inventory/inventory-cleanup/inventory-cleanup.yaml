@@ -1585,33 +1585,6 @@ events:
                       Generation:
                           value: "xyz.openbmc_project.Inventory.Item.PCIeSlot.Generations.Gen3"
                           type: string
-    - name: Add FANs
-      description: >
-          Add the FANs inventory path.
-      type: startup
-      actions:
-          - name: createObjects
-            objs:
-                /system/chassis/motherboard/fan01:
-                  xyz.openbmc_project.Inventory.Item:
-                      PrettyName:
-                          value: "FAN 01"
-                          type: string
-                      Present:
-                          value: true
-                          type: boolean
-                  xyz.openbmc_project.Inventory.Item.Fan:
-          - name: createObjects
-            objs:
-                /system/chassis/motherboard/fan02:
-                  xyz.openbmc_project.Inventory.Item:
-                      PrettyName:
-                          value: "FAN 02"
-                          type: string
-                      Present:
-                          value: true
-                          type: boolean
-                  xyz.openbmc_project.Inventory.Item.Fan:
     - name: Add CPUS
       description: >
           Add the CPUs inventory path.
