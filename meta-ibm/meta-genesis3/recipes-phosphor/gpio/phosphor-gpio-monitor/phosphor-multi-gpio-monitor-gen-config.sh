@@ -34,12 +34,12 @@ done
 
 for i in {1..9}
 do
-  process_gpio "RSSD0${i}_PRESENT_N" "system-chassis-motherboard-rssd_0${i}" "pull-up"
+  process_gpio "RSSD0${i}_PRESENT_N" "system-chassis-motherboard-rssd0${i}" "pull-up"
 done
 
 for i in {10..32}
 do
-  process_gpio "RSSD${i}_PRESENT_N" "system-chassis-motherboard-rssd_${i}" "pull-up"
+  process_gpio "RSSD${i}_PRESENT_N" "system-chassis-motherboard-rssd${i}" "pull-up"
 done
 
 for i in {0..3}
