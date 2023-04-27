@@ -1741,6 +1741,13 @@ events:
                       PrettyName:
                           value: "CPU0"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Replaceable:
+                      FieldReplaceable:
+                          value: true
+                          type: boolean
                   xyz.openbmc_project.Inventory.Decorator.Asset:
                       Manufacturer:
                           value: "Intel"
@@ -1756,6 +1763,13 @@ events:
                       PrettyName:
                           value: "CPU1"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Replaceable:
+                      FieldReplaceable:
+                          value: true
+                          type: boolean
                   xyz.openbmc_project.Inventory.Decorator.Asset:
                       Manufacturer:
                           value: "Intel"
@@ -1771,6 +1785,13 @@ events:
                       PrettyName:
                           value: "CPU2"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Replaceable:
+                      FieldReplaceable:
+                          value: true
+                          type: boolean
                   xyz.openbmc_project.Inventory.Decorator.Asset:
                       Manufacturer:
                           value: "Intel"
@@ -1786,6 +1807,13 @@ events:
                       PrettyName:
                           value: "CPU3"
                           type: string
+                      Present:
+                          value: false
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Decorator.Replaceable:
+                      FieldReplaceable:
+                          value: true
+                          type: boolean
                   xyz.openbmc_project.Inventory.Decorator.Asset:
                       Manufacturer:
                           value: "Intel"
