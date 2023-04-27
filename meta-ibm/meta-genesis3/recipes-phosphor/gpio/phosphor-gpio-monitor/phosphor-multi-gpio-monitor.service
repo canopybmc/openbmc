@@ -1,5 +1,9 @@
 [Unit]
 Description=Phosphor Multi GPIO monitor
+Wants=obmc-mapper.target
+After=obmc-mapper.target
+Wants=xyz.openbmc_project.Inventory.Manager.service
+After=xyz.openbmc_project.Inventory.Manager.service
 
 [Service]
 Restart=no
