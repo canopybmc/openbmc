@@ -46,7 +46,8 @@
                     "Value": 68
                 }
             ],
-            "Type": "pli1209bc"
+            "Type": "pli1209bc",
+            "PollRate": 5.0
         }
     ],
     "Name": "Vicor BCM 6123 750W 1",
@@ -112,7 +113,8 @@
                     "Value": 68
                 }
             ],
-            "Type": "pli1209bc"
+            "Type": "pli1209bc",
+            "PollRate": 5.0
         }
     ],
     "Name": "Vicor BCM 6123 750W 2",
@@ -178,7 +180,8 @@
                     "Value": 68
                 }
             ],
-            "Type": "pli1209bc"
+            "Type": "pli1209bc",
+            "PollRate": 5.0
         }
     ],
     "Name": "Vicor BCM 6123 750W 3",
@@ -196,6 +199,9 @@
     },
     "xyz.openbmc_project.Inventory.Decorator.Replaceable": {
         "FieldReplaceable": false
+    },
+    "xyz.openbmc_project.Inventory.Decorator.LocationCode": {
+        "LocationCode": "Embedded"
     }
   },
   {
@@ -245,7 +251,8 @@
                     "Value": 68
                 }
             ],
-            "Type": "pli1209bc"
+            "Type": "pli1209bc",
+	    "PollRate": 5.0
         }
     ],
     "Name": "Vicor BCM 6123 750W 4",
