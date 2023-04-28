@@ -1,0 +1,8 @@
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/67-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/68-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/72-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/73-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/92-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/93-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/108-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="ee1004", DEVPATH=="*/109-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"

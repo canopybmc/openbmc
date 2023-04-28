@@ -1,0 +1,606 @@
+{
+	"commonInterfaces": {
+		"xyz.openbmc_project.Inventory.Decorator.Asset": {
+		    "PartNumber": {
+			"recordName": "VINI",
+			"keywordName": "PN"
+		    },
+		    "SerialNumber": {
+			"recordName": "VINI",
+			"keywordName": "SN"
+		    },
+		    "BuildDate": {
+			"recordName": "VR10",
+			"keywordName": "DC",
+			"encoding": "DATE"
+		    }
+		},
+		"xyz.openbmc_project.Inventory.Item": {
+		    "PrettyName": {
+			"recordName": "VINI",
+			"keywordName": "DR"
+		    },
+		    "Present": true
+		}
+	},
+	"frus": {
+		"/sys/bus/i2c/drivers/ee1004/92-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_a0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM A0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/92-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_a1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM A1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/92-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_b0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM B0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/92-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_b1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM B1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/92-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM C0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/92-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM C1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/93-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_d0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM D0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/93-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_d1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM D1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/93-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_e0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM E0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/93-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_e1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM E1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/93-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_f0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM F0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/93-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_f1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM F1"
+			   }
+		       }
+		   }
+	       ],
+	
+	       "/sys/bus/i2c/drivers/ee1004/72-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_g0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM G0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/72-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_g1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM G1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/72-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_h0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM H0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/72-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_h1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM H1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/72-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_j0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM J0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/72-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_j1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM J1"
+			   }
+		       }
+		   }
+	       ],
+	
+	       "/sys/bus/i2c/drivers/ee1004/73-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_k0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM K0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/73-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_k1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM K1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/73-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_l0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM L0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/73-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_l1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM L1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/73-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_m0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM M0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/73-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_m1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM M1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/67-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_n0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM N0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/67-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_n1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM N1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/67-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_p0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM P0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/67-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_p1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM P1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/67-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_q0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM Q0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/67-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_q1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM Q1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/68-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_r0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM R0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/68-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_r1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM R1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/68-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_s0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM S0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/68-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_s1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM S1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/68-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_t0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM T0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/68-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_t1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM T1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/108-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_u0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM U0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/108-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_u1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM U1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/108-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_v0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM V0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/108-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_v1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM V1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/108-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_w0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM W0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/108-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_w1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM W1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/109-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_x0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM X0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/109-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_x1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM X1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/109-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_y0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM Y0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/109-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_Y1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM Y1"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/109-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_z0",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM Z0"
+			   }
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/ee1004/109-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_z1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null,
+			   "com.ibm.ipzvpd.Location": {
+				"LocationCode": "DIMM Z1"
+			   }
+		       }
+		   }
+	       ]
+	}
+}
