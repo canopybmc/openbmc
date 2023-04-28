@@ -5,8 +5,8 @@ TMPL='{
   \"LineName\": \"${LINE}\",
   \"EventMon\": \"BOTH\",
   \"Targets\": {
-    \"FALLING\": [\"dbus-object-present@${ITEM}:Present.service\"],
-    \"RISING\": [\"dbus-object-present@${ITEM}:Removed.service\"]
+    \"FALLING\": [\"dbus-object-present@${ITEM}.service\"],
+    \"RISING\": [\"dbus-object-remove@${ITEM}.service\"]
     },
   \"Continue\": true
 }'
@@ -19,9 +19,9 @@ function process_gpio() {
   ITEM=$2
   BIAS=$3
   if [ "$(gpioget -B ${BIAS} $(gpiofind "${LINE}") 2>/dev/null||echo 1)" -eq 0 ]; then
-    UNITS_TO_START+="dbus-object-present@${ITEM}:Present.service "
+    UNITS_TO_START+="dbus-object-present@${ITEM}.service "
   else
-    UNITS_TO_START+="dbus-object-present@${ITEM}:Removed.service "
+    UNITS_TO_START+="dbus-object-remove@${ITEM}.service "
   fi
   eval echo ${TMPL} | tr -d '\n' >> ${CFG_FILE};
 }

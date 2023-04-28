@@ -1,0 +1,9 @@
+[Unit]
+Description=Removal GPIO event
+Wants=mapper-wait@-xyz-openbmc_project-inventory-%i.service
+After=mapper-wait@-xyz-openbmc_project-inventory-%i.service
+Conflicts=dbus-object-present@%i.service
+
+[Service]
+Restart=no
+ExecStart=/usr/bin/busctl set-property xyz.openbmc_project.Inventory.Manager /xyz/openbmc_project/inventory/%I xyz.openbmc_project.Inventory.Item Present b false
