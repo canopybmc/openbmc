@@ -8,7 +8,10 @@ SRC_URI:append:p10bmc = " file://systemd-journald-override.conf"
 SRC_URI:append:p10bmc = " file://journald-size-policy-16MB.conf"
 SRC_URI:append:p10bmc = " file://vm.conf"
 
-SRC_URI:append:sbp1 = " file://override.conf"
+SRC_URI:append:sbp1 = " \
+    file://override.conf \
+    file://10-env.conf \
+    "
 
 FILES:${PN}:append:ibm-ac-server = " ${systemd_unitdir}/journald.conf.d/journald-storage-policy.conf"
 FILES:${PN}:append:ibm-ac-server = " ${systemd_system_unitdir}/systemd-journald.service.d/systemd-journald-override.conf"
@@ -19,7 +22,10 @@ FILES:${PN}:append:p10bmc = " ${systemd_system_unitdir}/systemd-journald.service
 FILES:${PN}:append:p10bmc = " ${systemd_unitdir}/journald.conf.d/journald-size-policy.conf"
 FILES:${PN}:append:p10bmc = " ${sysconfdir}/sysctl.d/vm.conf"
 
-FILES:${PN}:append:sbp1 = " ${systemd_system_unitdir}/systemd-networkd-wait-online.service.d/override.conf"
+FILES:${PN}:append:sbp1 = " \
+    ${systemd_system_unitdir}/systemd-networkd-wait-online.service.d/override.conf \
+    ${systemd_unitdir}/system.conf.d/10-env.conf \
+    "
 
 do_install:append:ibm-ac-server() {
         install -m 644 -D ${WORKDIR}/journald-storage-policy.conf ${D}${systemd_unitdir}/journald.conf.d/journald-storage-policy.conf
@@ -35,6 +41,8 @@ do_install:append:p10bmc() {
 
 # Genesis3 uses both BMC's RGMII MACs, so wait for only one to be online
 do_install:append:sbp1() {
+        install -d -m 0755 ${D}${systemd_unitdir}/system.conf.d/
+        install -m 0644 ${WORKDIR}/10-env.conf ${D}${systemd_unitdir}/system.conf.d/
         install -d ${D}${systemd_system_unitdir}/systemd-networkd-wait-online.service.d/
         install -m 644 -D ${WORKDIR}/override.conf ${D}${systemd_system_unitdir}/systemd-networkd-wait-online.service.d/override.conf
 }
