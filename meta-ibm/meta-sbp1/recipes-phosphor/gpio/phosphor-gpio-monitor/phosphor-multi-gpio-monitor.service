@@ -1,0 +1,11 @@
+[Unit]
+Description=Phosphor Multi GPIO monitor
+Wants=obmc-mapper.target
+After=obmc-mapper.target
+Wants=xyz.openbmc_project.Inventory.Manager.service
+After=xyz.openbmc_project.Inventory.Manager.service
+
+[Service]
+ExecStartPre=/usr/bin/phosphor-multi-gpio-monitor-gen-config.sh
+ExecStart=/usr/bin/phosphor-multi-gpio-monitor --config /usr/share/phosphor-gpio-monitor/phosphor-multi-gpio-monitor.json
+TimeoutStartSec=300
