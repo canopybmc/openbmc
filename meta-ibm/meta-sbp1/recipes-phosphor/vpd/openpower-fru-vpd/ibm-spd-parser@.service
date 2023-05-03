@@ -1,0 +1,12 @@
+[Unit]
+Description=SPD EEPROM Decoder for FRU /%I
+Wants=mapper-wait@-xyz-openbmc_project-inventory.service
+After=mapper-wait@-xyz-openbmc_project-inventory.service
+ConditionPathExists=/%I
+
+[Service]
+ExecStart=/usr/bin/env ibm-read-vpd --file /%I/eeprom --driver at24
+SyslogIdentifier=ibm-vpd-parser
+
+[Install]
+WantedBy=multi-user.target

@@ -6,6 +6,8 @@ RDEPENDS:${PN}-extras:append = " \
     phosphor-state-manager-chassis \
     "
 
+RDEPENDS:${PN}-inventory:append = " openpower-fru-vpd"
+
 RDEPENDS:${PN}-devtools:append = " \
     entity-manager \
     webui-vue \

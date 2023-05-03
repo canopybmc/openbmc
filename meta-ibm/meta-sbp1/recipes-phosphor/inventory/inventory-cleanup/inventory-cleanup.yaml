@@ -29,29 +29,6 @@ events:
       actions:
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0a0:
-                  xyz.openbmc_project.Inventory.Decorator.Replaceable:
-                      FieldReplaceable:
-                          value: true
-                          type: boolean
-                  xyz.openbmc_project.State.Decorator.OperationalStatus:
-                      Functional:
-                          value: true
-                          type: boolean
-                  xyz.openbmc_project.Inventory.Item:
-                      PrettyName:
-                          value: "DIMM C0A0"
-                          type: string
-                      Present:
-                          value: false
-                          type: boolean
-                  xyz.openbmc_project.Inventory.Item.Dimm:
-                  xyz.openbmc_project.Inventory.Decorator.LocationCode:
-                      LocationCode:
-                          value: "CPU0_DIMM_A0"
-                          type: string
-          - name: createObjects
-            objs:
                 /system/chassis/motherboard/dimm_c0a1:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
@@ -75,7 +52,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0b0:
+                /system/chassis/motherboard/dimm_c0a2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -86,7 +63,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C0B0"
+                          value: "DIMM C0A2"
                           type: string
                       Present:
                           value: false
@@ -94,7 +71,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU0_DIMM_B0"
+                          value: "CPU0_DIMM_A2"
                           type: string
           - name: createObjects
             objs:
@@ -121,7 +98,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0c0:
+                /system/chassis/motherboard/dimm_c0b2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -132,7 +109,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C0C0"
+                          value: "DIMM C0B2"
                           type: string
                       Present:
                           value: false
@@ -140,7 +117,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU0_DIMM_C0"
+                          value: "CPU0_DIMM_B2"
                           type: string
           - name: createObjects
             objs:
@@ -167,7 +144,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0d0:
+                /system/chassis/motherboard/dimm_c0c2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -178,7 +155,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C0D0"
+                          value: "DIMM C0C2"
                           type: string
                       Present:
                           value: false
@@ -186,7 +163,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU0_DIMM_D0"
+                          value: "CPU0_DIMM_C2"
                           type: string
           - name: createObjects
             objs:
@@ -213,7 +190,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0e0:
+                /system/chassis/motherboard/dimm_c0d2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -224,7 +201,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C0E0"
+                          value: "DIMM C0D2"
                           type: string
                       Present:
                           value: false
@@ -232,7 +209,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU0_DIMM_E0"
+                          value: "CPU0_DIMM_D2"
                           type: string
           - name: createObjects
             objs:
@@ -259,7 +236,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0f0:
+                /system/chassis/motherboard/dimm_c0e2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -270,7 +247,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C0F0"
+                          value: "DIMM C0E2"
                           type: string
                       Present:
                           value: false
@@ -278,7 +255,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU0_DIMM_F0"
+                          value: "CPU0_DIMM_E2"
                           type: string
           - name: createObjects
             objs:
@@ -305,7 +282,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0g0:
+                /system/chassis/motherboard/dimm_c0f2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -316,7 +293,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C0G0"
+                          value: "DIMM C0F2"
                           type: string
                       Present:
                           value: false
@@ -324,7 +301,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU0_DIMM_G0"
+                          value: "CPU0_DIMM_F2"
                           type: string
           - name: createObjects
             objs:
@@ -351,7 +328,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c0h0:
+                /system/chassis/motherboard/dimm_c0g2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -362,7 +339,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C0H0"
+                          value: "DIMM C0G2"
                           type: string
                       Present:
                           value: false
@@ -370,7 +347,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU0_DIMM_H0"
+                          value: "CPU0_DIMM_G2"
                           type: string
           - name: createObjects
             objs:
@@ -397,7 +374,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1a0:
+                /system/chassis/motherboard/dimm_c0h2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -408,7 +385,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1A0"
+                          value: "DIMM C0H2"
                           type: string
                       Present:
                           value: false
@@ -416,7 +393,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_A0"
+                          value: "CPU0_DIMM_H2"
                           type: string
           - name: createObjects
             objs:
@@ -443,7 +420,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1b0:
+                /system/chassis/motherboard/dimm_c1a2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -454,7 +431,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1B0"
+                          value: "DIMM C1A2"
                           type: string
                       Present:
                           value: false
@@ -462,7 +439,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_B0"
+                          value: "CPU1_DIMM_A2"
                           type: string
           - name: createObjects
             objs:
@@ -489,7 +466,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1c0:
+                /system/chassis/motherboard/dimm_c1b2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -500,7 +477,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1C0"
+                          value: "DIMM C1B2"
                           type: string
                       Present:
                           value: false
@@ -508,7 +485,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_C0"
+                          value: "CPU1_DIMM_B2"
                           type: string
           - name: createObjects
             objs:
@@ -535,7 +512,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1d0:
+                /system/chassis/motherboard/dimm_c1c2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -546,7 +523,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1D0"
+                          value: "DIMM C1C2"
                           type: string
                       Present:
                           value: false
@@ -554,7 +531,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_D0"
+                          value: "CPU1_DIMM_C2"
                           type: string
           - name: createObjects
             objs:
@@ -581,7 +558,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1e0:
+                /system/chassis/motherboard/dimm_c1d2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -592,7 +569,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1E0"
+                          value: "DIMM C1D2"
                           type: string
                       Present:
                           value: false
@@ -600,7 +577,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_E0"
+                          value: "CPU1_DIMM_D2"
                           type: string
           - name: createObjects
             objs:
@@ -627,7 +604,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1f0:
+                /system/chassis/motherboard/dimm_c1e2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -638,7 +615,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1F0"
+                          value: "DIMM C1E2"
                           type: string
                       Present:
                           value: false
@@ -646,7 +623,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_F0"
+                          value: "CPU1_DIMM_E2"
                           type: string
           - name: createObjects
             objs:
@@ -673,7 +650,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1g0:
+                /system/chassis/motherboard/dimm_c1f2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -684,7 +661,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1G0"
+                          value: "DIMM C1F2"
                           type: string
                       Present:
                           value: false
@@ -692,7 +669,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_G0"
+                          value: "CPU1_DIMM_F2"
                           type: string
           - name: createObjects
             objs:
@@ -719,7 +696,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c1h0:
+                /system/chassis/motherboard/dimm_c1g2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -730,7 +707,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C1H0"
+                          value: "DIMM C1G2"
                           type: string
                       Present:
                           value: false
@@ -738,7 +715,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU1_DIMM_H0"
+                          value: "CPU1_DIMM_G2"
                           type: string
           - name: createObjects
             objs:
@@ -765,7 +742,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2a0:
+                /system/chassis/motherboard/dimm_c1h2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -776,7 +753,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2A0"
+                          value: "DIMM C1H2"
                           type: string
                       Present:
                           value: false
@@ -784,7 +761,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_A0"
+                          value: "CPU1_DIMM_H2"
                           type: string
           - name: createObjects
             objs:
@@ -811,7 +788,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2b0:
+                /system/chassis/motherboard/dimm_c2a2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -822,7 +799,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2B0"
+                          value: "DIMM C2A2"
                           type: string
                       Present:
                           value: false
@@ -830,7 +807,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_B0"
+                          value: "CPU2_DIMM_A2"
                           type: string
           - name: createObjects
             objs:
@@ -857,7 +834,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2c0:
+                /system/chassis/motherboard/dimm_c2b2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -868,7 +845,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2C0"
+                          value: "DIMM C2B2"
                           type: string
                       Present:
                           value: false
@@ -876,7 +853,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_C0"
+                          value: "CPU2_DIMM_B2"
                           type: string
           - name: createObjects
             objs:
@@ -903,7 +880,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2d0:
+                /system/chassis/motherboard/dimm_c2c2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -914,7 +891,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2D0"
+                          value: "DIMM C2C2"
                           type: string
                       Present:
                           value: false
@@ -922,7 +899,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_D0"
+                          value: "CPU2_DIMM_C2"
                           type: string
           - name: createObjects
             objs:
@@ -949,7 +926,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2e0:
+                /system/chassis/motherboard/dimm_c2d2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -960,7 +937,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2E0"
+                          value: "DIMM C2D2"
                           type: string
                       Present:
                           value: false
@@ -968,7 +945,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_E0"
+                          value: "CPU2_DIMM_D2"
                           type: string
           - name: createObjects
             objs:
@@ -995,7 +972,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2f0:
+                /system/chassis/motherboard/dimm_c2e2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1006,7 +983,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2F0"
+                          value: "DIMM C2E2"
                           type: string
                       Present:
                           value: false
@@ -1014,7 +991,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_F0"
+                          value: "CPU2_DIMM_E2"
                           type: string
           - name: createObjects
             objs:
@@ -1041,7 +1018,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2g0:
+                /system/chassis/motherboard/dimm_c2f2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1052,7 +1029,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2G0"
+                          value: "DIMM C2F2"
                           type: string
                       Present:
                           value: false
@@ -1060,7 +1037,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_G0"
+                          value: "CPU2_DIMM_F2"
                           type: string
           - name: createObjects
             objs:
@@ -1087,7 +1064,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c2h0:
+                /system/chassis/motherboard/dimm_c2g2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1098,7 +1075,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C2H0"
+                          value: "DIMM C2G2"
                           type: string
                       Present:
                           value: false
@@ -1106,7 +1083,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU2_DIMM_H0"
+                          value: "CPU2_DIMM_G2"
                           type: string
           - name: createObjects
             objs:
@@ -1133,7 +1110,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3a0:
+                /system/chassis/motherboard/dimm_c2h2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1144,7 +1121,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3A0"
+                          value: "DIMM C2H2"
                           type: string
                       Present:
                           value: false
@@ -1152,7 +1129,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_A0"
+                          value: "CPU2_DIMM_H2"
                           type: string
           - name: createObjects
             objs:
@@ -1179,7 +1156,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3b0:
+                /system/chassis/motherboard/dimm_c3a2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1190,7 +1167,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3B0"
+                          value: "DIMM C3A2"
                           type: string
                       Present:
                           value: false
@@ -1198,7 +1175,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_B0"
+                          value: "CPU3_DIMM_A2"
                           type: string
           - name: createObjects
             objs:
@@ -1225,7 +1202,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3c0:
+                /system/chassis/motherboard/dimm_c3b2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1236,7 +1213,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3C0"
+                          value: "DIMM C3B2"
                           type: string
                       Present:
                           value: false
@@ -1244,7 +1221,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_C0"
+                          value: "CPU3_DIMM_B2"
                           type: string
           - name: createObjects
             objs:
@@ -1271,7 +1248,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3d0:
+                /system/chassis/motherboard/dimm_c3c2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1282,7 +1259,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3D0"
+                          value: "DIMM C3C2"
                           type: string
                       Present:
                           value: false
@@ -1290,7 +1267,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_D0"
+                          value: "CPU3_DIMM_C2"
                           type: string
           - name: createObjects
             objs:
@@ -1317,7 +1294,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3e0:
+                /system/chassis/motherboard/dimm_c3d2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1328,7 +1305,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3E0"
+                          value: "DIMM C3D2"
                           type: string
                       Present:
                           value: false
@@ -1336,7 +1313,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_E0"
+                          value: "CPU3_DIMM_D2"
                           type: string
           - name: createObjects
             objs:
@@ -1363,7 +1340,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3f0:
+                /system/chassis/motherboard/dimm_c3e2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1374,7 +1351,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3F0"
+                          value: "DIMM C3E2"
                           type: string
                       Present:
                           value: false
@@ -1382,7 +1359,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_F0"
+                          value: "CPU3_DIMM_E2"
                           type: string
           - name: createObjects
             objs:
@@ -1409,7 +1386,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3g0:
+                /system/chassis/motherboard/dimm_c3f2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1420,7 +1397,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3G0"
+                          value: "DIMM C3F2"
                           type: string
                       Present:
                           value: false
@@ -1428,7 +1405,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_G0"
+                          value: "CPU3_DIMM_F2"
                           type: string
           - name: createObjects
             objs:
@@ -1455,7 +1432,7 @@ events:
                           type: string
           - name: createObjects
             objs:
-                /system/chassis/motherboard/dimm_c3h0:
+                /system/chassis/motherboard/dimm_c3g2:
                   xyz.openbmc_project.Inventory.Decorator.Replaceable:
                       FieldReplaceable:
                           value: true
@@ -1466,7 +1443,7 @@ events:
                           type: boolean
                   xyz.openbmc_project.Inventory.Item:
                       PrettyName:
-                          value: "DIMM C3H0"
+                          value: "DIMM C3G2"
                           type: string
                       Present:
                           value: false
@@ -1474,7 +1451,7 @@ events:
                   xyz.openbmc_project.Inventory.Item.Dimm:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
-                          value: "CPU3_DIMM_H0"
+                          value: "CPU3_DIMM_G2"
                           type: string
           - name: createObjects
             objs:
@@ -1498,6 +1475,29 @@ events:
                   xyz.openbmc_project.Inventory.Decorator.LocationCode:
                       LocationCode:
                           value: "CPU3_DIMM_H1"
+                          type: string
+          - name: createObjects
+            objs:
+                /system/chassis/motherboard/dimm_c3h2:
+                  xyz.openbmc_project.Inventory.Decorator.Replaceable:
+                      FieldReplaceable:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.State.Decorator.OperationalStatus:
+                      Functional:
+                          value: true
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item:
+                      PrettyName:
+                          value: "DIMM C3H2"
+                          type: string
+                      Present:
+                          value: false
+                          type: boolean
+                  xyz.openbmc_project.Inventory.Item.Dimm:
+                  xyz.openbmc_project.Inventory.Decorator.LocationCode:
+                      LocationCode:
+                          value: "CPU3_DIMM_H2"
                           type: string
 
     - name: Add CPU PCIe slots
@@ -2307,6 +2307,9 @@ events:
                       Present:
                           value: true
                           type: boolean
+                      PrettyName:
+                          value: "M.2 SSD2"
+                          type: string
                   xyz.openbmc_project.Inventory.Item.PCIeSlot:
                       HotPluggable:
                           value: true

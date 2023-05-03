@@ -1,0 +1,8 @@
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/70-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/71-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/78-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/79-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/94-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/95-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/102-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"
+SUBSYSTEM=="i2c", DRIVER=="at24", DEVPATH=="*/103-005*", ACTION=="add", TAG+="systemd", ENV{SYSTEMD_WANTS}+="ibm-spd-parser@%N.service"

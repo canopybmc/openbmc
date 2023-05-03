@@ -1,0 +1,608 @@
+{
+	"commonInterfaces": {
+		"xyz.openbmc_project.Inventory.Decorator.Asset": {
+		    "PartNumber": {
+			"recordName": "VINI",
+			"keywordName": "PN"
+		    },
+		    "SerialNumber": {
+			"recordName": "VINI",
+			"keywordName": "SN"
+		    },
+		    "BuildDate": {
+			"recordName": "VR10",
+			"keywordName": "DC",
+			"encoding": "DATE"
+		    }
+		},
+		"xyz.openbmc_project.Inventory.Item": {
+		    "PrettyName": {
+			"recordName": "VINI",
+			"keywordName": "DR"
+		    },
+		    "Present": true
+		}
+	},
+	"frus": {
+		"/sys/bus/i2c/drivers/at24/102-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0a1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/102-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0a2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/102-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0b1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/102-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0b2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/102-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0c1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/102-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0c2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/102-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0d1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/102-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0d2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/103-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0e1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/103-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0e2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/103-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0f1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/103-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0f2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	
+	       "/sys/bus/i2c/drivers/at24/103-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0g1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/103-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0g2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/103-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0h1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/103-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c0h2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1a1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1a2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1b1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1b2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1c1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1c2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1d1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/78-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1d2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/79-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1e1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/79-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1e2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/79-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1f1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/79-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1f2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	
+	       "/sys/bus/i2c/drivers/at24/79-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1g1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/79-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1g2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/79-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1h1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/79-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c1h2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2a1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2a2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2b1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2b2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2c1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2c2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2d1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/70-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2d2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/71-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2e1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/71-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2e2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/71-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2f1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/71-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2f2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	
+	       "/sys/bus/i2c/drivers/at24/71-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2g1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/71-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2g2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/71-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2h1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/71-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c2h2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3a1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3a2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3b1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3b2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3c1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3c2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3d1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/94-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3d2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/95-0050/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3e1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/95-0051/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3e2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/95-0052/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3f1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/95-0053/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3f2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	
+	       "/sys/bus/i2c/drivers/at24/95-0054/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3g1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/95-0055/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3g2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/95-0056/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3h1",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ],
+	       "/sys/bus/i2c/drivers/at24/95-0057/eeprom": [
+		{
+		       "pluggableAtStandby": true,
+		       "inventoryPath": "/system/chassis/motherboard/dimm_c3h2",
+		       "extraInterfaces": {
+			   "xyz.openbmc_project.Inventory.Item.Dimm": null
+		       }
+		   }
+	       ]
+	}
+}

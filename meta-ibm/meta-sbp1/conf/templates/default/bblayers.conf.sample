@@ -14,5 +14,6 @@ BBLAYERS ?= " \
   ##OEROOT##/meta-phosphor \
   ##OEROOT##/meta-aspeed \
   ##OEROOT##/meta-ibm \
+  ##OEROOT##/meta-openpower \
   ##OEROOT##/meta-ibm/meta-sbp1 \
   "

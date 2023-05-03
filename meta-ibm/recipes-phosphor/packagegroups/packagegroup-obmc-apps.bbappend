@@ -23,7 +23,7 @@ EXTRA_IBM_LOGGING_PKGS:p10bmc = " \
     python3-sbe-log-parsers \
     hostboot-pel-parsers \
 "
-
+RDEPENDS:${PN}-inventory:append:genesis3 = " openpower-fru-vpd"
 RDEPENDS:${PN}-inventory:append:ibm-ac-server = " openpower-fru-vpd openpower-occ-control phosphor-cooling-type phosphor-gpio-monitor-presence"
 RDEPENDS:${PN}-inventory:append:p10bmc = " openpower-fru-vpd openpower-occ-control phosphor-gpio-monitor-presence"
 RDEPENDS:${PN}-inventory:append:witherspoon-tacoma = " entity-manager"
