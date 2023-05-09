@@ -5,6 +5,8 @@ SRC_URI:append:sbp1 = " \
     file://sbp1-baseboard.json \
     file://sbp1-chassis.json \
     file://sbp1-psu.json \
+    file://sbp1-cpu-dimms.json \
+    file://dbus-remove.patch \
     "
 
 do_install:append:sbp1 () {
@@ -14,4 +16,5 @@ do_install:append:sbp1 () {
     install -m 0444 ${WORKDIR}/sbp1-baseboard.json ${D}/usr/share/entity-manager/configurations
     install -m 0444 ${WORKDIR}/sbp1-chassis.json ${D}/usr/share/entity-manager/configurations
     install -m 0444 ${WORKDIR}/sbp1-psu.json ${D}/usr/share/entity-manager/configurations
+    install -m 0444 ${WORKDIR}/sbp1-cpu-dimms.json ${D}/usr/share/entity-manager/configurations
 }
