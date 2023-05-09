@@ -4,6 +4,7 @@ RDEPENDS:${PN}-extras:append = " \
     phosphor-post-code-manager \
     phosphor-host-postd \
     phosphor-state-manager-chassis \
+    pirom-parser \
     "
 
 RDEPENDS:${PN}-inventory:append = " openpower-fru-vpd"

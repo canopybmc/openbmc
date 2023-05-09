@@ -1,0 +1,12 @@
+[Unit]
+Description=Intel PIROM Decoder for FRU /%I
+Wants=mapper-wait@-xyz-openbmc_project-inventory.service
+After=mapper-wait@-xyz-openbmc_project-inventory.service
+ConditionPathExists=/%I
+
+[Service]
+ExecStart=/usr/bin/env decode-pirom.sh /%I/eeprom
+SyslogIdentifier=intel-pirom-decoder
+
+[Install]
+WantedBy=multi-user.target
