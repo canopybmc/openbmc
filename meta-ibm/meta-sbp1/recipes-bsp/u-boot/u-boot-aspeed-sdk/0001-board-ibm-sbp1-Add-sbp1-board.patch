@@ -1,0 +1,121 @@
+From fa195cabd41b3fc6cfca510037189c24743d20e7 Mon Sep 17 00:00:00 2001
+From: Patrick Rudolph <patrick.rudolph@9elements.com>
+Date: Mon, 13 Jun 2022 11:11:07 +0200
+Subject: [PATCH] arch/arm/dts: Add SBP1
+
+Add support for IBM SBP1 based on existing DTS.
+Provide minimal configuration for serial, ethernet and boot from SPI flash.
+
+Signed-off-by: Patrick Rudolph <patrick.rudolph@9elements.com>
+---
+ arch/arm/dts/Makefile         |  1 +
+ arch/arm/dts/ast2600-sbp1.dts | 84 +++++++++++++++++++++++++++++++++++
+ 2 files changed, 85 insertions(+)
+ create mode 100644 arch/arm/dts/ast2600-sbp1.dts
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 37675a3277..d90faa6651 100755
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -695,6 +695,7 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
+ 	ast2600-pfr.dtb \
+ 	ast2600-qcom-dc-scm-v1.dtb \
+ 	ast2600-s6q.dtb \
++	ast2600-sbp1.dtb \
+ 	ast2600-slt.dtb \
+ 	ast2600-tacoma.dtb \
+ 	ast2600-intel.dtb \
+diff --git a/arch/arm/dts/ast2600-sbp1.dts b/arch/arm/dts/ast2600-sbp1.dts
+new file mode 100644
+index 0000000000..87afa2cd9a
+--- /dev/null
++++ b/arch/arm/dts/ast2600-sbp1.dts
+@@ -0,0 +1,84 @@
++
++#include "ast2600-evb.dts"
++
++/ {
++	model = "IBM SBP1";
++	compatible = "ibm,sbp1-bmc", "aspeed,ast2600";
++
++	chosen {
++		stdout-path = &uart1;
++	};
++
++	aliases {
++		ethernet0 = &mac2;
++		ethernet1 = &mac3;
++	};
++
++	cpus {
++		cpu@0 {
++			clock-frequency = <1200000000>;
++		};
++		cpu@1 {
++			clock-frequency = <1200000000>;
++		};
++	};
++};
++
++&uart1 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&uart5 {
++	status = "disabled";
++};
++
++&mdio {
++	status = "okay";
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_mdio3_default &pinctrl_mdio4_default>;
++};
++
++&mac0 {
++	status = "disabled";
++};
++
++&mac1 {
++	status = "disabled";
++};
++
++&gpio0 {
++	status = "okay";
++	line_50 {
++		gpio-hog;
++		gpios = <50 GPIO_ACTIVE_LOW>;
++		output-low;
++		line-name = "BMC_MAC1_RESET_N";
++	};
++	line_175 {
++		gpio-hog;
++		gpios = <175 GPIO_ACTIVE_LOW>;
++		output-low;
++		line-name = "BMC_MAC0_RESET_N";
++	};
++};
++
++&spi1 {
++	status = "disabled";
++};
++
++&spi2 {
++	status = "disabled";
++};
++
++&emmc_slot0 {
++	status = "disabled";
++};
++
++&sdhci_slot0 {
++	status = "disabled";
++};
++
++&sdhci_slot1 {
++	status = "disabled";
++};
+\ No newline at end of file
+-- 
+2.41.0
+
