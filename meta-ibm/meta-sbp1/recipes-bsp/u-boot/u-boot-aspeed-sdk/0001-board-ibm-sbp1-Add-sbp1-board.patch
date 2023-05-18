@@ -1,0 +1,132 @@
+commit c59b16a707ccb77df5dc338d529b865909689fa3
+Author: Patrick Rudolph <patrick.rudolph@9elements.com>
+Date:   Wed May 17 15:39:41 2023 +0200
+
+    SBP1: Add DTS
+    
+    Signed-off-by: Patrick Rudolph <patrick.rudolph@9elements.com>
+
+diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
+index 6c34b83336..f2efd9c12d 100755
+--- a/arch/arm/dts/Makefile
++++ b/arch/arm/dts/Makefile
+@@ -695,6 +695,7 @@ dtb-$(CONFIG_ARCH_ASPEED) += \
+ 	ast2600-slt.dtb \
+ 	ast2600-tacoma.dtb \
+ 	ast2600-intel.dtb \
++	ast2600-sbp1.dtb \
+ 	ast2600-tacoma.dtb
+ 
+ dtb-$(CONFIG_ARCH_STI) += stih410-b2260.dtb
+diff --git a/arch/arm/dts/ast2600-sbp1.dts b/arch/arm/dts/ast2600-sbp1.dts
+new file mode 100644
+index 0000000000..106f818bcf
+--- /dev/null
++++ b/arch/arm/dts/ast2600-sbp1.dts
+@@ -0,0 +1,106 @@
++#include "ast2600-fpga.dts"
++
++/ {
++	model = "IBM SBP1";
++	compatible = "ibm,sbp1-bmc", "aspeed,ast2600";
++
++	chosen {
++		stdout-path = &uart1;
++	};
++
++	aliases {
++		ethernet0 = &mac2;
++		ethernet1 = &mac3;
++	};
++};
++
++&uart1 {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
++
++&uart5 {
++	status = "disabled";
++};
++
++&mdio {
++        status = "okay";
++        pinctrl-names = "default";
++        pinctrl-0 = <&pinctrl_mdio3_default &pinctrl_mdio4_default>;
++        #address-cells = <1>;
++        #size-cells = <0>;
++        ethphy2: ethernet-phy@2 {
++                reg = <0>;
++        };
++
++        ethphy3: ethernet-phy@3 {
++                reg = <0>;
++        };
++};
++
++&mac0 {
++	status = "disabled";
++};
++
++&mac1 {
++	status = "disabled";
++};
++
++&mac2 {
++        status = "okay";
++        phy-mode = "rgmii";
++        phy-handle = <&ethphy2>;
++        pinctrl-names = "default";
++        pinctrl-0 = <&pinctrl_rgmii3_default>;
++};
++
++&mac3 {
++        status = "okay";
++        phy-mode = "rgmii";
++        phy-handle = <&ethphy3>;
++        pinctrl-names = "default";
++        pinctrl-0 = <&pinctrl_rgmii4_default>;
++};
++
++&fmc {
++	status = "okay";
++
++	pinctrl-names = "default";
++	pinctrl-0 = <&pinctrl_fmcquad_default>;
++	flash@0 {
++		compatible = "winbond,w25q512jv", "spi-flash";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++
++	flash@1 {
++		compatible = "winbond,w25q512jv", "spi-flash";
++		status = "okay";
++		spi-max-frequency = <50000000>;
++		spi-tx-bus-width = <4>;
++		spi-rx-bus-width = <4>;
++	};
++};
++
++&emmc_slot0 {
++	status = "disabled";
++};
++
++&i2c0 {
++	status = "disabled";
++};
++
++&i2c3 {
++	status = "disabled";
++};
++
++&i2c7 {
++	status = "disabled";
++};
++
++&hace {
++	u-boot,dm-pre-reloc;
++	status = "okay";
++};
