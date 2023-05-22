@@ -1,0 +1,12 @@
+[Unit]
+Description=Set fans to 34 percent as Rebooting
+DefaultDependencies=no
+After=shutdown.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=true
+ExecStart=/bin/bash -c 'for i in /sys/class/hwmon/*/pwm1; do echo 92 > $i; done'
+
+[Install]
+WantedBy=shutdown.target
