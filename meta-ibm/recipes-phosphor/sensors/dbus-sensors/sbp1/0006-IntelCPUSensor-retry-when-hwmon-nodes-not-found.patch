@@ -1,0 +1,33 @@
+From 44ee17d8dd04b0376d024107a331428494f8231a Mon Sep 17 00:00:00 2001
+From: Paul Fertser <fercerpav@gmail.com>
+Date: Wed, 29 Mar 2023 12:48:07 +0000
+Subject: [PATCH 6/7] IntelCPUSensor: retry when hwmon nodes not found
+
+Due to the dynamic nature of loading kernel modules and creating hwmon
+devices it makes sense to retry searching for the suitable hwmon nodes
+as they might appear later.
+
+This is needed with the current upstream Linux PECI support code.
+
+Change-Id: I4ce1585010bddc5b2162c3f64aae87006fe9a179
+Signed-off-by: Paul Fertser <fercerpav@gmail.com>
+---
+ src/IntelCPUSensorMain.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/IntelCPUSensorMain.cpp b/src/IntelCPUSensorMain.cpp
+index 011f2fb..2fa860a 100644
+--- a/src/IntelCPUSensorMain.cpp
++++ b/src/IntelCPUSensorMain.cpp
+@@ -174,7 +174,7 @@ bool createSensors(boost::asio::io_context& io,
+                    hwmonNamePaths, 6))
+     {
+         std::cerr << "No CPU sensors in system\n";
+-        return true;
++        return false;
+     }
+ 
+     boost::container::flat_set<std::string> scannedDirectories;
+-- 
+2.39.2
+

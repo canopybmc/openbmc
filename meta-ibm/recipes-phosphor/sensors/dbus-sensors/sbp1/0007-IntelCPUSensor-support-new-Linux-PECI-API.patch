@@ -1,0 +1,94 @@
+From e713adebb068388247441f67a850471ceba17e3c Mon Sep 17 00:00:00 2001
+From: Paul Fertser <fercerpav@gmail.com>
+Date: Wed, 29 Mar 2023 12:58:30 +0000
+Subject: [PATCH 7/7] IntelCPUSensor: support new Linux PECI API
+
+The upstream PECI bus implementation doesn't support any ioctl() or
+other means to send and receive PECI messages directly from the
+userspace, instead it only provides regular kernel-level abstractions
+(just hwmon CPU and DIMM temperature devices for now). It also requires
+the userspace to trigger bus rescan after the CPU(s) are powered on.
+
+This patch makes IntelCPUSensor automatically detect and use the new
+API.
+
+Change-Id: Icbd568aeeca6428a9fade12416e260741a76213c
+Signed-off-by: Paul Fertser <fercerpav@gmail.com>
+---
+ src/IntelCPUSensorMain.cpp | 46 +++++++++++++++++++++++++++++++++++---
+ 1 file changed, 43 insertions(+), 3 deletions(-)
+
+diff --git a/src/IntelCPUSensorMain.cpp b/src/IntelCPUSensorMain.cpp
+index 2fa860a..b3a2d48 100644
+--- a/src/IntelCPUSensorMain.cpp
++++ b/src/IntelCPUSensorMain.cpp
+@@ -86,6 +86,7 @@ struct CPUConfig
+ 
+ static constexpr const char* peciDev = "/dev/peci-";
+ static constexpr const char* peciDevPath = "/sys/bus/peci/devices/";
++static constexpr const char* rescanPath = "/sys/bus/peci/rescan";
+ static constexpr const unsigned int rankNumMax = 8;
+ 
+ namespace fs = std::filesystem;
+@@ -169,9 +170,10 @@ bool createSensors(boost::asio::io_context& io,
+     }
+ 
+     std::vector<fs::path> hwmonNamePaths;
+-    if (!findFiles(fs::path(peciDevPath),
+-                   R"(peci-\d+/\d+-.+/peci-.+/hwmon/hwmon\d+/name$)",
+-                   hwmonNamePaths, 6))
++    findFiles(fs::path(peciDevPath),
++              R"(peci-\d+/\d+-.+/peci[-_].+/hwmon/hwmon\d+/name$)",
++              hwmonNamePaths, 6);
++    if (hwmonNamePaths.empty())
+     {
+         std::cerr << "No CPU sensors in system\n";
+         return false;
+@@ -488,6 +490,44 @@ void detectCpu(boost::asio::steady_timer& pingTimer,
+             continue;
+         }
+ 
++        std::fstream rescan{rescanPath, std::ios::out};
++        if (rescan.is_open())
++        {
++            std::vector<fs::path> peciPaths;
++            std::ostringstream searchPath;
++            searchPath << std::hex << "peci-" << config.bus << "/" << config.bus
++                       << "-" << config.addr;
++            findFiles(fs::path(peciDevPath + searchPath.str()),
++                      R"(peci_cpu.dimmtemp.+/hwmon/hwmon\d+/name$)", peciPaths,
++                      3);
++            if (!peciPaths.empty())
++            {
++                config.state = State::READY;
++                rescanDelaySeconds = 1;
++            }
++            else
++            {
++                findFiles(fs::path(peciDevPath + searchPath.str()),
++                          R"(peci_cpu.cputemp.+/hwmon/hwmon\d+/name$)",
++                          peciPaths, 3);
++                if (!peciPaths.empty())
++                {
++                    config.state = State::ON;
++                    rescanDelaySeconds = 3;
++                }
++                else
++                {
++                    rescan << "1";
++                }
++            }
++            if (config.state != State::READY)
++            {
++                keepPinging = true;
++            }
++
++            continue;
++        }
++
+         std::string peciDevPath = peciDev + std::to_string(config.bus);
+ 
+         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+-- 
+2.39.2
+

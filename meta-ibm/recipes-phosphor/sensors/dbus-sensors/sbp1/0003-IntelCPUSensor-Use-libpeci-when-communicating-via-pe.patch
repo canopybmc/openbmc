@@ -1,0 +1,166 @@
+From 77141acb7f090a2205d43d397905c65a0d1e4b6e Mon Sep 17 00:00:00 2001
+From: Oleksandr Shulzhenko <oleksandr.shulzhenko.viktorovych@intel.com>
+Date: Tue, 14 Mar 2023 14:52:36 +0100
+Subject: [PATCH 3/7] IntelCPUSensor: Use libpeci when communicating via
+ peci-legacy
+
+When using peci-legacy the general approach is to use libpeci as
+the middleware to communicate with peci core from userspace.
+Integrate libpeci with IntelCPUSensor and use library functions to issue
+peci commands where necessary.
+
+Tested: hwmons are succesfully created in the same way
+they were created using ioctl.
+
+Change-Id: I4ecd70e604d447a4066dc5fb8d902992cb97cadf
+Signed-off-by: Oleksandr Shulzhenko <oleksandr.shulzhenko.viktorovych@intel.com>
+---
+ .clang-tidy                    |  2 +-
+ .gitignore                     |  1 +
+ src/IntelCPUSensorMain.cpp     | 25 ++++++++++---------------
+ src/meson.build                | 12 ++++++++++++
+ subprojects/.clang-tidy-ignore |  1 +
+ subprojects/libpeci.wrap       |  6 ++++++
+ 6 files changed, 31 insertions(+), 16 deletions(-)
+ create mode 100644 subprojects/.clang-tidy-ignore
+ create mode 100644 subprojects/libpeci.wrap
+
+diff --git a/.clang-tidy b/.clang-tidy
+index 65f2c6c..d5699b1 100644
+--- a/.clang-tidy
++++ b/.clang-tidy
+@@ -298,7 +298,7 @@ readability-uniqueptr-delete-release,
+ readability-uppercase-literal-suffix'
+ 
+ WarningsAsErrors: '*'
+-HeaderFilterRegex: '.*'
++HeaderFilterRegex: '(?!^subprojects).*'
+ CheckOptions:
+   - { key: readability-identifier-naming.ClassCase,     value: CamelCase  }
+   - { key: readability-identifier-naming.VariableCase,  value: camelBack }
+diff --git a/.gitignore b/.gitignore
+index e0886a4..2408bb2 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -3,6 +3,7 @@ subprojects/*
+ !subprojects/*.wrap
+ !subprojects/.clang-tidy
+ !subprojects/.clang-format
++!subprojects/.clang-tidy-ignore
+ 
+ .vscode
+ .idea/
+diff --git a/src/IntelCPUSensorMain.cpp b/src/IntelCPUSensorMain.cpp
+index 665daa8..bf6e08b 100644
+--- a/src/IntelCPUSensorMain.cpp
++++ b/src/IntelCPUSensorMain.cpp
+@@ -19,6 +19,7 @@
+ #include "VariantVisitors.hpp"
+ 
+ #include <fcntl.h>
++#include <peci.h>
+ 
+ #include <boost/algorithm/string/replace.hpp>
+ #include <boost/container/flat_map.hpp>
+@@ -472,29 +473,25 @@ void detectCpu(boost::asio::steady_timer& pingTimer,
+             return;
+         }
+ 
++        peci_SetDevName(peciDevPath.data());
+         State newState = State::OFF;
+-        struct peci_ping_msg msg
+-        {};
+-        msg.addr = config.addr;
+ 
+         // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+-        if (ioctl(file, PECI_IOC_PING, &msg) == 0)
++        if (peci_Ping(config.addr) == PECI_CC_SUCCESS)
+         {
+             bool dimmReady = false;
+             for (unsigned int rank = 0; rank < rankNumMax; rank++)
+             {
+-                struct peci_rd_pkg_cfg_msg msg
+-                {};
+-                msg.addr = config.addr;
+-                msg.index = PECI_MBX_INDEX_DDR_DIMM_TEMP;
+-                msg.param = rank;
+-                msg.rx_len = 4;
++                std::array<uint8_t, 8> pkgConfig{};
++                uint8_t cc = 0;
+ 
+                 // NOLINTNEXTLINE(cppcoreguidelines-pro-type-vararg)
+-                if (ioctl(file, PECI_IOC_RD_PKG_CFG, &msg) == 0)
++                if (peci_RdPkgConfig(config.addr, PECI_MBX_INDEX_DDR_DIMM_TEMP,
++                                     rank, 4, &pkgConfig[0],
++                                     &cc) == PECI_CC_SUCCESS)
+                 {
+-                    if ((msg.pkg_config[0] != 0U) ||
+-                        (msg.pkg_config[1] != 0U) || (msg.pkg_config[2] != 0U))
++                    if ((pkgConfig[0] != 0U) || (pkgConfig[1] != 0U) ||
++                        (pkgConfig[2] != 0U))
+                     {
+                         dimmReady = true;
+                         break;
+@@ -516,8 +513,6 @@ void detectCpu(boost::asio::steady_timer& pingTimer,
+             }
+         }
+ 
+-        close(file);
+-
+         if (config.state != newState)
+         {
+             if (newState != State::OFF)
+diff --git a/src/meson.build b/src/meson.build
+index 665517a..0adbabc 100644
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -60,6 +60,17 @@ if not meson.get_compiler('cpp').has_header('linux/peci-ioctl.h')
+     peci_incdirs = ['../include']
+ endif
+ 
++if get_option('intel-cpu').enabled()
++    peci_dep = meson.get_compiler('cpp').find_library('libpeci', required : false)
++    if not peci_dep.found()
++      cmake = import('cmake')
++      opt = cmake.subproject_options()
++      opt.append_compile_args('c', '-Wno-pedantic')
++      peci_proj = cmake.subproject('libpeci', options : opt)
++      peci_dep = peci_proj.dependency('peci')
++    endif
++endif
++
+ if get_option('adc').enabled()
+     executable(
+         'adcsensor',
+@@ -86,6 +97,7 @@ if get_option('intel-cpu').enabled()
+             gpiodcxx,
+             thresholds_dep,
+             utils_dep,
++            peci_dep,
+         ],
+         include_directories: peci_incdirs,
+         install: true,
+diff --git a/subprojects/.clang-tidy-ignore b/subprojects/.clang-tidy-ignore
+new file mode 100644
+index 0000000..f59ec20
+--- /dev/null
++++ b/subprojects/.clang-tidy-ignore
+@@ -0,0 +1 @@
++*
+\ No newline at end of file
+diff --git a/subprojects/libpeci.wrap b/subprojects/libpeci.wrap
+new file mode 100644
+index 0000000..59fc2b9
+--- /dev/null
++++ b/subprojects/libpeci.wrap
+@@ -0,0 +1,6 @@
++[wrap-git]
++url = https://github.com/openbmc/libpeci.git
++revision = HEAD
++
++[provide]
++libpeci = peci_dep
+\ No newline at end of file
+-- 
+2.39.2
+

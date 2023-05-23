@@ -1,0 +1,37 @@
+From 88a32137fb8173970e2bda25c41561b837f89f7d Mon Sep 17 00:00:00 2001
+From: Michael Shen <gpgpgp@google.com>
+Date: Mon, 15 May 2023 07:58:06 +0000
+Subject: [PATCH 5/7] Fix format in HwmonMain.cpp to pass format check
+
+Change-Id: I6b39dad6e00e1682cb7ed9bbafcc85999b073c44
+Signed-off-by: Michael Shen <gpgpgp@google.com>
+---
+ src/HwmonTempMain.cpp | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/HwmonTempMain.cpp b/src/HwmonTempMain.cpp
+index 340bf11..4c28345 100644
+--- a/src/HwmonTempMain.cpp
++++ b/src/HwmonTempMain.cpp
+@@ -40,14 +40,14 @@
+ 
+ static constexpr float pollRateDefault = 0.5;
+ 
+-static constexpr double maxValuePressure = 120000; // Pascals
+-static constexpr double minValuePressure = 30000;  // Pascals
++static constexpr double maxValuePressure = 120000;      // Pascals
++static constexpr double minValuePressure = 30000;       // Pascals
+ 
+ static constexpr double maxValueRelativeHumidity = 100; // PercentRH
+ static constexpr double minValueRelativeHumidity = 0;   // PercentRH
+ 
+-static constexpr double maxValueTemperature = 127;  // DegreesC
+-static constexpr double minValueTemperature = -128; // DegreesC
++static constexpr double maxValueTemperature = 127;      // DegreesC
++static constexpr double minValueTemperature = -128;     // DegreesC
+ 
+ namespace fs = std::filesystem;
+ 
+-- 
+2.39.2
+
