@@ -9,7 +9,7 @@ LIC_FILES_CHKSUM = "file://LICENSE.txt;md5=3b83ef96387f14655fc854ddc3c6bd57"
 
 BRANCH = "main"
 SRC_URI = "git://github.com/9elements/pwrseqd.git;branch=${BRANCH};protocol=https"
-SRCREV = "64de6d63b5263e562626294160b6aecd6bd1e0ab"
+SRCREV = "9c643bc00c7eb2b8a9c712b6bb0e91242dec697f"
 
 S = "${WORKDIR}/git"
 
