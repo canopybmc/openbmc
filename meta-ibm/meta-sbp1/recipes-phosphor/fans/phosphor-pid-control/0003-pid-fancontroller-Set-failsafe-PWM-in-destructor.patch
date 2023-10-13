@@ -1,0 +1,120 @@
+From 2fe3a721d770db7c351143f87e49d7e812d7011f Mon Sep 17 00:00:00 2001
+From: Patrick Rudolph <patrick.rudolph@9elements.com>
+Date: Fri, 13 Oct 2023 12:40:14 +0200
+Subject: [PATCH 3/3] pid/fancontroller: Set failsafe PWM in destructor
+
+Introduce a new feature that's guarded by a new meson option
+'offline-failsafe-pwm':
+
+After the FanController object was destroyed it can no longer regulate
+the fans. To prevent system failure set all fans to the FailSafePercent
+defined in the configuration.
+
+In addition to rebuilding configuration it also allows to keep the fans
+in FailSafe mode as long as the phosphor-pid-control.service is stopped
+or the system reboots.
+
+Change-Id: I81262b07fd4c1212efc1a4ba4635bde8bc7b5215
+Signed-off-by: Patrick Rudolph <patrick.rudolph@9elements.com>
+---
+ configure.md          |  6 ++++++
+ meson.build           |  1 +
+ meson.options         |  1 +
+ pid/fancontroller.cpp | 30 ++++++++++++++++++++++++++++++
+ pid/fancontroller.hpp |  2 +-
+ 5 files changed, 39 insertions(+), 1 deletion(-)
+
+diff --git a/configure.md b/configure.md
+index 164e2e3..02752ca 100644
+--- a/configure.md
++++ b/configure.md
+@@ -23,6 +23,12 @@ failsafe mode, even when the calculated PWM is higher than failsafe PWM. Without
+ this enabled, the PWM is calculated and set to the calculated PWM **or** the
+ failsafe PWM, whichever is higher.
+ 
++### --offline-failsafe-pwm
++
++This build flag is used to set the fans to failsafe percent when offline. The
++controller is offline when it's rebuilding the configuration or when it's about
++to shutdown.
++
+ ## JSON Configuration
+ 
+ Default config file path `/usr/share/swampd/config.json` can be overridden by
+diff --git a/meson.build b/meson.build
+index 9d22d76..21fbead 100644
+--- a/meson.build
++++ b/meson.build
+@@ -17,6 +17,7 @@ bindir = get_option('prefix') / get_option('bindir')
+ conf_data.set('BINDIR', bindir)
+ conf_data.set('SYSTEMD_TARGET', get_option('systemd_target'))
+ conf_data.set('STRICT_FAILSAFE_PWM', get_option('strict-failsafe-pwm'))
++conf_data.set('OFFLINE_FAILSAFE_PWM', get_option('offline-failsafe-pwm'))
+ 
+ configure_file(output: 'config.h',
+     configuration: conf_data
+diff --git a/meson.options b/meson.options
+index 9205b1b..fc65cdb 100644
+--- a/meson.options
++++ b/meson.options
+@@ -1,4 +1,5 @@
+ option('tests', type: 'feature', value: 'enabled', description: 'Build tests')
+ option('oe-sdk', type: 'feature', value: 'disabled', description: 'Enable OE SDK')
+ option('strict-failsafe-pwm', type: 'boolean', value: false, description: 'Set the fans strictly at the failsafe PWM when in failsafe mode')
++option('offline-failsafe-pwm', type: 'boolean', value: false, description: 'Set the fans at the failsafe PWM when reloading or terminated.')
+ option('systemd_target', type: 'string', value: 'multi-user.target', description: 'Target for starting this service')
+diff --git a/pid/fancontroller.cpp b/pid/fancontroller.cpp
+index 44852a0..7ebd1f6 100644
+--- a/pid/fancontroller.cpp
++++ b/pid/fancontroller.cpp
+@@ -188,4 +188,34 @@ void FanController::outputProc(double value)
+     return;
+ }
+ 
++FanController::~FanController()
++{
++#ifdef OFFLINE_FAILSAFE_PWM
++    double percent = _owner->getFailSafePercent();
++    if (debugEnabled)
++    {
++        std::cerr << "Zone " << _owner->getZoneID()
++                  << " offline fans output pwm: " << percent << "\n";
++    }
++
++    // value and kFanFailSafeDutyCycle are 10 for 10% so let's fix that.
++    percent /= 100.0;
++
++    // PidSensorMap for writing.
++    for (const auto& it : _inputs)
++    {
++        auto sensor = _owner->getSensor(it);
++        auto redundantWrite = _owner->getRedundantWrite();
++        int64_t rawWritten;
++        sensor->write(percent, redundantWrite, &rawWritten);
++
++        // The outputCache will be used later,
++        // to store a record of the PWM commanded,
++        // so that this information can be included during logging.
++        auto unscaledWritten = static_cast<double>(rawWritten);
++        _owner->setOutputCache(sensor->getName(), {percent, unscaledWritten});
++    }
++#endif
++}
++
+ } // namespace pid_control
+diff --git a/pid/fancontroller.hpp b/pid/fancontroller.hpp
+index 89b3d5e..a1cbc3f 100644
+--- a/pid/fancontroller.hpp
++++ b/pid/fancontroller.hpp
+@@ -29,7 +29,7 @@ class FanController : public PIDController
+         PIDController(id, owner),
+         _inputs(inputs), _direction(FanSpeedDirection::NEUTRAL)
+     {}
+-
++    ~FanController();
+     double inputProc(void) override;
+     double setptProc(void) override;
+     void outputProc(double value) override;
+-- 
+2.41.0
+

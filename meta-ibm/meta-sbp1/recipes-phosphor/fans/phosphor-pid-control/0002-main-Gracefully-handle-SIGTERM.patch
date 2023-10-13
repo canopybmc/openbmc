@@ -1,0 +1,171 @@
+From fd373dadf467315ed25e51a2b20b02557f739414 Mon Sep 17 00:00:00 2001
+From: Patrick Rudolph <patrick.rudolph@9elements.com>
+Date: Fri, 13 Oct 2023 12:34:58 +0200
+Subject: [PATCH 2/3] main: Gracefully handle SIGTERM
+
+When systemd stops phosphor-pid-control.service it sends a SIGTERM.
+Catch SIGTERM in the existing boost signal handler and stop the all
+control loops to make sure the destructor is called in each of them.
+
+This functionality will be used in the following commit.
+
+Tested: systemctl stop phosphor-pid-control.service and see dtor
+        being invoked before process terminates.
+
+Change-Id: I5b1fe8f9191d703351b96e7ae19348f7ccab03d4
+Signed-off-by: Patrick Rudolph <patrick.rudolph@9elements.com>
+---
+ main.cpp | 96 +++++++++++++++++++++++++++++++++++++++++++-------------
+ 1 file changed, 75 insertions(+), 21 deletions(-)
+
+diff --git a/main.cpp b/main.cpp
+index fc09d8b..b488001 100644
+--- a/main.cpp
++++ b/main.cpp
+@@ -66,7 +66,7 @@ std::filesystem::path configPath = "";
+ /* async io context for operation */
+ boost::asio::io_context io;
+ /* async signal_set for signal handling */
+-boost::asio::signal_set signals(io, SIGHUP);
++boost::asio::signal_set signals(io, SIGHUP, SIGTERM);
+ 
+ /* buses for system control */
+ static sdbusplus::asio::connection modeControlBus(io);
+@@ -96,13 +96,13 @@ std::filesystem::path searchConfigurationPath()
+     return name;
+ }
+ 
+-void restartControlLoops()
+-{
+-    static SensorManager mgmr;
+-    static std::unordered_map<int64_t, std::shared_ptr<ZoneInterface>> zones;
+-    static std::vector<std::shared_ptr<boost::asio::steady_timer>> timers;
+-    static bool isCanceling = false;
++static bool isCanceling = false;
++static SensorManager mgmr;
++static std::unordered_map<int64_t, std::shared_ptr<ZoneInterface>> zones;
++static std::vector<std::shared_ptr<boost::asio::steady_timer>> timers;
+ 
++void stopControlLoops()
++{
+     for (const auto& timer : timers)
+     {
+         timer->cancel();
+@@ -114,8 +114,14 @@ void restartControlLoops()
+     {
+         throw std::runtime_error("wait for count back to 1");
+     }
++
+     zones.clear();
+     isCanceling = false;
++}
++
++void restartControlLoops()
++{
++    stopControlLoops();
+ 
+     const std::filesystem::path path =
+         (!configPath.empty()) ? configPath : searchConfigurationPath();
+@@ -207,9 +213,50 @@ void tryRestartControlLoops(bool first)
+     return;
+ }
+ 
++void tryTerminateControlLoops(bool first)
++{
++    static const auto delayTime = std::chrono::milliseconds(50);
++    static boost::asio::steady_timer timer(io);
++
++    auto stopLbd = [](const boost::system::error_code& error) {
++        if (error == boost::asio::error::operation_aborted)
++        {
++            return;
++        }
++
++        // retry when stopControlLoops() has some failure.
++        try
++        {
++            stopControlLoops();
++        }
++        catch (const std::exception& e)
++        {
++            std::cerr << "Failed during stopControlLoops, try again: "
++                      << e.what() << "\n";
++            tryTerminateControlLoops(false);
++            return;
++        }
++        io.stop();
++    };
++
++    // first time of trying to stop the control loop without a delay
++    if (first)
++    {
++        boost::asio::post(io, std::bind(stopLbd, boost::system::error_code()));
++    }
++    // re-try control loop, set up a delay.
++    else
++    {
++        timer.expires_after(delayTime);
++        timer.async_wait(stopLbd);
++    }
++
++    return;
++}
++
+ } // namespace pid_control
+ 
+-void sighupHandler(const boost::system::error_code& error, int signal_number)
++void signalHandler(const boost::system::error_code& error, int signal_number)
+ {
+     static boost::asio::steady_timer timer(io);
+ 
+@@ -219,19 +266,26 @@ void sighupHandler(const boost::system::error_code& error, int signal_number)
+                   << " handler error: " << error.message() << "\n";
+         return;
+     }
++    if (signal_number == SIGTERM)
++    {
++        pid_control::tryTerminateControlLoops(true);
++    }
++    else
++    {
++        timer.expires_after(std::chrono::seconds(1));
++        timer.async_wait([](const boost::system::error_code ec) {
++            if (ec)
++            {
++                std::cout << "Signal timer error: " << ec.message() << "\n";
++                return;
++            }
++
++            std::cout << "reloading configuration\n";
++            pid_control::tryRestartControlLoops();
++        });
++    }
+ 
+-    timer.expires_after(std::chrono::seconds(1));
+-    timer.async_wait([](const boost::system::error_code ec) {
+-        if (ec)
+-        {
+-            std::cout << "Signal timer error: " << ec.message() << "\n";
+-            return;
+-        }
+-
+-        std::cout << "reloading configuration\n";
+-        pid_control::tryRestartControlLoops();
+-    });
+-    signals.async_wait(sighupHandler);
++    signals.async_wait(signalHandler);
+ }
+ 
+ int main(int argc, char* argv[])
+@@ -339,7 +393,7 @@ int main(int argc, char* argv[])
+     sdbusplus::server::manager_t objManager(modeControlBus, modeRoot);
+ 
+     // Enable SIGHUP handling to reload JSON config
+-    signals.async_wait(sighupHandler);
++    signals.async_wait(signalHandler);
+ 
+     /*
+      * All sensors are managed by one manager, but each zone has a pointer to
+-- 
+2.41.0
+
