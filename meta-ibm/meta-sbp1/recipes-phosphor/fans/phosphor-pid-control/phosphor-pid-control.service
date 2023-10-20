@@ -7,6 +7,7 @@ ExecStart=/usr/bin/swampd -t
 Restart=always
 RestartSec=5
 StartLimitInterval=0
+ExecStopPost=/bin/bash -c 'for i in /sys/class/hwmon/*/pwm1; do echo 92 > $i; done'
 
 [Install]
 WantedBy=basic.target
