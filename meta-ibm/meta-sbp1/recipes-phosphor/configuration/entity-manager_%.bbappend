@@ -1,7 +1,8 @@
 FILESEXTRAPATHS:prepend:sbp1 := "${THISDIR}/${PN}:"
 
 SRC_URI = "git://github.com/9elements/entity-manager.git;branch=sbp1_02012024;protocol=https \
-          "
+           file://blocklist.json"
+
 SRC_URI[sha256sum] = "f561e5a70eaeb880387036de1353751606b6f98b2dafb52bf3c03025a5fa126d"
 
 SRCREV = "405b3f74c696ace377b8f992889073daf063ce66"
