@@ -155,8 +155,11 @@
 &i2c0 {
 	status = "okay";
 	multi-master;
+	//TODO: AirMax Conn B at 0x10?
 	//TODO: CPU0 PIROM at 0x50
 	//TODO: CPU1 PIROM at 0x51
+
+	// Alicja: Is it really necessary? I see 0x10, 0x50, 0x51 when running our build...
 };
 
 &i2c1 {
@@ -165,6 +168,9 @@
 	//TODO
 	//upstream .dts says there is an nxp,pca9544 at 0x71
 	//but it does not appear for me even with host powered on.
+
+	// Alicja: According to schematic, there's X24 Riser on this bus.
+	// Maybe it will appear only with PCI-E mezzaine board installed?
 };
 
 &i2c2 {
@@ -173,16 +179,25 @@
 	//TODO at 0x10
 	//TODO at 0x16
 	//TODO at 0x70
+
+	// Alicja: According to schematic, Mezzaine board and springwille should be here...
 };
 
 &i2c3 {
 	status = "okay";
 	multi-master;
-	//TODO at 0x08
-	//TODO at 0x44
-	//TODO at 0x51 (should be eeprom, but driver does not work?)
+	//TODO at 0x08 - Lewisburg PCH?
+	//TODO at 0x44 - CKMNG?
+	//TODO: Where's AT24?
 	//TODO at 0x68 ICS9FGP204
-	//TODO at 0x6c NB3W1200L (only when host is powered on)
+	//TODO at 0x6c NB3W1200L (only when host is powered on) - A: Are you sure? Doesn't show up for me... 
+
+/*
+	TODO at 0x51 - looks like TMP421, even though it doesn't make sense (according to schematic)
+	echo tmp421 0x51 > /sys/bus/i2c/devices/i2c-3/new_device
+	[11722.981615] tmp421 3-0051: Enable monitoring chip
+	[11723.024004] i2c i2c-3: new_device: Instantiated device tmp421 at 0x51
+*/
 };
 
 &i2c4 {
@@ -202,46 +217,100 @@
 &i2c5 {
 	status = "okay";
 	multi-master;
-	// turning host off/on does not change anything here
-	//compared to upstream dt we are missing some...
-
-	regulator@0x48 { //pxe1610C
+	
+	// Needs more configuration.
+	// See: Documentation/hwmon/pxe1610.rst
+	regulator@48 {
 		compatible = "infineon,pxe1610";
-		register = <0x48>;
+		reg = <0x48>;
 	};
-	regulator@0x4a { //pxe1110C
+	regulator@4a {
 		compatible = "infineon,pxe1610";
-		register = <0x4a>;
+		reg = <0x4a>;
 	};
-	regulator@0x68 { //pxe1110C
+	regulator@50 {
 		compatible = "infineon,pxe1610";
-		register = <0x68>;
+		reg = <0x50>;
 	};
-	regulator@0x70 { //pxm1310C
+	regulator@52 {
 		compatible = "infineon,pxe1610";
-		register = <0x70>;
+		reg = <0x52>;
 	};
-	regulator@0x72 { //pxm1310C
+	regulator@58 {
 		compatible = "infineon,pxe1610";
-		register = <0x72>;
+		reg = <0x58>;
+	};
+	regulator@5a {
+		compatible = "infineon,pxe1610";
+		reg = <0x5a>;
+	};
+	regulator@68 {
+		compatible = "infineon,pxe1610";
+		reg = <0x68>;
+	};
+	regulator@70 {
+		compatible = "infineon,pxe1610";
+		reg = <0x70>;
+	};
+	regulator@72 {
+		compatible = "infineon,pxe1610";
+		reg = <0x72>;
 	};
 };
-
-//TODO: continue here later...
 
 &i2c6 {
 	status = "okay";
 	multi-master;
+
+// TODO: What's on 0x21? 
+// TODO: What's on 0x50?
+// One of them should be PCA9554... likely 0x21?
+
+	// Not detected/nothing in dmesg
+	temperature-sensor@4f {
+		compatible = "ti,tmp421";
+		reg = <0x4f>;
+	};
+	temperature-sensor@4e {
+		compatible = "ti,tmp421";
+		reg = <0x4e>;
+	};
+
+	tpm@20 {
+		compatible = "infineon,slb9645tt";
+		reg = <0x20>;
+	};
+
+	eeprom@54 {
+		compatible = "atmel,24c64";
+		reg = <0x54>;
+		pagesize = <32>;
+	};
+
 };
 
 &i2c7 {
 	status = "okay";
 	multi-master;
+	
+	power-sensor@45 {
+		compatible = "adi,adm1278";
+		reg = <0x45>;
+		shunt-resistor-micro-ohms = <250>;
+	};
+
 };
 
 &i2c8 {
 	status = "okay";
 	multi-master;
+	// TODO: There's something on 0x61 on Meta's OpenBMC build. Possibly "MCP Sideband HFI"?
+
+	// No TMP421 on this bus according to schematic but it appears on host power-on...
+	sensor@1f {
+		compatible = "ti,tmp421";
+		reg = <0x1f>;
+	};
 };
 
 &i2c9 {
@@ -254,16 +323,16 @@
 		i2c-protocol;
 	};
 
-	// probably the below are due to the debug card being attached
-	//TODO 0x27
-	//TODO 0x54
+	// One of them should be TCA9555 (tca9554 kmod) according to schematic
+	// TODO 0x27 - likely TCA9555
+	// TODO 0x30 - Likely USB Debug
 };
 
 &pwm_tacho {
 	status = "okay";
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_pwm0_default
-                     &pinctrl_pwm1_default>;
+					&pinctrl_pwm1_default>;
 	fan@0 {
 		reg = <0x00>;
 		aspeed,fan-tach-ch = /bits/ 8 <0x00>;
