@@ -14,6 +14,7 @@
 		serial0 = &uart1;
 		serial4 = &uart5;
 	};
+
 	chosen {
 		stdout-path = &uart5;
 		bootargs = "console=ttyS4,115200 earlycon";
@@ -23,16 +24,22 @@
 		reg = <0x80000000 0x20000000>;
 	};
 
-	vga_memory: framebuffer@9f000000 {
-		no-map;
-		reg = <0x9f000000 0x04000000>; /* 64M */
-	};
+	reserved-memory {
+		#address-cells = <1>;
+		#size-cells = <1>;
+		ranges;
 
-	gfx_memory: framebuffer {
-		size = <0x04000000>; /* 64M */
-		alignment = <0x01000000>;
-		compatible = "shared-dma-pool";
-		reusable;
+		vga_memory: framebuffer@bc000000 {
+			no-map;
+			reg = <0xbc000000 0x04000000>; /* 64M */
+		};
+
+		video_engine_memory: jpegbuffer {
+			size = <0x02000000>;	/* 32M */
+			alignment = <0x01000000>;
+			compatible = "shared-dma-pool";
+			reusable;
+		};
 	};
 
 	iio-hwmon {
@@ -40,7 +47,6 @@
 		io-channels = <&adc 0>, <&adc 1>, <&adc 2>, <&adc 3>,
 			      <&adc 4>, <&adc 5>, <&adc 6>, <&adc 7>;
 	};
-
 };
 
 &fmc {
@@ -138,14 +144,9 @@
 	status = "okay";
 };
 
-&gfx {
-	status = "okay";
-	memory-region = <&gfx_memory>;
-};
-
 &video {
 	status = "okay";
-	memory-region = <&vga_memory>;
+	memory-region = <&video_engine_memory>;
 };
 
 &peci0 {
