@@ -1,8 +1,7 @@
-IPMB_CHANNELS = "\
-    /dev/ipmb-4 \
-    /dev/ipmb-9 \
-    "
-IPMB_REMOTE_ADDR = "\
-    44 \
-    96 \
-    "
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+
+SRC_URI:append = " file://ipmb-channels.json "
+
+do_install:append() {
+    install -m 0644 -D ${UNPACKDIR}/ipmb-channels.json ${D}/usr/share/ipmbbridge
+}

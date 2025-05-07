@@ -1,0 +1,20 @@
+{
+  "leds": [
+    {
+      "group": "bmc_booted",
+      "members": []
+    },
+    {
+      "group": "power_on",
+      "members": []
+    },
+    {
+      "group": "enclosure_identify",
+      "members": []
+    },
+    {
+      "group": "enclosure_fault",
+      "members": []
+    }
+  ]
+}
