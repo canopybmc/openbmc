@@ -97,6 +97,7 @@ then
             mtd=$(cat /sys/class/mtd/$d/name)
             if [ "$mtd" == "pnor" ]; then
                 echo "Flashing bios image to $d..."
+                # TODO: use flashrom to preserve regions
                 if flashcp -v "$IMAGE_FILE" /dev/$d; then
                     echo "bios updated successfully..."
                 else
