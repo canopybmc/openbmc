@@ -39,6 +39,7 @@ RDEPENDS:${PN}-flash = " \
 SUMMARY:${PN}-system = "OCP System"
 RDEPENDS:${PN}-system = " \
         dbus-sensors \
+        fb-powerctrl \
         flashrom \
         ipmitool \
         phosphor-host-postd \
