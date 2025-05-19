@@ -4,7 +4,6 @@ set -e
 
 POWER_CMD="/usr/sbin/power-util mb"
 IMAGE_FILE=$1/bios.bin
-GPIO=389
 
 IPMB_OBJ="xyz.openbmc_project.Ipmi.Channel.Ipmb"
 IPMB_PATH="/xyz/openbmc_project/Ipmi/Channel/Ipmb"
@@ -18,44 +17,16 @@ SPI_PATH="/sys/bus/platform/drivers/spi-aspeed-smc"
 set_gpio_to_bmc()
 {
     echo "switch bios GPIO to bmc"
-    if [ ! -d /sys/class/gpio/gpio$GPIO ]; then
-        cd /sys/class/gpio
-        echo $GPIO > "export"
-        cd gpio$GPIO
-    else
-        cd /sys/class/gpio/gpio$GPIO
-    fi
-    direc=$(cat direction)
-    if [ "$direc" == "in" ]; then
-        echo "out" > direction
-    fi
-    data=$(cat value)
-    if [ "$data" == "0" ]; then
-        echo 1 > value
-    fi
+    # Use gpiofind to get the chip and line offsets, then set to 1
+    gpioset $(gpiofind BIOS_SPI_BMC_CTRL)=1
     return 0
 }
 
 set_gpio_to_pch()
 {
     echo "switch bios GPIO to pch"
-    if [ ! -d /sys/class/gpio/gpio$GPIO ]; then
-        cd /sys/class/gpio
-        echo $GPIO > "export"
-        cd gpio$GPIO
-    else
-        cd /sys/class/gpio/gpio$GPIO
-    fi
-    direc=$(cat direction)
-    if [ "$direc" == "in" ]; then
-        echo "out" > direction
-    fi
-    data=$(cat value)
-    if [ "$data" == "1" ]; then
-        echo 0 > value
-    fi
-    echo "in" > direction
-    echo $GPIO > /sys/class/gpio/unexport
+    # Use gpiofind to get the chip and line offsets, then set to 0
+    gpioset $(gpiofind BIOS_SPI_BMC_CTRL)=0
     return 0
 }
 
@@ -80,7 +51,7 @@ busctl call "$IPMB_OBJ" "$IPMB_PATH" "$IPMB_INTF" $IPMB_CALL $ME_CMD_RECOVER
 sleep 5
 
 #Flip GPIO to access SPI flash used by host.
-echo "Set GPIO $GPIO to access SPI flash from BMC used by host"
+echo "Set GPIO to access SPI flash from BMC used by host"
 set_gpio_to_bmc
 
 #Bind spi driver to access flash
@@ -92,22 +63,21 @@ sleep 1
 if [ -e "$IMAGE_FILE" ];
 then
     echo "Bios image is $IMAGE_FILE"
-    for d in mtd6 mtd7 ; do
-        if [ -e "/dev/$d" ]; then
-            mtd=$(cat /sys/class/mtd/$d/name)
+    for d in 6 7 ; do
+        if [ -e "/dev/mtd$d" ]; then
+            mtd=$(cat /sys/class/mtd/mtd$d/name)
             if [ "$mtd" == "pnor" ]; then
-                echo "Flashing bios image to $d..."
-                # TODO: use flashrom to preserve regions
-                if flashcp -v "$IMAGE_FILE" /dev/$d; then
+                echo "Flashing bios image to mtd$d..."
+                if flashrom -V -p "linux_mtd:dev=$d" -w "$IMAGE_FILE"; then
                     echo "bios updated successfully..."
                 else
                     echo "bios update failed..."
                 fi
                 break
             fi
-            echo "$d is not a pnor device"
+            echo "mtd$d is not a pnor device"
         fi
-        echo "$d not available"
+        echo "mtd$d not available"
     done
 else
     echo "Bios image $IMAGE_FILE doesn't exist"
@@ -120,7 +90,7 @@ echo -n $SPI_DEV > $SPI_PATH/unbind
 sleep 10
 
 #Flip GPIO back for host to access SPI flash
-echo "Set GPIO $GPIO back for host to access SPI flash"
+echo "Set GPIO back for host to access SPI flash"
 set_gpio_to_pch
 sleep 5
 
