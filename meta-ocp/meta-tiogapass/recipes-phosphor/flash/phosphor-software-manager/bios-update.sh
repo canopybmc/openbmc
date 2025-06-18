@@ -50,6 +50,12 @@ echo "Set ME to recovery mode"
 busctl call "$IPMB_OBJ" "$IPMB_PATH" "$IPMB_INTF" $IPMB_CALL $ME_CMD_RECOVER
 sleep 5
 
+if [ -e $SPI_PATH ]; then
+  # Unbind in case it was bound at startup with BIOS_SPI_BMC_CTRL=0
+  echo -n $SPI_DEV > $SPI_PATH/unbind
+  sleep 1
+fi
+
 #Flip GPIO to access SPI flash used by host.
 echo "Set GPIO to access SPI flash from BMC used by host"
 set_gpio_to_bmc
