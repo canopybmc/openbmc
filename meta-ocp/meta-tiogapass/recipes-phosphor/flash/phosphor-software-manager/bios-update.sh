@@ -50,7 +50,7 @@ echo "Set ME to recovery mode"
 busctl call "$IPMB_OBJ" "$IPMB_PATH" "$IPMB_INTF" $IPMB_CALL $ME_CMD_RECOVER
 sleep 5
 
-if [ -e $SPI_PATH ]; then
+if [ -e $SPI_PATH/$SPI_DEV ]; then
   # Unbind in case it was bound at startup with BIOS_SPI_BMC_CTRL=0
   echo -n $SPI_DEV > $SPI_PATH/unbind
   sleep 1
