@@ -188,15 +188,9 @@
 	// Alicja: According to schematic, Mezzaine board and springwille should be here...
 };
 
-&i2c3 {
+&i2c3 { // SMB_HOST_STBY_LVC3
 	status = "okay";
 	multi-master;
-	//TODO at 0x08 - Lewisburg PCH?
-	ipmb0@8 {
-		compatible = "ipmb-dev";
-		reg = <(0x08 | I2C_OWN_SLAVE_ADDRESS)>;
-		i2c-protocol;
-	};
 	//TODO at 0x44 - CKMNG?
 	//TODO: Where's AT24?
 	//TODO at 0x68 ICS9FGP204
@@ -210,18 +204,14 @@
 */
 };
 
-&i2c4 {
+&i2c4 { // SMLINK0_STBY
 	status = "okay";
 	multi-master;
-	// BMC Debug Header
 	ipmb0@10 {
 		compatible = "ipmb-dev";
 		reg = <(0x10 | I2C_OWN_SLAVE_ADDRESS)>;
 		i2c-protocol;
 	};
-	//TODO at 0x16
-	//TODO at 0x70
-	//springville smb should be here
 };
 
 &i2c5 {
