@@ -1,0 +1,38 @@
+---
+name: 'Build OpenBMC Emulated Target'
+description: 'Build OpenBMC for emulated targets'
+inputs:
+  target:
+    description: 'The target to build for (evb-ast2500, evb-ast2600, fvp)'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Install build dependencies
+      shell: bash
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y chrpath diffstat
+
+    - name: Configure bitbake shared folders
+      shell: bash
+      run: |
+        mkdir -p /home/runner/data/bitbake.downloads
+        mkdir -p /home/runner/data/bitbake.sstate
+
+    - name: Build OpenBMC
+      shell: bash
+      env:
+        BB_ENV_PASSTHROUGH_ADDITIONS: "DL_DIR SSTATE_DIR"
+        DL_DIR: "/home/runner/data/bitbake.downloads"
+        SSTATE_DIR: "/home/runner/data/bitbake.sstate"
+      run: |
+        echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
+        . setup ${{ inputs.target }}
+        bitbake obmc-phosphor-image
+
+    - name: Upload static.mtd artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: obmc-phosphor-image-${{ inputs.target }}.static.mtd
+        path: build/${{ inputs.target }}/tmp/deploy/images/${{ inputs.target }}/flash-${{ inputs.target }}
