@@ -8,12 +8,6 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Install build dependencies
-      shell: bash
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y chrpath diffstat
-
     - name: Configure bitbake shared folders
       shell: bash
       run: |
@@ -29,6 +23,7 @@ runs:
       run: |
         echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
         . setup ${{ inputs.target }}
+        echo 'INHERIT:remove = "sanity"' >> conf/local.conf
         bitbake obmc-phosphor-image
 
     - name: Upload static.mtd artifact
