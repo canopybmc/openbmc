@@ -5,15 +5,12 @@ inputs:
   target:
     description: 'The target to build for (evb-ast2500, evb-ast2600, fvp)'
     required: true
+  artifact:
+    description: 'The artifact to upload (static.mtd, static.elf, static.bin)'
+    required: false
 runs:
   using: 'composite'
   steps:
-    - name: Install build dependencies
-      shell: bash
-      run: |
-        sudo apt-get update
-        sudo apt-get install -y chrpath diffstat
-
     - name: Configure bitbake shared folders
       shell: bash
       run: |
@@ -27,7 +24,6 @@ runs:
         DL_DIR: "/home/runner/data/bitbake.downloads"
         SSTATE_DIR: "/home/runner/data/bitbake.sstate"
       run: |
-        echo 0 | sudo tee /proc/sys/kernel/apparmor_restrict_unprivileged_userns
         . setup ${{ inputs.target }}
         bitbake obmc-phosphor-image
 
@@ -35,4 +31,4 @@ runs:
       uses: actions/upload-artifact@v4
       with:
         name: obmc-phosphor-image-${{ inputs.target }}.static.mtd
-        path: build/${{ inputs.target }}/tmp/deploy/images/${{ inputs.target }}/flash-${{ inputs.target }}
+        path: build/${{ inputs.target }}/tmp/deploy/images/${{ inputs.target }}/${{ inputs.artifact }}

@@ -9,7 +9,7 @@ on:
 
 jobs:
   build-evb-ast2500:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Hydra, Large]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,9 +18,10 @@ jobs:
         uses: ./.github/actions/build-emulated
         with:
           target: evb-ast2500
+          artifact: flash-evb-ast2500
 
   build-evb-ast2600:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Hydra, Large]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,9 +30,10 @@ jobs:
         uses: ./.github/actions/build-emulated
         with:
           target: evb-ast2600
+          artifact: flash-evb-ast2600
 
   build-fvp:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Hydra, Large]
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -40,3 +42,4 @@ jobs:
         uses: ./.github/actions/build-emulated
         with:
           target: fvp
+          artifact: fitImage-fvp.bin
