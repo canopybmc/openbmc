@@ -1,0 +1,21 @@
+name: Hardware Targets Build
+
+on:
+  push:
+    branches: [ main, ocp-tiogapass/main ]
+  pull_request:
+    branches: [ main, ocp-tiogapass/main ]
+  workflow_dispatch:
+
+jobs:
+  ocp-tiogapass:
+    runs-on: [self-hosted, Hydra, Large]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Build OCP Tioga Pass
+        uses: ./.github/actions/build-emulated
+        with:
+          target: ocp-tiogapass
+          artifact: flash-ocp-tiogapass
