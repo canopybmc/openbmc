@@ -1,0 +1,9 @@
+# Example Post-Stage for a device
+post-stage:
+  - cmd: cmd
+    name: Clean up the DUT
+    transport:
+      proto: local
+    parameters:
+      executable: echo
+      args: ["Hello from the Poststage. Templating works here as well!"]

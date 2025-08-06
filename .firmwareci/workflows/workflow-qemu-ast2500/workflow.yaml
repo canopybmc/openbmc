@@ -1,0 +1,3 @@
+name: qemu-ast2500
+description: "Run and validate canopy images with QEMU AST2500 EVB"
+runs-on: qemu-ast2500-evb
