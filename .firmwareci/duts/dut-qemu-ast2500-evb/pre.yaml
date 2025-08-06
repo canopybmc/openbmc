@@ -1,0 +1,14 @@
+ #Example Pre-Stage for a device
+pre-stage:
+  - cmd: qemu
+    name: Bring up QEMU for testing
+    parameters:
+      mode: start
+      args: ["-m", "1G", "-M", "ast2500-evb", "-nographic", "-net", "nic", "-drive", "file=[[input.firmware]],if=mtd,format=raw", "-net", "user,hostfwd=:127.0.0.1:2222-:22,hostfwd=:127.0.0.1:2443-:443,hostfwd=udp:127.0.0.1:2623-:623,hostname=qemu"]
+      executable: qemu-system-arm-openBMC
+      firmware: "/tmp/firmware"
+
+  - cmd: sleep
+    name: Wait until QEMU is booted.
+    parameters:
+      duration: 100s
