@@ -1,0 +1,37 @@
+name: Boot Test
+description: Check if the QEMU instance is booted and running.
+
+defaults:
+  transport: &transport
+    proto: ssh
+    options:
+      host: "[[attributes.Host]]"
+      user: root
+      password: 0penBmc
+      port: 2222
+
+stages:
+  - name: Check if image is booted correctly
+    steps:
+      - cmd: cmd
+        name: Check if the system is booted
+        transport: *transport
+        parameters:
+          executable: cat
+          args: ["/etc/os-release"]
+
+      - cmd: cmd
+        name: Check if all systemd services are running correctly
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["list-units", "--failed"]
+          expect:
+            - regex: "0 loaded units listed."
+
+      - cmd: cmd
+        name: "[Report only] dmesg output"
+        transport: *transport
+        parameters:
+          executable: dmesg
+          report_only: true
