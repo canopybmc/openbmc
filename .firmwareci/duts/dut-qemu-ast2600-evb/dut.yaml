@@ -1,0 +1,6 @@
+# Example Device-under-Test Configuration for qemu-ast2600
+name: Example-DUT
+label: qemu-ast2600-evb
+attributes:
+  Host: "127.0.0.1"
+  Flasher: "flasher.local"
