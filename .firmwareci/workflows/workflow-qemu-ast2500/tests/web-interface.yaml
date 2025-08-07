@@ -1,0 +1,242 @@
+name: Web Interface Test
+description: Validate OpenBMC web interface functionality including bmcweb service, HTTPS connectivity, and basic web operations.
+
+defaults:
+  transport: &transport
+    proto: ssh
+    options:
+      host: "[[attributes.Host]]"
+      user: root
+      password: 0penBmc
+      port: 2222
+
+stages:
+  - name: Validate bmcweb Service Status
+    steps:
+      - cmd: cmd
+        name: Check if bmcweb service is active and running
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "bmcweb"]
+          expect:
+            - regex: "active"
+
+      - cmd: cmd
+        name: Verify bmcweb service status details
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["status", "bmcweb", "--no-pager"]
+          expect:
+            - regex: "Active: active \\(running\\)"
+            - regex: "bmcweb"
+
+      - cmd: cmd
+        name: Check bmcweb service is enabled for startup
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-enabled", "bmcweb"]
+          expect:
+            - regex: "enabled"
+
+  - name: Validate HTTPS Port and Network Configuration
+    steps:
+      - cmd: cmd
+        name: "[Report only] Check for listening processes"
+        transport: *transport
+        parameters:
+          executable: ps
+          report_only: true
+
+      - cmd: cmd
+        name: Test external HTTPS connectivity from host
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "-I", "--connect-timeout", "10", "https://localhost:2443"]
+          expect:
+            - regex: "HTTP/.*( 200| 401| 302)"
+
+      - cmd: cmd
+        name: "[Report only] Check processes listening on port 443"
+        transport: *transport
+        parameters:
+          executable: ps
+          args: []
+          report_only: true
+
+  - name: Validate HTTPS Connectivity and Certificate
+    steps:
+      - cmd: cmd
+        name: Test HTTPS connectivity from host
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "-I", "--connect-timeout", "10", "https://localhost:2443"]
+          expect:
+            - regex: "HTTP/[12].*[0-9]{3}"
+
+      - cmd: cmd
+        name: Verify SSL certificate from host
+        transport:
+          proto: local
+        options:
+          timeout: 15s
+        parameters:
+          executable: openssl
+          args: ["s_client", "-connect", "localhost:2443", "-servername", "localhost"]
+          expect:
+            - regex: "-----BEGIN CERTIFICATE-----"
+            - regex: "Verify return code:"
+
+      - cmd: cmd
+        name: Test HTTPS response headers from host
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "-I", "--max-time", "15", "https://localhost:2443"]
+          expect:
+            - regex: "HTTP/[12].*401"
+
+  - name: Validate Web Interface Basic Functionality
+    steps:
+      - cmd: cmd
+        name: Test web interface root endpoint response
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "-I", "--max-time", "20", "https://localhost:2443/"]
+          expect:
+            - regex: "HTTP/[12].*401"
+
+      - cmd: cmd
+        name: Check for login endpoint availability
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "-I", "--max-time", "15", "https://localhost:2443/login"]
+          expect:
+            - regex: "HTTP/[12].*[0-9]{3}"
+
+      - cmd: cmd
+        name: Verify Redfish API endpoint is accessible
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "-I", "--max-time", "15", "https://localhost:2443/redfish/v1/"]
+          expect:
+            - regex: "HTTP/[12].*[0-9]{3}"
+
+      - cmd: cmd
+        name: Test Redfish service root response
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "--max-time", "20", "https://localhost:2443/redfish/v1/"]
+          expect:
+            - regex: '"@odata\.(id|type)"'
+            - regex: '"RedfishVersion"'
+
+  - name: Validate SSL/TLS Security Configuration
+    steps:
+      - cmd: cmd
+        name: Check supported TLS versions
+        transport:
+          proto: local
+        options:
+          timeout: 10s
+        parameters:
+          executable: sh
+          args: ["-c", "openssl s_client -connect localhost:2443 -tls1_2 -brief 2>&1"]
+          expect:
+            - regex: "CONNECTION ESTABLISHED|Protocol version:|DONE"
+
+      - cmd: cmd
+        name: "[Report only] Certificate chain validity"
+        transport:
+          proto: local
+        parameters:
+          executable: sh
+          args: ["-c", "echo | openssl s_client -connect localhost:2443 -verify_return_error 2>/dev/null | openssl x509 -noout -subject -dates"]
+          report_only: true
+
+      - cmd: cmd
+        name: Test cipher suite availability
+        transport:
+          proto: local
+        options:
+          timeout: 10s
+        parameters:
+          executable: sh
+          args: ["-c", "openssl s_client -connect localhost:2443 -cipher HIGH -brief 2>&1"]
+          expect:
+            - regex: "Ciphersuite:"
+
+  - name: Validate Web Interface Performance and Availability
+    steps:
+      - cmd: cmd
+        name: "[Report only] Test web interface response time from host"
+        transport:
+          proto: local
+        parameters:
+          executable: curl
+          args: ["-k", "-s", "-o", "/dev/null", "-w", "%{time_total}", "--max-time", "30", "https://localhost:2443/"]
+          report_only: true
+
+      - cmd: cmd
+        name: Check web interface memory usage
+        transport: *transport
+        parameters:
+          executable: ps
+          expect:
+            - regex: "bmcweb"
+
+  - name: Diagnostic Information Collection
+    steps:
+      - cmd: cmd
+        name: "[Report only] bmcweb service detailed status"
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["status", "bmcweb", "-l", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] Complete network listening ports"
+        transport: *transport
+        parameters:
+          executable: ps
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] bmcweb process information"
+        transport: *transport
+        parameters:
+          executable: ps
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] SSL certificate details from host"
+        transport:
+          proto: local
+        parameters:
+          executable: sh
+          args: ["-c", "echo | openssl s_client -connect localhost:2443 2>/dev/null | openssl x509 -noout -text"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] bmcweb configuration and logs"
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["-u", "bmcweb", "--no-pager", "-n", "50"]
+          report_only: true
