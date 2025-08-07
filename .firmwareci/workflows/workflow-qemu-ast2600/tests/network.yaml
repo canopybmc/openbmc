@@ -1,0 +1,98 @@
+name: Network Interface Test
+description: Validate network interface functionality and connectivity on OpenBMC system.
+
+defaults:
+  transport: &transport
+    proto: ssh
+    options:
+      host: "[[attributes.Host]]"
+      user: root
+      password: 0penBmc
+      port: 2222
+
+stages:
+  - name: Validate Network Interface Configuration
+    steps:
+      - cmd: cmd
+        name: Check if network interfaces are present
+        transport: *transport
+        parameters:
+          executable: ip
+          args: ["link", "show"]
+          expect:
+            - regex: "eth0: <.*UP.*>"
+
+      - cmd: cmd
+        name: Verify network interface has IP address
+        transport: *transport
+        parameters:
+          executable: ip
+          args: ["addr", "show", "eth0"]
+          expect:
+            - regex: "inet [0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+/"
+
+      - cmd: cmd
+        name: Check default gateway configuration
+        transport: *transport
+        parameters:
+          executable: ip
+          args: ["route", "show", "default"]
+          expect:
+            - regex: "default via [0-9]+\\.[0-9]+\\.[0-9]+\\.[0-9]+"
+
+  - name: Validate Network Connectivity
+    steps:
+      - cmd: cmd
+        name: Test loopback interface connectivity
+        transport: *transport
+        parameters:
+          executable: ping
+          args: ["-c", "3", "127.0.0.1"]
+          expect:
+            - regex: "3 packets transmitted, 3 packets received, 0% packet loss"
+
+      - cmd: cmd
+        name: Test local network connectivity via gateway
+        transport: *transport
+        parameters:
+          executable: sh
+          args: ["-c", "\"ping -c 3 $(ip route show default | awk '{print $3}' | head -n 1)\""]
+          expect:
+            - regex: "3 packets transmitted, 3 packets received, 0% packet loss"
+
+  - name: Validate Network Services and Configuration
+    steps:
+      - cmd: cmd
+        name: Check network manager service status
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "systemd-networkd"]
+          expect:
+            - regex: "active"
+
+      - cmd: cmd
+        name: Verify DNS resolution capability
+        transport: *transport
+        parameters:
+          executable: nslookup
+          args: ["localhost"]
+          expect:
+            - regex: "Name:\\s+localhost"
+            - regex: "Address [0-9]+: 127\\.0\\.0\\.1 localhost"
+
+      - cmd: cmd
+        name: "[Report only] Network interface statistics"
+        transport: *transport
+        parameters:
+          executable: cat
+          args: ["/proc/net/dev"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] Complete network configuration"
+        transport: *transport
+        parameters:
+          executable: ip
+          args: ["addr"]
+          report_only: true
