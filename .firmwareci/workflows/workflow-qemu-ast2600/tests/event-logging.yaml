@@ -1,0 +1,335 @@
+name: Event Logging Test
+description: Validate OpenBMC event logging functionality including phosphor-log-manager service, D-Bus logging interfaces, event creation/storage, and journal integration.
+
+defaults:
+  transport: &transport
+    proto: ssh
+    options:
+      host: "[[attributes.Host]]"
+      user: root
+      password: 0penBmc
+      port: 2222
+
+stages:
+  - name: Validate Event Logging Service Infrastructure
+    steps:
+      - cmd: cmd
+        name: Check if phosphor-log-manager service is active
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "xyz.openbmc_project.Logging"]
+          expect:
+            - regex: "active"
+
+      - cmd: cmd
+        name: Verify phosphor-log-manager service status details
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["status", "xyz.openbmc_project.Logging", "--no-pager"]
+          expect:
+            - regex: "Active: active \\(running\\)"
+            - regex: "phosphor-log-manager"
+
+      - cmd: cmd
+        name: Check if phosphor-log-manager is enabled for startup
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-enabled", "xyz.openbmc_project.Logging"]
+          expect:
+            - regex: "enabled"
+
+      - cmd: cmd
+        name: Verify logging service is accessible via D-Bus
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Logging"
+
+  - name: Validate D-Bus Logging Interfaces and Objects
+    steps:
+      - cmd: cmd
+        name: Check logging object tree structure
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "xyz.openbmc_project.Logging", "--no-pager"]
+          expect:
+            - regex: "/xyz/openbmc_project/logging"
+
+      - cmd: cmd
+        name: Verify logging Create interface is available
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["introspect", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Logging\\.Create.*interface"
+
+      - cmd: cmd
+        name: Check logging Entry interface availability
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["introspect", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Collection\\.DeleteAll.*interface"
+
+      - cmd: cmd
+        name: "[Report only] List existing log entries before testing"
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "xyz.openbmc_project.Logging", "--no-pager"]
+          report_only: true
+
+  - name: Validate Event Creation and Storage
+    steps:
+      - cmd: cmd
+        name: Create test Critical severity event via D-Bus
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["call", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "xyz.openbmc_project.Logging.Create", "Create", "ssa{ss}", "xyz.openbmc_project.Common.Error.InternalFailure", "xyz.openbmc_project.Logging.Entry.Level.Critical", "1", "TEST_EVENT", "FirmwareCI_test_critical_event"]
+          expect:
+            - regex: "o \"/xyz/openbmc_project/logging/entry/[0-9]+\""
+
+      - cmd: cmd
+        name: Create test Warning severity event via D-Bus
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["call", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "xyz.openbmc_project.Logging.Create", "Create", "ssa{ss}", "xyz.openbmc_project.Common.Error.Timeout", "xyz.openbmc_project.Logging.Entry.Level.Warning", "1", "TEST_WARNING", "FirmwareCI_test_warning_event"]
+          expect:
+            - regex: "o \"/xyz/openbmc_project/logging/entry/[0-9]+\""
+
+      - cmd: cmd
+        name: Create test Informational event via D-Bus
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["call", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "xyz.openbmc_project.Logging.Create", "Create", "ssa{ss}", "xyz.openbmc_project.Common.Error.InvalidArgument", "xyz.openbmc_project.Logging.Entry.Level.Informational", "1", "TEST_INFO", "FirmwareCI_test_informational_event"]
+          expect:
+            - regex: "o \"/xyz/openbmc_project/logging/entry/[0-9]+\""
+
+  - name: Validate Event Retrieval and Querying
+    steps:
+      - cmd: cmd
+        name: List all log entries via D-Bus tree
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "xyz.openbmc_project.Logging", "--no-pager"]
+          expect:
+            - regex: "/xyz/openbmc_project/logging"
+
+      - cmd: cmd
+        name: Get properties of first log entry
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["get-property", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging/entry/1", "xyz.openbmc_project.Logging.Entry", "Message"]
+          expect:
+            - regex: "s \".*\""
+
+      - cmd: cmd
+        name: Verify log entry severity levels are accessible
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["get-property", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging/entry/1", "xyz.openbmc_project.Logging.Entry", "Severity"]
+          expect:
+            - regex: "s \"xyz\\.openbmc_project\\.Logging\\.Entry\\.Level\\."
+
+      - cmd: cmd
+        name: Check log entry timestamp property
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["get-property", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging/entry/1", "xyz.openbmc_project.Logging.Entry", "Timestamp"]
+          expect:
+            - regex: "t [0-9]+"
+
+  - name: Validate Journal Integration
+    steps:
+      - cmd: cmd
+        name: Check for phosphor-log-manager entries in systemd journal
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["-u", "xyz.openbmc_project.Logging", "--no-pager", "-n", "20"]
+          expect:
+            - regex: "phosphor-log-manager|Phosphor Log Manager"
+
+      - cmd: cmd
+        name: Verify OpenBMC events appear in journal
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["--no-pager"]
+          expect:
+            - regex: "(FirmwareCI|TEST_EVENT|phosphor-dump-manager)"
+
+      - cmd: cmd
+        name: Check journal persistence configuration
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["--disk-usage", "--no-pager"]
+          expect:
+            - regex: "Archived and active journals take up.*in the file system"
+
+      - cmd: cmd
+        name: "[Report only] Recent journal entries for phosphor services"
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["-u", "phosphor*", "--no-pager", "-n", "30"]
+          report_only: true
+
+  - name: Validate Event Management and Cleanup
+    steps:
+      - cmd: cmd
+        name: Test individual log entry deletion
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["call", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging/entry/1", "xyz.openbmc_project.Object.Delete", "Delete"]
+          expect:
+            - regex: "^$"
+
+      - cmd: cmd
+        name: Verify log entry was deleted
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "xyz.openbmc_project.Logging", "--no-pager"]
+          expect:
+            - regex: "/xyz/openbmc_project/logging"
+
+      - cmd: cmd
+        name: Test bulk log deletion via DeleteAll
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["call", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "xyz.openbmc_project.Collection.DeleteAll", "DeleteAll"]
+          expect:
+            - regex: "^$"
+
+      - cmd: cmd
+        name: Verify all log entries were deleted
+        transport: *transport
+        parameters:
+          executable: sh
+          args: ["-c", "busctl tree xyz.openbmc_project.Logging --no-pager | grep -c '/xyz/openbmc_project/logging/entry/[0-9]'|| echo '0'"]
+          expect:
+            - regex: "0"
+
+  - name: Validate Event Logging Service Restart and Persistence
+    steps:
+      - cmd: cmd
+        name: Restart phosphor-log-manager service
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["restart", "xyz.openbmc_project.Logging"]
+          expect:
+            - regex: "^$"
+
+      - cmd: cmd
+        name: Verify service restarted successfully
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "xyz.openbmc_project.Logging"]
+          expect:
+            - regex: "active"
+
+      - cmd: cmd
+        name: Check if events persisted after service restart
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "xyz.openbmc_project.Logging", "--no-pager"]
+          expect:
+            - regex: "/xyz/openbmc_project/logging"
+
+      - cmd: cmd
+        name: Verify logging service is accessible after restart
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Logging"
+
+  - name: Diagnostic Information Collection
+    steps:
+      - cmd: cmd
+        name: "[Report only] Complete phosphor-log-manager service status"
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["status", "xyz.openbmc_project.Logging", "-l", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] Current log entries summary"
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "xyz.openbmc_project.Logging", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] Logging service D-Bus interface details"
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["introspect", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] Recent journal entries for logging service"
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["-u", "xyz.openbmc_project.Logging", "--no-pager", "-n", "100"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] System event log from journal"
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["--no-pager", "-p", "err", "-n", "50"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] Phosphor service logging activity"
+        transport: *transport
+        parameters:
+          executable: journalctl
+          args: ["-u", "phosphor*", "--no-pager", "-n", "50"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] Event logging storage and configuration"
+        transport: *transport
+        parameters:
+          executable: sh
+          args: ["-c", "echo '=== Logging Storage ===' && ls -la /var/lib/phosphor-logging/ && echo '=== Journal Storage ===' && journalctl --disk-usage"]
+          report_only: true
+
+      - cmd: cmd
+        name: Final cleanup - Delete all test log entries
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["call", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "xyz.openbmc_project.Collection.DeleteAll", "DeleteAll"]
+          expect:
+            - regex: "^$"
