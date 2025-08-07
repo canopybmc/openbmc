@@ -1,0 +1,27 @@
+---
+name: 'Upload to FirmwareCI'
+description: 'Upload firmware binaries to FirmwareCI for testing'
+inputs:
+  token:
+    description: 'FirmwareCI API token'
+    required: true
+  workflow_id:
+    description: 'FirmwareCI workflow ID'
+    required: true
+  commit_hash:
+    description: 'Git commit hash for the build'
+    required: true
+  binaries:
+    description: 'Binary files to upload (format: BINARY=./path/to/binary)'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Upload to FirmwareCI
+      uses: docker://firmwareci/action:v5.0
+      with:
+        TOKEN: ${{ inputs.token }}
+        WORKFLOW_ID: ${{ inputs.workflow_id }}
+        COMMIT_HASH: ${{ inputs.commit_hash }}
+        BINARIES: ${{ inputs.binaries }}
+        API: 'https://api.firmwareci.9esec.dev:8444'
