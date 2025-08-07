@@ -32,3 +32,7 @@ runs:
       with:
         name: obmc-phosphor-image-${{ inputs.target }}.static.mtd
         path: build/${{ inputs.target }}/tmp/deploy/images/${{ inputs.target }}/${{ inputs.artifact }}
+    - name: Copy artifact to workspace
+      shell: bash
+      run: |
+        cp build/${{ inputs.target }}/tmp/deploy/images/${{ inputs.target }}/${{ inputs.artifact }} ${{ github.workspace }}/${{ inputs.artifact }}

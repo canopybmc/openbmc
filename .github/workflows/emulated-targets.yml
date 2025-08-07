@@ -19,6 +19,14 @@ jobs:
         with:
           target: evb-ast2500
           artifact: flash-evb-ast2500
+      
+      - name: Upload to FirmwareCI
+        uses: ./.github/actions/upload-firmwareci
+        with:
+          token: "${{ secrets.FWCI_TOKEN}}"
+          workflow_id: "${{ secrets.FWCI_AST2500_WORKFLOW_ID}}"
+          commit_hash: ${{ github.event.pull_request.head.sha || github.sha }}
+          binaries: firmware=./flash-evb-ast2500
 
   build-evb-ast2600:
     runs-on: [self-hosted, Hydra, Large]
@@ -31,6 +39,14 @@ jobs:
         with:
           target: evb-ast2600
           artifact: flash-evb-ast2600
+      
+      - name: Upload to FirmwareCI
+        uses: ./.github/actions/upload-firmwareci
+        with:
+          token: "${{ secrets.FWCI_TOKEN}}"
+          workflow_id: "${{ secrets.FWCI_AST2600_WORKFLOW_ID}}"
+          commit_hash: ${{ github.event.pull_request.head.sha || github.sha }}
+          binaries: firmware=./flash-evb-ast2600
 
   build-fvp:
     runs-on: [self-hosted, Hydra, Large]
