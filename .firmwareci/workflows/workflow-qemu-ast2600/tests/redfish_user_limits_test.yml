@@ -1,0 +1,334 @@
+---
+name: "Redfish User Limits and Constraints Test"
+description: "Test suite for Redfish user management limits and constraints on OpenBMC systems"
+
+stages:
+  - name: "Initial System Assessment"
+    steps:
+      - cmd: "cmd"
+        name: "Test BMC Connectivity"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Get Initial User Count"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\""
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Check Root Account Exists"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/root/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+  - name: "User Creation Testing"
+    steps:
+      - cmd: "cmd"
+        name: "Create Test User 1"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "POST",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"UserName\": \"testuser01\", \"Password\": \"TestPass123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "201$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Test User 2"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "POST",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"UserName\": \"testuser02\", \"Password\": \"TestPass123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "201$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Test User 3"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "POST",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"UserName\": \"testuser03\", \"Password\": \"TestPass123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "201$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify User Count After Creation"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\""
+        options:
+          timeout: "30s"
+
+  - name: "User Authentication Testing"
+    steps:
+      - cmd: "cmd"
+        name: "Test User Authentication"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "testuser01:TestPass123", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify User Account Structure"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser01/"]
+          expect:
+            - regex: "\"UserName\".*\"testuser01\""
+            - regex: "\"RoleId\".*\"ReadOnly\""
+            - regex: "\"Enabled\".*true"
+        options:
+          timeout: "30s"
+
+
+  - name: "Administrator Protection Testing"
+    steps:
+      - cmd: "cmd"
+        name: "Promote User to Administrator"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "PATCH",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"RoleId\": \"Administrator\"}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser01/"]
+          expect:
+            - regex: "200$|204$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify Administrator Role Assignment"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser01/"]
+          expect:
+            - regex: "\"RoleId\".*\"Administrator\""
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Test Root Account Delete Protection"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "-X", "DELETE", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/root/"]
+          expect:
+            - regex: "403$|422$|409$|405$|404$"
+        options:
+          timeout: "30s"
+
+  - name: "User Enable/Disable Operations Testing"
+    steps:
+      - cmd: "cmd"
+        name: "Disable Test User Account"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "PATCH",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"Enabled\": false}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser02/"]
+          expect:
+            - regex: "200$|204$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Test Authentication with Disabled Account"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "testuser02:TestPass123", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "401$|403$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Re-enable Test User Account"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "PATCH",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"Enabled\": true}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser02/"]
+          expect:
+            - regex: "200$|204$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Test Authentication with Re-enabled Account"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "testuser02:TestPass123", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+  - name: "Input Validation Testing"
+    steps:
+      - cmd: "cmd"
+        name: "Test Empty Username"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "POST",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"UserName\": \"\", \"Password\": \"TestPass123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "400$|422$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Test Duplicate Username Creation"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "POST",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"UserName\": \"testuser01\", \"Password\": \"TestPass123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "400$|409$|422$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Test Invalid Role ID"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                "-X", "POST",
+                "-H", "Content-Type: application/json",
+                "-d", "{\"UserName\": \"invalidrole\", \"Password\": \"TestPass123\", \"RoleId\": \"InvalidRole\", \"Enabled\": true}",
+                "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "400$|422$"
+        options:
+          timeout: "30s"
+
+  - name: "Cleanup Testing"
+    steps:
+      - cmd: "cmd"
+        name: "Delete Test User 1"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "-X", "DELETE", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser01/"]
+          expect:
+            - regex: "200$|204$|404$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Delete Test User 2"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "-X", "DELETE", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser02/"]
+          expect:
+            - regex: "200$|204$|404$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Delete Test User 3"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "-X", "DELETE", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/testuser03/"]
+          expect:
+            - regex: "200$|204$|404$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify System Operational"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
