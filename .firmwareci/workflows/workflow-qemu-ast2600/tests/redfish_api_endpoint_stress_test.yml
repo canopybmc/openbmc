@@ -1,0 +1,282 @@
+---
+name: "Redfish API Endpoint Stress Test"
+description: "Stress test for all Redfish API endpoints related to user management on OpenBMC"
+
+stages:
+  - name: "Setup and Endpoint Discovery"
+    steps:
+      - cmd: "cmd"
+        name: "Test BMC Connectivity"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Stress Test Users"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..05}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X POST -H 'Content-Type: application/json' -d '{\"UserName\": \"stressuser$i\", \"Password\": \"StressTest123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' & done; wait"]
+          expect:
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+        options:
+          timeout: "90s"
+
+      - cmd: "cmd"
+        name: "Verify Test User Creation"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\".*[6-9]"
+        options:
+          timeout: "30s"
+
+  - name: "Service Root Endpoint Stress Test"
+    steps:
+      - cmd: "cmd"
+        name: "Service Root High-Volume Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; total=100; start_time=$(date +%s); for i in $(seq 1 $total); do if curl -k -s -w '%{http_code}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/' | grep -q '200$'; then success=$((success+1)); fi; done; end_time=$(date +%s); duration=$((end_time - start_time)); rate=$(echo \"scale=2; $success/$duration\" | bc -l); echo \"Service Root: $success/$total in ${duration}s (${rate} req/s)\""]
+          expect:
+            - regex: "Service Root: [8-9][0-9]|100/100"
+            - regex: "req/s"
+        options:
+          timeout: "120s"
+
+      - cmd: "cmd"
+        name: "Service Root Parallel Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for worker in {1..10}; do (success=0; for i in {1..10}; do if curl -k -s -w '%{http_code}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Worker $worker: $success/10\") & done; wait"]
+          expect:
+            - regex: "Worker [1-9]: [8-9]|10/10"
+            - regex: "Worker 10: [8-9]|10/10"
+        options:
+          timeout: "90s"
+
+  - name: "AccountService Endpoint Stress Test"
+    steps:
+      - cmd: "cmd"
+        name: "AccountService High-Volume Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; total=150; start_time=$(date +%s); for i in $(seq 1 $total); do user_idx=$(((i % 5) + 1)); user=\"stressuser0$user_idx\"; if curl -k -s -w '%{http_code}' -u $user:StressTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; end_time=$(date +%s); duration=$((end_time - start_time)); rate=$(echo \"scale=2; $success/$duration\" | bc -l); echo \"AccountService: $success/$total in ${duration}s (${rate} req/s)\""]
+          expect:
+            - regex: "AccountService: 1[2-5][0-9]/150"
+            - regex: "req/s"
+        options:
+          timeout: "180s"
+
+      - cmd: "cmd"
+        name: "AccountService Mixed User Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for user_num in {01..05}; do (success=0; for i in {1..20}; do if curl -k -s -w '%{http_code}' -u stressuser$user_num:StressTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"User $user_num: $success/20\") & done; wait"]
+          expect:
+            - regex: "User 01: [1-2][0-9]/20"
+            - regex: "User 02: [1-2][0-9]/20"
+            - regex: "User 03: [1-2][0-9]/20"
+            - regex: "User 04: [1-2][0-9]/20"
+            - regex: "User 05: [1-2][0-9]/20"
+        options:
+          timeout: "120s"
+
+  - name: "Accounts Collection Endpoint Stress Test"
+    steps:
+      - cmd: "cmd"
+        name: "Accounts Collection High-Volume Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; total=120; start_time=$(date +%s); for i in $(seq 1 $total); do if curl -k -s -w '%{http_code}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' | grep -q '200$'; then success=$((success+1)); fi; done; end_time=$(date +%s); duration=$((end_time - start_time)); rate=$(echo \"scale=2; $success/$duration\" | bc -l); echo \"Accounts Collection: $success/$total in ${duration}s (${rate} req/s)\""]
+          expect:
+            - regex: "Accounts Collection: 1[0-2][0-9]/120"
+            - regex: "req/s"
+        options:
+          timeout: "150s"
+
+      - cmd: "cmd"
+        name: "Accounts Collection Burst Test"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for burst in {1..5}; do (success=0; for i in {1..15}; do if curl -k -s -w '%{http_code}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Burst $burst: $success/15\") & done; wait"]
+          expect:
+            - regex: "Burst [1-5]: 1[2-5]/15"
+        options:
+          timeout: "90s"
+
+  - name: "Individual Account Endpoint Stress Test"
+    steps:
+      - cmd: "cmd"
+        name: "Individual Account Access Stress"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; total=100; for i in $(seq 1 $total); do user_idx=$(((i % 5) + 1)); if curl -k -s -w '%{http_code}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/stressuser0$user_idx/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Individual account access: $success/$total\""]
+          expect:
+            - regex: "Individual account access: [8-9][0-9]|100/100"
+        options:
+          timeout: "120s"
+
+      - cmd: "cmd"
+        name: "Self-Account Access Pattern"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for user_num in {01..05}; do (success=0; for i in {1..15}; do if curl -k -s -w '%{http_code}' -u stressuser$user_num:StressTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/stressuser$user_num/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Self-access user $user_num: $success/15\") & done; wait"]
+          expect:
+            - regex: "Self-access user 01: 1[2-5]/15"
+            - regex: "Self-access user 02: 1[2-5]/15"
+            - regex: "Self-access user 03: 1[2-5]/15"
+            - regex: "Self-access user 04: 1[2-5]/15"
+            - regex: "Self-access user 05: 1[2-5]/15"
+        options:
+          timeout: "90s"
+
+  - name: "Roles Endpoint Stress Test"
+    steps:
+      - cmd: "cmd"
+        name: "Roles Collection Access Stress"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; total=80; for i in $(seq 1 $total); do user_idx=$(((i % 5) + 1)); if curl -k -s -w '%{http_code}' -u stressuser0$user_idx:StressTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Roles/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Roles access: $success/$total\""]
+          expect:
+            - regex: "Roles access: [6-8][0-9]/80"
+        options:
+          timeout: "120s"
+
+      - cmd: "cmd"
+        name: "Individual Role Access Test"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "roles=('Administrator' 'Operator' 'ReadOnly'); success=0; total=60; for i in $(seq 1 $total); do role_idx=$((i % 3)); role=${roles[$role_idx]}; if curl -k -s -w '%{http_code}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Roles/$role/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Role endpoint access: $success/$total\""]
+          expect:
+            - regex: "Role endpoint access: [5-6][0-9]/60"
+        options:
+          timeout: "90s"
+
+  - name: "Mixed Endpoint Load Test"
+    steps:
+      - cmd: "cmd"
+        name: "Random Endpoint Access Pattern"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "endpoints=('/redfish/v1/' '/redfish/v1/AccountService/' '/redfish/v1/AccountService/Accounts/' '/redfish/v1/AccountService/Roles/'); success=0; total=100; for i in $(seq 1 $total); do endpoint_idx=$((i % 4)); endpoint=${endpoints[$endpoint_idx]}; user_idx=$(((i % 5) + 1)); if curl -k -s -w '%{http_code}' -u stressuser0$user_idx:StressTest123 \"[[attributes.RedfishUrl]]$endpoint\" | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Mixed endpoint access: $success/$total\""]
+          expect:
+            - regex: "Mixed endpoint access: [8-9][0-9]|100/100"
+        options:
+          timeout: "150s"
+
+      - cmd: "cmd"
+        name: "Concurrent Mixed Operations"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for worker in {1..6}; do (success=0; endpoints=('/redfish/v1/' '/redfish/v1/AccountService/' '/redfish/v1/AccountService/Accounts/'); for i in {1..10}; do endpoint_idx=$((i % 3)); endpoint=${endpoints[$endpoint_idx]}; user_num=$(printf '%02d' $(((worker % 5) + 1))); if curl -k -s -w '%{http_code}' -u stressuser$user_num:StressTest123 \"[[attributes.RedfishUrl]]$endpoint\" | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Worker $worker mixed ops: $success/10\") & done; wait"]
+          expect:
+            - regex: "Worker [1-6] mixed ops: [8-9]|10/10"
+        options:
+          timeout: "90s"
+
+  - name: "System Performance Under Stress"
+    steps:
+      - cmd: "cmd"
+        name: "Response Time Under Load"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "# Create background load; for bg in {1..3}; do (for i in {1..20}; do curl -k -s -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' > /dev/null; done) & done; sleep 1; # Measure response time; total_time=0; samples=5; for i in $(seq 1 $samples); do time=$(curl -k -s -w '%{time_total}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' -o /dev/null); total_time=$(echo \"$total_time + $time\" | bc -l); done; wait; avg_time=$(echo \"scale=3; $total_time / $samples\" | bc -l); echo \"Average response time under load: ${avg_time}s\""]
+          expect:
+            - regex: "Average response time under load: [0-5]\\.[0-9]{3}s"
+        options:
+          timeout: "120s"
+
+      - cmd: "cmd"
+        name: "System Health Check After Stress"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Memory and Resource Stability Check"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "# Quick health verification across endpoints; health_score=0; endpoints=('/redfish/v1/' '/redfish/v1/AccountService/' '/redfish/v1/AccountService/Accounts/'); for endpoint in \"${endpoints[@]}\"; do if curl -k -s -w '%{http_code}' -u root:0penBmc \"[[attributes.RedfishUrl]]$endpoint\" | grep -q '200$'; then health_score=$((health_score+1)); fi; done; echo \"System health score: $health_score/3\""]
+          expect:
+            - regex: "System health score: 3/3"
+        options:
+          timeout: "45s"
+
+  - name: "Cleanup Stress Test Users"
+    steps:
+      - cmd: "cmd"
+        name: "Delete Stress Test Users"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..05}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X DELETE '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/stressuser$i/' & done; wait"]
+          expect:
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Final System Verification"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"

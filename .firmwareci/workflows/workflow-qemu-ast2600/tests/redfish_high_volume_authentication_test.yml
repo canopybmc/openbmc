@@ -1,0 +1,247 @@
+---
+name: "Redfish High-Volume Authentication Load Test"
+description: "Load test for high-volume authentication operations on OpenBMC Redfish API"
+
+stages:
+  - name: "Setup and Test User Creation"
+    steps:
+      - cmd: "cmd"
+        name: "Test BMC Connectivity"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Authentication Test User 1"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                 "-X", "POST",
+                 "-H", "Content-Type: application/json",
+                 "-d", "{\"UserName\": \"authtest01\", \"Password\": \"AuthTest123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}",
+                 "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "201$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Authentication Test User 2"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                 "-X", "POST",
+                 "-H", "Content-Type: application/json",
+                 "-d", "{\"UserName\": \"authtest02\", \"Password\": \"AuthTest456\", \"RoleId\": \"Operator\", \"Enabled\": true}",
+                 "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "201$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Authentication Test User 3"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc",
+                 "-X", "POST",
+                 "-H", "Content-Type: application/json",
+                 "-d", "{\"UserName\": \"authtest03\", \"Password\": \"AuthTest789\", \"RoleId\": \"Administrator\", \"Enabled\": true}",
+                 "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "201$"
+        options:
+          timeout: "30s"
+
+  - name: "High-Volume Authentication Burst Tests"
+    steps:
+      - cmd: "cmd"
+        name: "Authentication Burst Test - Round 1 (50 requests)"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; for i in {1..50}; do if curl -k -s -w '%{http_code}' -u authtest01:AuthTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Successful auths: $success/50\""]
+          expect:
+            - regex: "Successful auths: [4-5][0-9]/50"
+        options:
+          timeout: "120s"
+
+      - cmd: "cmd"
+        name: "Authentication Burst Test - Round 2 (100 requests)"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; for i in {1..100}; do if curl -k -s -w '%{http_code}' -u authtest02:AuthTest456 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Successful auths: $success/100\""]
+          expect:
+            - regex: "Successful auths: [8-9][0-9]|100/100"
+        options:
+          timeout: "180s"
+
+      - cmd: "cmd"
+        name: "Parallel Authentication Test (3 users simultaneously)"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for user in authtest01:AuthTest123 authtest02:AuthTest456 authtest03:AuthTest789; do (success=0; for i in {1..25}; do if curl -k -s -w '%{http_code}' -u $user '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"User $user: $success/25\") & done; wait"]
+          expect:
+            - regex: "User authtest01:AuthTest123: [2-2][0-5]/25"
+            - regex: "User authtest02:AuthTest456: [2-2][0-5]/25"
+            - regex: "User authtest03:AuthTest789: [2-2][0-5]/25"
+        options:
+          timeout: "120s"
+
+  - name: "Sustained Authentication Load Tests"
+    steps:
+      - cmd: "cmd"
+        name: "Sustained Load Test - 200 Sequential Authentications"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "start_time=$(date +%s); success=0; for i in {1..200}; do user_idx=$((($i % 3) + 1)); case $user_idx in 1) user='authtest01:AuthTest123';; 2) user='authtest02:AuthTest456';; 3) user='authtest03:AuthTest789';; esac; if curl -k -s -w '%{http_code}' -u $user '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; end_time=$(date +%s); duration=$((end_time - start_time)); echo \"Completed $success/200 auths in ${duration}s ($(echo \"scale=2; $success/$duration\" | bc -l) auths/sec)\""]
+          expect:
+            - regex: "Completed [1-2][0-9][0-9]/200"
+            - regex: "auths/sec"
+        options:
+          timeout: "300s"
+
+      - cmd: "cmd"
+        name: "Mixed Operation Load Test"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; for i in {1..50}; do case $((i % 4)) in 0) endpoint='/redfish/v1/AccountService/';; 1) endpoint='/redfish/v1/AccountService/Accounts/';; 2) endpoint='/redfish/v1/AccountService/Accounts/authtest01/';; 3) endpoint='/redfish/v1/AccountService/Roles/';; esac; if curl -k -s -w '%{http_code}' -u authtest03:AuthTest789 \"[[attributes.RedfishUrl]]$endpoint\" | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Mixed ops success: $success/50\""]
+          expect:
+            - regex: "Mixed ops success: [4-5][0-9]/50"
+        options:
+          timeout: "120s"
+
+  - name: "Authentication Performance Metrics"
+    steps:
+      - cmd: "cmd"
+        name: "Measure Authentication Response Time"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "total_time=0; for i in {1..10}; do time=$(curl -k -s -w '%{time_total}' -u authtest01:AuthTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' -o /dev/null); total_time=$(echo \"$total_time + $time\" | bc -l); done; avg_time=$(echo \"scale=3; $total_time / 10\" | bc -l); echo \"Average auth time: ${avg_time}s\""]
+          expect:
+            - regex: "Average auth time: [0-2]\\.[0-9]{3}s"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Test Authentication Under System Load"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "# Create background load; for bg in {1..5}; do (for i in {1..20}; do curl -k -s -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' > /dev/null; done) & done; sleep 2; # Test auth performance under load; success=0; for i in {1..20}; do if curl -k -s -w '%{http_code}' -u authtest02:AuthTest456 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; wait; echo \"Auth under load: $success/20\""]
+          expect:
+            - regex: "Auth under load: [1-2][0-9]/20"
+        options:
+          timeout: "120s"
+
+  - name: "Authentication Error Handling Tests"
+    steps:
+      - cmd: "cmd"
+        name: "Test Invalid Password Handling"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "failures=0; for i in {1..10}; do if curl -k -s -w '%{http_code}' -u authtest01:WrongPassword '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '401$'; then failures=$((failures+1)); fi; done; echo \"Failed auths detected: $failures/10\""]
+          expect:
+            - regex: "Failed auths detected: [8-9]|10/10"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Test Non-existent User Handling"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "failures=0; for i in {1..10}; do if curl -k -s -w '%{http_code}' -u nonexistentuser:password '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '401$'; then failures=$((failures+1)); fi; done; echo \"Unknown user rejections: $failures/10\""]
+          expect:
+            - regex: "Unknown user rejections: [8-9]|10/10"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Test System Stability After Load"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+  - name: "Cleanup Authentication Test Users"
+    steps:
+      - cmd: "cmd"
+        name: "Delete Authentication Test User 1"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "-X", "DELETE", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/authtest01/"]
+          expect:
+            - regex: "200$|204$|404$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Delete Authentication Test User 2"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "-X", "DELETE", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/authtest02/"]
+          expect:
+            - regex: "200$|204$|404$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Delete Authentication Test User 3"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "-X", "DELETE", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/authtest03/"]
+          expect:
+            - regex: "200$|204$|404$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify Cleanup and System Health"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
