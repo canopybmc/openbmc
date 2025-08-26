@@ -1,9 +1,7 @@
 # Example Post-Stage for a device
 post-stage:
-  - cmd: cmd
-    name: Clean up the DUT
-    transport:
-      proto: local
+  - cmd: qemu
+    name: Bring up QEMU for testing
     parameters:
-      executable: echo
-      args: ["Hello from the Poststage. Templating works here as well!"]
+      mode: stop
+      variable: session1
