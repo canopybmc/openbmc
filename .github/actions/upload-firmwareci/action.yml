@@ -18,7 +18,7 @@ runs:
   using: 'composite'
   steps:
     - name: Upload to FirmwareCI
-      uses: docker://firmwareci/action:v5.0
+      uses: docker://firmwareci/action:v5.1
       with:
         TOKEN: ${{ inputs.token }}
         WORKFLOW_ID: ${{ inputs.workflow_id }}
