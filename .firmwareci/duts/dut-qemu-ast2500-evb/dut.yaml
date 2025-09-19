@@ -3,3 +3,4 @@ label: qemu-ast2500-evb
 attributes:
   Host: "127.0.0.1"
   Flasher: "flasher.local"
+  RedfishUrl: "https://localhost:2443"

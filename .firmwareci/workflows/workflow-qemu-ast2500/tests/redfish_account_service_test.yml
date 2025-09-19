@@ -1,0 +1,302 @@
+---
+name: "Redfish AccountService Structure and Properties Test"
+description: "Comprehensive test suite for Redfish AccountService metadata, structure validation, and schema compliance testing on OpenBMC systems"
+
+stages:
+  - name: "Service Discovery and Connectivity"
+    steps:
+      - cmd: "cmd"
+        name: "Test BMC Connectivity"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify Service Root Structure"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: "\"@odata\\.type\".*ServiceRoot"
+            - regex: "\"@odata\\.id\".*\"/redfish/v1\""
+            - regex: "\"AccountService\""
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify AccountService Link from Service Root"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: '\"AccountService\".*\n.*\"@odata\.id\".*"\/redfish\/v1\/AccountService\"'
+        options:
+          timeout: "30s"
+
+  - name: "AccountService Root Endpoint Validation"
+    steps:
+      - cmd: "cmd"
+        name: "Get AccountService Root with Headers"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-i", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "HTTP/[0-9.]+ 200"
+            - regex: "content-type: application/json"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify AccountService OData Properties"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "\"@odata\\.type\".*AccountService"
+            - regex: "\"@odata\\.id\".*\"/redfish/v1/AccountService\""
+            - regex: "\"Id\".*\"AccountService\""
+            - regex: "\"Name\".*\"Account Service\""
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify AccountService Required Properties"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "\"ServiceEnabled\""
+            - regex: "\"Accounts\""
+        options:
+          timeout: "30s"
+
+  - name: "AccountService Configuration Properties"
+    steps:
+      - cmd: "cmd"
+        name: "Check ServiceEnabled Property"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "\"ServiceEnabled\".*true"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Check Password Policy Properties"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "\"MinPasswordLength\""
+            - regex: "\"MaxPasswordLength\""
+        options:
+          timeout: "30s"
+
+  - name: "Accounts Collection Structure Validation"
+    steps:
+      - cmd: "cmd"
+        name: "Verify Accounts Collection Link"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: '\"Accounts\".*\n.*\"@odata\.id\".*"\/redfish\/v1\/AccountService\/Accounts\"'
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Get Accounts Collection with Headers"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-i", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "HTTP/[0-9.]+ 200"
+            - regex: "content-type: application/json"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify Accounts Collection OData Properties"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"@odata\\.type\".*AccountCollection"
+            - regex: "\"@odata\\.id\".*\"/redfish/v1/AccountService/Accounts\""
+            - regex: "\"Name\".*\"Accounts Collection\""
+            - regex: "\"Members\""
+            - regex: "\"Members@odata\\.count\""
+        options:
+          timeout: "30s"
+
+  - name: "Individual Account Endpoint Validation"
+    steps:
+      - cmd: "cmd"
+        name: "Access Root Account Endpoint"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/root/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify Root Account Structure"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/root/"]
+          expect:
+            - regex: "\"@odata\\.type\".*ManagerAccount"
+            - regex: "\"@odata\\.id\".*\"/redfish/v1/AccountService/Accounts/root\""
+            - regex: "\"Id\".*\"root\""
+            - regex: "\"UserName\".*\"root\""
+            - regex: "\"RoleId\""
+            - regex: "\"Enabled\""
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify Account Links Structure"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/root/"]
+          expect:
+            - regex: '\"Links\".*\n.*\"Role\".*\n.*\"@odata.id\".*'
+        options:
+          timeout: "30s"
+
+  - name: "JSON Schema and Format Compliance"
+    steps:
+      - cmd: "cmd"
+        name: "Validate JSON Syntax - AccountService"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "curl -k -s -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | python3 -m json.tool > /dev/null && echo 'Valid JSON'"]
+          expect:
+            - regex: "Valid JSON"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Validate JSON Syntax - Accounts Collection"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "curl -k -s -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' | python3 -m json.tool > /dev/null && echo 'Valid JSON'"]
+          expect:
+            - regex: "Valid JSON"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Check Content-Type Header Compliance"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-i", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "content-type: application/json"
+        options:
+          timeout: "30s"
+
+  - name: "Error Handling and Edge Cases"
+    steps:
+      - cmd: "cmd"
+        name: "Test Non-existent Account Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/nonexistentuser/"]
+          expect:
+            - regex: "404$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Test Unauthenticated Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "401$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Test Malformed URL Handling"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService//"]
+          expect:
+            - regex: "404$|301$|308$"
+        options:
+          timeout: "30s"
+
+  - name: "Cross-Reference and Consistency Validation"
+    steps:
+      - cmd: "cmd"
+        name: "Verify Root Account is Accessible"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/root/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify AccountService Version Information"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "\"@odata\\.type\".*AccountService"
+        options:
+          timeout: "30s"

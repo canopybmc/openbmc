@@ -1,0 +1,208 @@
+name: Phosphor D-Bus Services Test
+description: Validate OpenBMC phosphor D-Bus services functionality and core system services.
+
+defaults:
+  transport: &transport
+    proto: ssh
+    options:
+      host: "[[attributes.Host]]"
+      user: root
+      password: 0penBmc
+      port: 2222
+
+stages:
+  - name: Validate D-Bus System Infrastructure
+    steps:
+      - cmd: cmd
+        name: Check if D-Bus system bus is accessible
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["status"]
+          expect:
+            - regex: "BusAddress=unix:path="
+            - regex: "BusScope=system"
+
+      - cmd: cmd
+        name: Verify D-Bus service enumeration works
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          expect:
+            - regex: "org\\.freedesktop\\.systemd1"
+            - regex: "org\\.freedesktop\\.DBus"
+
+      - cmd: cmd
+        name: Check D-Bus introspection capability
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "org.freedesktop.systemd1", "--no-pager"]
+          expect:
+            - regex: "/org/freedesktop/systemd1"
+
+  - name: Validate Core Phosphor Services Status
+    steps:
+      - cmd: cmd
+        name: "[Report only] Check phosphor-hwmon service status"
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["list-units", "phosphor-hwmon*", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: Check phosphor-inventory-manager service status
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "xyz.openbmc_project.Inventory.Manager"]
+          expect:
+            - regex: "active"
+
+      - cmd: cmd
+        name: Check phosphor-logging service status
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "xyz.openbmc_project.Logging"]
+          expect:
+            - regex: "active"
+
+      - cmd: cmd
+        name: Check phosphor-settings-manager service status
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "xyz.openbmc_project.Settings"]
+          expect:
+            - regex: "active"
+
+  - name: Validate Phosphor D-Bus Service Interfaces
+    steps:
+      - cmd: cmd
+        name: Check if phosphor inventory service is on D-Bus
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Inventory\\.Manager"
+
+      - cmd: cmd
+        name: Verify phosphor logging service is on D-Bus
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Logging"
+
+      - cmd: cmd
+        name: Check if phosphor settings service is on D-Bus
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Settings"
+
+      - cmd: cmd
+        name: "[Report only] Check for phosphor hwmon sensors"
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          report_only: true
+
+  - name: Validate D-Bus Object and Interface Functionality
+    steps:
+      - cmd: cmd
+        name: Check inventory object tree structure
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["tree", "xyz.openbmc_project.Inventory.Manager", "--no-pager"]
+          expect:
+            - regex: "/xyz/openbmc_project/inventory"
+
+      - cmd: cmd
+        name: Verify logging object interfaces
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["introspect", "xyz.openbmc_project.Logging", "/xyz/openbmc_project/logging", "--no-pager"]
+          expect:
+            - regex: "xyz\\.openbmc_project\\.Logging\\.Create.*interface"
+
+      - cmd: cmd
+        name: Test D-Bus method call capability
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["call", "org.freedesktop.systemd1", "/org/freedesktop/systemd1", "org.freedesktop.systemd1.Manager", "ListUnits"]
+          expect:
+            - regex: "a\\(ssssssouso\\)"
+
+  - name: Validate OpenBMC Essential Services Integration
+    steps:
+      - cmd: cmd
+        name: Check bmcweb service is active
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "bmcweb"]
+          expect:
+            - regex: "active"
+
+      - cmd: cmd
+        name: "[Report only] Check obmc-console service status"
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["list-units", "obmc-console*", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: Check phosphor-host-ipmid service status
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["is-active", "phosphor-ipmi-host"]
+          expect:
+            - regex: "active"
+
+  - name: Diagnostic Information Collection
+    steps:
+      - cmd: cmd
+        name: "[Report only] Complete D-Bus service list"
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["list", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] All phosphor services status"
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["list-units", "phosphor*", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] OpenBMC specific services status"
+        transport: *transport
+        parameters:
+          executable: systemctl
+          args: ["list-units", "*openbmc*", "--no-pager"]
+          report_only: true
+
+      - cmd: cmd
+        name: "[Report only] D-Bus system status and statistics"
+        transport: *transport
+        parameters:
+          executable: busctl
+          args: ["status", "--no-pager"]
+          report_only: true

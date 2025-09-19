@@ -1,0 +1,254 @@
+---
+name: "Redfish Concurrent User Creation Load Test"
+description: "Load test for concurrent user creation operations on OpenBMC Redfish API"
+
+stages:
+  - name: "Setup and Baseline"
+    steps:
+      - cmd: "cmd"
+        name: "Test BMC Connectivity"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Get Initial User Count"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\""
+        options:
+          timeout: "30s"
+
+  - name: "Concurrent User Creation Load Test"
+    steps:
+      - cmd: "cmd"
+        name: "Create Multiple Users Concurrently - Batch 1"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..05}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X POST -H 'Content-Type: application/json' -d '{\"UserName\": \"loaduser$i\", \"Password\": \"LoadTest123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' & done; wait"]
+          expect:
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Verify Batch 1 User Creation"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\".*[6-9]"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Multiple Users Concurrently - Batch 2"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {06..10}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X POST -H 'Content-Type: application/json' -d '{\"UserName\": \"loaduser$i\", \"Password\": \"LoadTest123\", \"RoleId\": \"Operator\", \"Enabled\": true}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' & done; wait"]
+          expect:
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Verify Batch 2 User Creation"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\".*1[0-1]"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Multiple Users Concurrently - Batch 3"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {11..15}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X POST -H 'Content-Type: application/json' -d '{\"UserName\": \"loaduser$i\", \"Password\": \"LoadTest123\", \"RoleId\": \"Administrator\", \"Enabled\": true}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' & done; wait"]
+          expect:
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Verify Final User Count"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\".*1[5-6]"
+        options:
+          timeout: "30s"
+
+  - name: "Concurrent User Modification Load Test"
+    steps:
+      - cmd: "cmd"
+        name: "Concurrent Role Modifications"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..05}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X PATCH -H 'Content-Type: application/json' -d '{\"RoleId\": \"Operator\"}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/loaduser$i/' & done; wait"]
+          expect:
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Concurrent Enable/Disable Operations"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {06..10}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X PATCH -H 'Content-Type: application/json' -d '{\"Enabled\": false}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/loaduser$i/' & done; wait"]
+          expect:
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Re-enable Disabled Users"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {06..10}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X PATCH -H 'Content-Type: application/json' -d '{\"Enabled\": true}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/loaduser$i/' & done; wait"]
+          expect:
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+            - regex: "200|204"
+        options:
+          timeout: "60s"
+
+  - name: "System Performance Verification"
+    steps:
+      - cmd: "cmd"
+        name: "Verify System Responsiveness"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{time_total}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "^[0-4]\\."
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Verify All Created Users Are Accessible"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; for i in {01..15}; do if curl -k -s -w '%{http_code}' -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/loaduser$i/' | grep -q '200$'; then success=$((success+1)); fi; done; echo \"Accessible users: $success\""]
+          expect:
+            - regex: "Accessible users: 1[5]"
+        options:
+          timeout: "90s"
+
+  - name: "Cleanup Load Test Users"
+    steps:
+      - cmd: "cmd"
+        name: "Delete Load Test Users - Batch 1"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..05}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X DELETE '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/loaduser$i/' & done; wait"]
+          expect:
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Delete Load Test Users - Batch 2"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {06..10}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X DELETE '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/loaduser$i/' & done; wait"]
+          expect:
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Delete Load Test Users - Batch 3"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {11..15}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X DELETE '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/loaduser$i/' & done; wait"]
+          expect:
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Verify Cleanup Completion"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\".*[1-2]"
+        options:
+          timeout: "30s"

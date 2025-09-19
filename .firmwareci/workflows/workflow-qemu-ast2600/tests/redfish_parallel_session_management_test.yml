@@ -1,0 +1,271 @@
+---
+name: "Redfish Parallel Session Management Load Test"
+description: "Load test for parallel session management and concurrent user operations on OpenBMC Redfish API"
+
+stages:
+  - name: "Setup and Session Test Users"
+    steps:
+      - cmd: "cmd"
+        name: "Test BMC Connectivity"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "[[attributes.RedfishUrl]]/redfish/v1/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Create Session Test Users"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..06}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X POST -H 'Content-Type: application/json' -d '{\"UserName\": \"sessionuser$i\", \"Password\": \"SessionTest123\", \"RoleId\": \"ReadOnly\", \"Enabled\": true}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' & done; wait"]
+          expect:
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+            - regex: "201"
+        options:
+          timeout: "90s"
+
+      - cmd: "cmd"
+        name: "Verify Session Test Users Created"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/"]
+          expect:
+            - regex: "\"Members@odata\\.count\".*[7-9]"
+        options:
+          timeout: "30s"
+
+  - name: "Parallel Session Creation Tests"
+    steps:
+      - cmd: "cmd"
+        name: "Create Multiple Sessions Simultaneously"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "session_count=0; for i in {01..04}; do (response=$(curl -k -s -X POST -H 'Content-Type: application/json' -d '{\"UserName\": \"sessionuser$i\", \"Password\": \"SessionTest123\"}' '[[attributes.RedfishUrl]]/redfish/v1/SessionService/Sessions/'); if echo \"$response\" | grep -q '\"@odata.id\"'; then echo \"Session $i: SUCCESS\"; else echo \"Session $i: FAILED\"; fi) & done; wait"]
+          expect:
+            - regex: "Session 01: SUCCESS"
+            - regex: "Session 02: SUCCESS"
+            - regex: "Session 03: SUCCESS"
+            - regex: "Session 04: SUCCESS"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Test Session Service Status"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/SessionService/"]
+          expect:
+            - regex: "\"ServiceEnabled\".*true"
+            - regex: "\"SessionTimeout\""
+        options:
+          timeout: "30s"
+
+      - cmd: "cmd"
+        name: "Check Active Sessions"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/SessionService/Sessions/"]
+          expect:
+            - regex: "\"Members@odata\\.count\""
+        options:
+          timeout: "30s"
+
+  - name: "Concurrent User Operations Tests"
+    steps:
+      - cmd: "cmd"
+        name: "Parallel User Data Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "success=0; for i in {01..06}; do (if curl -k -s -w '%{http_code}' -u sessionuser$i:SessionTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/sessionuser$i/' | grep -q '200$'; then echo \"User $i access: SUCCESS\"; else echo \"User $i access: FAILED\"; fi) & done; wait"]
+          expect:
+            - regex: "User 01 access: SUCCESS"
+            - regex: "User 02 access: SUCCESS"
+            - regex: "User 03 access: SUCCESS"
+            - regex: "User 04 access: SUCCESS"
+            - regex: "User 05 access: SUCCESS"
+            - regex: "User 06 access: SUCCESS"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Parallel Account Service Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..06}; do (time_start=$(date +%s%3N); response=$(curl -k -s -w '%{http_code}' -u sessionuser$i:SessionTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/'); time_end=$(date +%s%3N); duration=$((time_end - time_start)); if echo \"$response\" | grep -q '200$'; then echo \"User $i: SUCCESS (${duration}ms)\"; else echo \"User $i: FAILED\"; fi) & done; wait"]
+          expect:
+            - regex: "User 01: SUCCESS"
+            - regex: "User 02: SUCCESS"
+            - regex: "User 03: SUCCESS"
+            - regex: "User 04: SUCCESS"
+            - regex: "User 05: SUCCESS"
+            - regex: "User 06: SUCCESS"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Parallel Accounts Collection Access"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..06}; do (if curl -k -s -w '%{http_code}' -u sessionuser$i:SessionTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' | grep -q '200$'; then echo \"Collection access $i: SUCCESS\"; else echo \"Collection access $i: FAILED\"; fi) & done; wait"]
+          expect:
+            - regex: "Collection access 01: SUCCESS"
+            - regex: "Collection access 02: SUCCESS"
+            - regex: "Collection access 03: SUCCESS"
+            - regex: "Collection access 04: SUCCESS"
+            - regex: "Collection access 05: SUCCESS"
+            - regex: "Collection access 06: SUCCESS"
+        options:
+          timeout: "60s"
+
+  - name: "Session Conflict and Race Condition Tests"
+    steps:
+      - cmd: "cmd"
+        name: "Simultaneous Same-User Authentication"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {1..4}; do (if curl -k -s -w '%{http_code}' -u sessionuser01:SessionTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then echo \"Concurrent auth $i: SUCCESS\"; else echo \"Concurrent auth $i: FAILED\"; fi) & done; wait"]
+          expect:
+            - regex: "Concurrent auth 1: SUCCESS"
+            - regex: "Concurrent auth 2: SUCCESS"
+            - regex: "Concurrent auth 3: SUCCESS"
+            - regex: "Concurrent auth 4: SUCCESS"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Parallel User Modification by Admin"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..03}; do (if curl -k -s -w '%{http_code}' -u root:0penBmc -X PATCH -H 'Content-Type: application/json' -d '{\"Enabled\": false}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/sessionuser$i/' | grep -q '200\\|204'; then echo \"Disable user $i: SUCCESS\"; else echo \"Disable user $i: FAILED\"; fi) & done; wait"]
+          expect:
+            - regex: "Disable user 01: SUCCESS"
+            - regex: "Disable user 02: SUCCESS"
+            - regex: "Disable user 03: SUCCESS"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Test Disabled User Authentication"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "failures=0; for i in {01..03}; do if curl -k -s -w '%{http_code}' -u sessionuser$i:SessionTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '401\\|403'; then failures=$((failures+1)); echo \"Disabled user $i auth rejected: SUCCESS\"; else echo \"Disabled user $i auth rejected: FAILED\"; fi; done; echo \"Total rejections: $failures/3\""]
+          expect:
+            - regex: "Disabled user 01 auth rejected: SUCCESS"
+            - regex: "Disabled user 02 auth rejected: SUCCESS"
+            - regex: "Disabled user 03 auth rejected: SUCCESS"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Re-enable Users Concurrently"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..03}; do (if curl -k -s -w '%{http_code}' -u root:0penBmc -X PATCH -H 'Content-Type: application/json' -d '{\"Enabled\": true}' '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/sessionuser$i/' | grep -q '200\\|204'; then echo \"Re-enable user $i: SUCCESS\"; else echo \"Re-enable user $i: FAILED\"; fi) & done; wait"]
+          expect:
+            - regex: "Re-enable user 01: SUCCESS"
+            - regex: "Re-enable user 02: SUCCESS"
+            - regex: "Re-enable user 03: SUCCESS"
+        options:
+          timeout: "60s"
+
+  - name: "Session Load and Performance Tests"
+    steps:
+      - cmd: "cmd"
+        name: "High-Frequency Access Pattern"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "total_success=0; for round in {1..5}; do round_success=0; for i in {01..06}; do (for req in {1..5}; do if curl -k -s -w '%{http_code}' -u sessionuser$i:SessionTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then round_success=$((round_success+1)); fi; done) & done; wait; echo \"Round $round: $round_success requests completed\"; total_success=$((total_success + round_success)); done; echo \"Total successful requests: $total_success\""]
+          expect:
+            - regex: "Round [1-5]: [2-3][0-9] requests completed"
+            - regex: "Total successful requests: [1-2][0-9][0-9]"
+        options:
+          timeout: "180s"
+
+      - cmd: "cmd"
+        name: "Session Performance Under Load"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "# Create background load; for bg in {1..3}; do (for i in {1..10}; do curl -k -s -u root:0penBmc '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/' > /dev/null; done) & done; sleep 1; # Test session performance; success=0; for i in {01..06}; do if curl -k -s -w '%{http_code}' -u sessionuser$i:SessionTest123 '[[attributes.RedfishUrl]]/redfish/v1/AccountService/' | grep -q '200$'; then success=$((success+1)); fi; done; wait; echo \"Sessions under load: $success/6\""]
+          expect:
+            - regex: "Sessions under load: [4-6]/6"
+        options:
+          timeout: "90s"
+
+      - cmd: "cmd"
+        name: "Verify System Responsiveness"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{time_total}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "^[0-5]\\."
+        options:
+          timeout: "30s"
+
+  - name: "Cleanup Session Test Users"
+    steps:
+      - cmd: "cmd"
+        name: "Delete Session Test Users"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "bash"
+          args: ["-c", "for i in {01..06}; do curl -k -s -w '%{http_code}\\n' -u root:0penBmc -X DELETE '[[attributes.RedfishUrl]]/redfish/v1/AccountService/Accounts/sessionuser$i/' & done; wait"]
+          expect:
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+            - regex: "200|204|404"
+        options:
+          timeout: "60s"
+
+      - cmd: "cmd"
+        name: "Verify Final System State"
+        transport:
+          proto: "local"
+        parameters:
+          executable: "curl"
+          args: ["-k", "-s", "-w", "%{http_code}", "-u", "root:0penBmc", "[[attributes.RedfishUrl]]/redfish/v1/AccountService/"]
+          expect:
+            - regex: "200$"
+        options:
+          timeout: "30s"
